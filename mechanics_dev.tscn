@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://ny5dojbmly3x"]
+
+[ext_resource type="PackedScene" uid="uid://d7u7dlgtyldf" path="res://player/player.tscn" id="1_00auf"]
+[ext_resource type="Texture2D" uid="uid://b0x8bvxxmv6id" path="res://bg.png" id="1_d513w"]
+[ext_resource type="Script" path="res://scripts/world_controller.gd" id="1_hsdgl"]
+[ext_resource type="Texture2D" uid="uid://75h8adqxh3l6" path="res://test_square.png" id="2_akr4q"]
+
+[node name="mechanics_dev" type="Node2D"]
+script = ExtResource("1_hsdgl")
+
+[node name="modulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.0156863, 0.027451, 0.027451, 1)
+
+[node name="bg" type="Sprite2D" parent="."]
+scale = Vector2(1000, 1000)
+texture = ExtResource("1_d513w")
+
+[node name="environment" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="test_square" type="Sprite2D" parent="environment"]
+position = Vector2(-58, -13)
+texture = ExtResource("2_akr4q")
+
+[node name="test_square2" type="Sprite2D" parent="environment"]
+position = Vector2(40, -22)
+texture = ExtResource("2_akr4q")
+
+[node name="test_square3" type="Sprite2D" parent="environment"]
+position = Vector2(58, 20)
+texture = ExtResource("2_akr4q")
+
+[node name="test_square4" type="Sprite2D" parent="environment"]
+position = Vector2(-38, 34)
+texture = ExtResource("2_akr4q")
+
+[node name="test_square5" type="Sprite2D" parent="environment"]
+position = Vector2(-23, -22)
+texture = ExtResource("2_akr4q")
+
+[node name="test_square6" type="Sprite2D" parent="environment"]
+position = Vector2(77, -9)
+texture = ExtResource("2_akr4q")
+
+[node name="test_square7" type="Sprite2D" parent="environment"]
+position = Vector2(20, 48)
+texture = ExtResource("2_akr4q")
+
+[node name="test_square8" type="Sprite2D" parent="environment"]
+position = Vector2(-78, 18)
+texture = ExtResource("2_akr4q")
+
+[node name="test_square9" type="Sprite2D" parent="environment"]
+position = Vector2(12, -39)
+texture = ExtResource("2_akr4q")
+
+[node name="player" parent="." instance=ExtResource("1_00auf")]
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="time_label" type="RichTextLabel" parent="ui"]
+offset_left = 25.0
+offset_top = 22.0
+offset_right = 298.0
+offset_bottom = 132.0
+text = "Day 10, 21:00"
