@@ -1,15 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://ny5dojbmly3x"]
+[gd_scene load_steps=10 format=3 uid="uid://ny5dojbmly3x"]
 
 [ext_resource type="PackedScene" uid="uid://d7u7dlgtyldf" path="res://player/player.tscn" id="1_00auf"]
 [ext_resource type="Texture2D" uid="uid://b0x8bvxxmv6id" path="res://bg.png" id="1_d513w"]
 [ext_resource type="Script" path="res://scripts/world_controller.gd" id="1_hsdgl"]
-[ext_resource type="Texture2D" uid="uid://75h8adqxh3l6" path="res://test_square.png" id="2_akr4q"]
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4sfku"]
-polygon = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8te7j"]
-size = Vector2(8, 8)
+[ext_resource type="PackedScene" uid="uid://70pctjy7ynp0" path="res://environment/toolkit/wall_ex_1_h.tscn" id="3_d1xta"]
+[ext_resource type="PackedScene" uid="uid://c0gkwupkkxacp" path="res://environment/toolkit/wall_in_1_h.tscn" id="4_5en70"]
+[ext_resource type="PackedScene" uid="uid://c4uifalf2epyu" path="res://environment/toolkit/wall_in_1_turn.tscn" id="4_p36ys"]
+[ext_resource type="PackedScene" uid="uid://cal1m2bd2vk8f" path="res://environment/toolkit/wall_in_1_v.tscn" id="5_fi4o3"]
+[ext_resource type="PackedScene" uid="uid://o6x2rmxshtls" path="res://environment/toolkit/wall_ex_1_door.tscn" id="7_n4tah"]
+[ext_resource type="PackedScene" uid="uid://fqgdyci0xjf" path="res://environment/toolkit/door.tscn" id="9_w6cgg"]
 
 [node name="mechanics_dev" type="Node2D"]
 script = ExtResource("1_hsdgl")
@@ -27,53 +26,86 @@ offset = Vector2(0.021, 0.043)
 [node name="environment" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="test_square" type="StaticBody2D" parent="environment"]
-position = Vector2(-54, -12)
+[node name="wall_ex_1_h" parent="environment" instance=ExtResource("3_d1xta")]
+position = Vector2(-130, 32)
 
-[node name="sprite" type="Sprite2D" parent="environment/test_square"]
-texture = ExtResource("2_akr4q")
+[node name="wall_ex_1_h2" parent="environment" instance=ExtResource("3_d1xta")]
+position = Vector2(-122, 32)
 
-[node name="occluder" type="LightOccluder2D" parent="environment/test_square"]
-occluder = SubResource("OccluderPolygon2D_4sfku")
+[node name="wall_ex_1_h3" parent="environment" instance=ExtResource("3_d1xta")]
+position = Vector2(-114, 32)
 
-[node name="col" type="CollisionShape2D" parent="environment/test_square"]
-shape = SubResource("RectangleShape2D_8te7j")
+[node name="wall_ex_1_h4" parent="environment" instance=ExtResource("3_d1xta")]
+position = Vector2(-106, 32)
 
-[node name="test_square2" type="StaticBody2D" parent="environment"]
-position = Vector2(-46, -12)
+[node name="wall_ex_1_h5" parent="environment" instance=ExtResource("3_d1xta")]
+position = Vector2(-98, 32)
 
-[node name="sprite" type="Sprite2D" parent="environment/test_square2"]
-texture = ExtResource("2_akr4q")
+[node name="wall_ex_1_h6" parent="environment" instance=ExtResource("3_d1xta")]
+position = Vector2(-90, 32)
 
-[node name="occluder" type="LightOccluder2D" parent="environment/test_square2"]
-occluder = SubResource("OccluderPolygon2D_4sfku")
+[node name="wall_ex_1_h7" parent="environment" instance=ExtResource("3_d1xta")]
+position = Vector2(-82, 32)
 
-[node name="col" type="CollisionShape2D" parent="environment/test_square2"]
-shape = SubResource("RectangleShape2D_8te7j")
+[node name="wall_ex_1_h10" parent="environment" instance=ExtResource("3_d1xta")]
+position = Vector2(-58, 32)
 
-[node name="test_square3" type="StaticBody2D" parent="environment"]
-position = Vector2(-38, -12)
+[node name="wall_ex_1_h11" parent="environment" instance=ExtResource("3_d1xta")]
+position = Vector2(-50, 32)
 
-[node name="sprite" type="Sprite2D" parent="environment/test_square3"]
-texture = ExtResource("2_akr4q")
+[node name="wall_1_h" parent="environment" instance=ExtResource("4_5en70")]
+position = Vector2(-122, -25)
 
-[node name="occluder" type="LightOccluder2D" parent="environment/test_square3"]
-occluder = SubResource("OccluderPolygon2D_4sfku")
+[node name="wall_1_h2" parent="environment" instance=ExtResource("4_5en70")]
+position = Vector2(-114, -25)
 
-[node name="col" type="CollisionShape2D" parent="environment/test_square3"]
-shape = SubResource("RectangleShape2D_8te7j")
+[node name="wall_1_h3" parent="environment" instance=ExtResource("4_5en70")]
+position = Vector2(-106, -25)
 
-[node name="test_square4" type="StaticBody2D" parent="environment"]
-position = Vector2(-30, -12)
+[node name="wall_1_h4" parent="environment" instance=ExtResource("4_5en70")]
+position = Vector2(-98, -25)
 
-[node name="sprite" type="Sprite2D" parent="environment/test_square4"]
-texture = ExtResource("2_akr4q")
+[node name="wall_1_h5" parent="environment" instance=ExtResource("4_5en70")]
+position = Vector2(-90, -25)
 
-[node name="occluder" type="LightOccluder2D" parent="environment/test_square4"]
-occluder = SubResource("OccluderPolygon2D_4sfku")
+[node name="wall_1_h6" parent="environment" instance=ExtResource("4_5en70")]
+position = Vector2(-82, -25)
 
-[node name="col" type="CollisionShape2D" parent="environment/test_square4"]
-shape = SubResource("RectangleShape2D_8te7j")
+[node name="wall_1_h7" parent="environment" instance=ExtResource("4_5en70")]
+position = Vector2(-74, -25)
+
+[node name="wall_1_h8" parent="environment" instance=ExtResource("4_5en70")]
+position = Vector2(-66, -25)
+
+[node name="wall_1_h9" parent="environment" instance=ExtResource("4_5en70")]
+position = Vector2(-58, -25)
+
+[node name="wall_1_turn" parent="environment" instance=ExtResource("4_p36ys")]
+position = Vector2(-130, -25)
+
+[node name="wall_1_turn2" parent="environment" instance=ExtResource("4_p36ys")]
+position = Vector2(-50, -25)
+scale = Vector2(-1, 1)
+
+[node name="wall_1_v" parent="environment" instance=ExtResource("5_fi4o3")]
+position = Vector2(-130, -6)
+
+[node name="wall_1_v3" parent="environment" instance=ExtResource("5_fi4o3")]
+position = Vector2(-50, -6)
+scale = Vector2(-1, 1)
+
+[node name="wall_1_v4" parent="environment" instance=ExtResource("5_fi4o3")]
+position = Vector2(-50, 13)
+scale = Vector2(-1, 1)
+
+[node name="wall_1_v2" parent="environment" instance=ExtResource("5_fi4o3")]
+position = Vector2(-130, 13)
+
+[node name="wall_ex_1_door" parent="environment" instance=ExtResource("7_n4tah")]
+position = Vector2(-70, 32)
+
+[node name="door" parent="environment" instance=ExtResource("9_w6cgg")]
+position = Vector2(-70, 32)
 
 [node name="player" parent="." instance=ExtResource("1_00auf")]
 

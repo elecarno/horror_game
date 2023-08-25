@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://fqgdyci0xjf"]
+
+[ext_resource type="Texture2D" uid="uid://nkqp61w8aioe" path="res://environment/toolkit_sprites/door.png" id="1_esxpg"]
+[ext_resource type="Script" path="res://scripts/door.gd" id="1_wtm6a"]
+[ext_resource type="Texture2D" uid="uid://bqrotsm4c6ui7" path="res://environment/toolkit_sprites/wall_ex_1_doortop.png" id="2_uf4tf"]
+[ext_resource type="Texture2D" uid="uid://cfhltv2avjvbi" path="res://environment/toolkit_sprites/doo_opened.png" id="3_176w4"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_seefd"]
+polygon = PackedVector2Array(-8, -9, 8, -9, 8, -5, -8, -5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hl8v"]
+size = Vector2(9, 12)
+
+[node name="door" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_wtm6a")
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(0.5, 4.5)
+texture = ExtResource("1_esxpg")
+
+[node name="sprite_open" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0.5, 4.5)
+texture = ExtResource("3_176w4")
+
+[node name="sprite_top" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(0, 10)
+texture = ExtResource("2_uf4tf")
+offset = Vector2(0, -9.5)
+
+[node name="occluder" type="LightOccluder2D" parent="."]
+z_index = 1
+occluder = SubResource("OccluderPolygon2D_seefd")
+
+[node name="col_main" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -3)
+shape = SubResource("RectangleShape2D_0hl8v")

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4uifalf2epyu"]
+
+[ext_resource type="Texture2D" uid="uid://b64uqk3x1etcj" path="res://environment/toolkit_sprites/wall_1_turn.png" id="1_1y1xu"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4sfku"]
+polygon = PackedVector2Array(-4, -9, 0, -9, 4, -9, 4, -5, 0, -5.05848, 0, 10, -4, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hl8v"]
+size = Vector2(4, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tieqs"]
+size = Vector2(4, 12)
+
+[node name="wall_in_1_turn" type="StaticBody2D"]
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 10)
+texture = ExtResource("1_1y1xu")
+offset = Vector2(0, -9.5)
+
+[node name="occluder" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_4sfku")
+
+[node name="col" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0.5)
+shape = SubResource("RectangleShape2D_0hl8v")
+
+[node name="col2" type="CollisionShape2D" parent="."]
+position = Vector2(2, -3)
+shape = SubResource("RectangleShape2D_tieqs")

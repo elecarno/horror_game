@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://70pctjy7ynp0"]
+
+[ext_resource type="Texture2D" uid="uid://dsfs33dmptv2i" path="res://environment/toolkit_sprites/wall_ex_1_h.png" id="1_w5u3w"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4sfku"]
+polygon = PackedVector2Array(-4, -9, 4, -9, 4, -5, -4, -5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hl8v"]
+size = Vector2(8, 12)
+
+[node name="wall_ex_1_h" type="StaticBody2D"]
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 10)
+texture = ExtResource("1_w5u3w")
+offset = Vector2(0, -9.5)
+
+[node name="occluder" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_4sfku")
+
+[node name="col" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_0hl8v")

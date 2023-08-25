@@ -1,55 +1,224 @@
-[gd_scene load_steps=7 format=3 uid="uid://d7u7dlgtyldf"]
+[gd_scene load_steps=16 format=3 uid="uid://d7u7dlgtyldf"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_0j5ck"]
-[ext_resource type="Texture2D" uid="uid://cy4nxjsro2jbp" path="res://player/player_dev_sprite.png" id="2_dqlw4"]
+[ext_resource type="Texture2D" uid="uid://dyphtlsbgxwml" path="res://player/goober_spritesheet.png" id="2_yvwym"]
 [ext_resource type="Texture2D" uid="uid://6enu1thflr2b" path="res://player/point_light.jpeg" id="3_s3vsq"]
-[ext_resource type="Texture2D" uid="uid://c4dwn42go87k" path="res://player/flashlight_1b.png" id="4_snv2g"]
+[ext_resource type="Texture2D" uid="uid://c6u3ytn8u46bq" path="res://player/flashlight_1c.png" id="4_wnarh"]
 [ext_resource type="Texture2D" uid="uid://bkkrgc3k4mtgp" path="res://player/flashlight.png" id="5_umpm3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rp2x"]
 size = Vector2(6, 8)
 
+[sub_resource type="Animation" id="Animation_p5stv"]
+resource_name = "idle_away"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_bx0tv"]
+resource_name = "idle_left"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_sqwl6"]
+resource_name = "idle_right"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_2px6c"]
+resource_name = "idle_towards"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_uh73s"]
+resource_name = "walk_away"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_j4nyx"]
+resource_name = "walk_left"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_44g3j"]
+resource_name = "walk_right"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_h1w8c"]
+resource_name = "walk_towards"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2s8s3"]
+_data = {
+"idle_away": SubResource("Animation_p5stv"),
+"idle_left": SubResource("Animation_bx0tv"),
+"idle_right": SubResource("Animation_sqwl6"),
+"idle_towards": SubResource("Animation_2px6c"),
+"walk_away": SubResource("Animation_uh73s"),
+"walk_left": SubResource("Animation_j4nyx"),
+"walk_right": SubResource("Animation_44g3j"),
+"walk_towards": SubResource("Animation_h1w8c")
+}
+
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_0j5ck")
 
 [node name="sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_dqlw4")
+texture_filter = 1
+texture = ExtResource("2_yvwym")
+hframes = 3
+vframes = 5
 
 [node name="col" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0rp2x")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+root_node = NodePath("../sprite")
+libraries = {
+"": SubResource("AnimationLibrary_2s8s3")
+}
+
+[node name="interact" type="RayCast2D" parent="."]
+target_position = Vector2(22, 0)
+collision_mask = 2
 
 [node name="cam" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
 
 [node name="player_light" type="PointLight2D" parent="."]
-energy = 0.5
+visible = false
+position = Vector2(0, 3)
+energy = 0.3
 shadow_enabled = true
 texture = ExtResource("3_s3vsq")
 texture_scale = 0.1
 
 [node name="player_ambient" type="PointLight2D" parent="."]
+visible = false
 energy = 0.5
 texture = ExtResource("3_s3vsq")
 texture_scale = 0.2
 
 [node name="flashlight" type="Node2D" parent="."]
+position = Vector2(0, 2)
 
 [node name="spotlight_ambient" type="PointLight2D" parent="flashlight"]
-position = Vector2(-8, 2)
+visible = false
+position = Vector2(-1.5, 0)
+scale = Vector2(0.5, 0.5)
 energy = 0.5
-texture = ExtResource("4_snv2g")
+texture = ExtResource("4_wnarh")
 offset = Vector2(72, 0)
 texture_scale = 0.4
 
 [node name="spotlight" type="PointLight2D" parent="flashlight"]
-position = Vector2(-8, 2)
+position = Vector2(-1.5, 0)
+scale = Vector2(0.5, 0.5)
 energy = 2.0
 shadow_enabled = true
-texture = ExtResource("4_snv2g")
+texture = ExtResource("4_wnarh")
 offset = Vector2(72, 0)
 texture_scale = 0.4
 
 [node name="sprite" type="Sprite2D" parent="flashlight"]
-position = Vector2(3, 2)
+position = Vector2(4, 0)
 rotation = 1.5708
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_umpm3")
