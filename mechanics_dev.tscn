@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://ny5dojbmly3x"]
+[gd_scene load_steps=7 format=3 uid="uid://ny5dojbmly3x"]
 
 [ext_resource type="PackedScene" uid="uid://d7u7dlgtyldf" path="res://player/player.tscn" id="1_00auf"]
 [ext_resource type="Texture2D" uid="uid://b0x8bvxxmv6id" path="res://bg.png" id="1_d513w"]
 [ext_resource type="Script" path="res://scripts/world_controller.gd" id="1_hsdgl"]
 [ext_resource type="Texture2D" uid="uid://75h8adqxh3l6" path="res://test_square.png" id="2_akr4q"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4sfku"]
+polygon = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8te7j"]
+size = Vector2(8, 8)
 
 [node name="mechanics_dev" type="Node2D"]
 script = ExtResource("1_hsdgl")
@@ -13,47 +19,61 @@ visible = false
 color = Color(0.0156863, 0.027451, 0.027451, 1)
 
 [node name="bg" type="Sprite2D" parent="."]
+position = Vector2(-21, -43)
 scale = Vector2(1000, 1000)
 texture = ExtResource("1_d513w")
+offset = Vector2(0.021, 0.043)
 
 [node name="environment" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="test_square" type="Sprite2D" parent="environment"]
-position = Vector2(-58, -13)
+[node name="test_square" type="StaticBody2D" parent="environment"]
+position = Vector2(-54, -12)
+
+[node name="sprite" type="Sprite2D" parent="environment/test_square"]
 texture = ExtResource("2_akr4q")
 
-[node name="test_square2" type="Sprite2D" parent="environment"]
-position = Vector2(40, -22)
+[node name="occluder" type="LightOccluder2D" parent="environment/test_square"]
+occluder = SubResource("OccluderPolygon2D_4sfku")
+
+[node name="col" type="CollisionShape2D" parent="environment/test_square"]
+shape = SubResource("RectangleShape2D_8te7j")
+
+[node name="test_square2" type="StaticBody2D" parent="environment"]
+position = Vector2(-46, -12)
+
+[node name="sprite" type="Sprite2D" parent="environment/test_square2"]
 texture = ExtResource("2_akr4q")
 
-[node name="test_square3" type="Sprite2D" parent="environment"]
-position = Vector2(58, 20)
+[node name="occluder" type="LightOccluder2D" parent="environment/test_square2"]
+occluder = SubResource("OccluderPolygon2D_4sfku")
+
+[node name="col" type="CollisionShape2D" parent="environment/test_square2"]
+shape = SubResource("RectangleShape2D_8te7j")
+
+[node name="test_square3" type="StaticBody2D" parent="environment"]
+position = Vector2(-38, -12)
+
+[node name="sprite" type="Sprite2D" parent="environment/test_square3"]
 texture = ExtResource("2_akr4q")
 
-[node name="test_square4" type="Sprite2D" parent="environment"]
-position = Vector2(-38, 34)
+[node name="occluder" type="LightOccluder2D" parent="environment/test_square3"]
+occluder = SubResource("OccluderPolygon2D_4sfku")
+
+[node name="col" type="CollisionShape2D" parent="environment/test_square3"]
+shape = SubResource("RectangleShape2D_8te7j")
+
+[node name="test_square4" type="StaticBody2D" parent="environment"]
+position = Vector2(-30, -12)
+
+[node name="sprite" type="Sprite2D" parent="environment/test_square4"]
 texture = ExtResource("2_akr4q")
 
-[node name="test_square5" type="Sprite2D" parent="environment"]
-position = Vector2(-23, -22)
-texture = ExtResource("2_akr4q")
+[node name="occluder" type="LightOccluder2D" parent="environment/test_square4"]
+occluder = SubResource("OccluderPolygon2D_4sfku")
 
-[node name="test_square6" type="Sprite2D" parent="environment"]
-position = Vector2(77, -9)
-texture = ExtResource("2_akr4q")
-
-[node name="test_square7" type="Sprite2D" parent="environment"]
-position = Vector2(20, 48)
-texture = ExtResource("2_akr4q")
-
-[node name="test_square8" type="Sprite2D" parent="environment"]
-position = Vector2(-78, 18)
-texture = ExtResource("2_akr4q")
-
-[node name="test_square9" type="Sprite2D" parent="environment"]
-position = Vector2(12, -39)
-texture = ExtResource("2_akr4q")
+[node name="col" type="CollisionShape2D" parent="environment/test_square4"]
+shape = SubResource("RectangleShape2D_8te7j")
 
 [node name="player" parent="." instance=ExtResource("1_00auf")]
 

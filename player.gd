@@ -6,8 +6,11 @@ const friction = 240
 
 var input = Vector2.ZERO
 
+@onready var flashlight = get_node("flashlight")
+
 func _physics_process(delta):
 	player_movement(delta)
+	flashlight_update()
 
 func get_input():
 	input.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
@@ -27,3 +30,6 @@ func player_movement(delta):
 		velocity = velocity.limit_length(max_speed)
 		
 	move_and_slide()
+
+func flashlight_update():
+	flashlight.look_at(get_global_mouse_position())

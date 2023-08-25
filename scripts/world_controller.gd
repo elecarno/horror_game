@@ -2,7 +2,7 @@ extends Node2D
 
 const DAY_COLOUR = Color("#abc4c4")
 const NIGHT_COLOUR = Color("#040707")
-const TIME_SCALE = 2 # 2 seconds per in-game minute, resulting in a 12 minute day
+var TIME_SCALE = 2 # 2 seconds per in-game minute, resulting in a 12 minute day
 @onready var canvas_modulate = get_node("modulate")
 @onready var time_label = get_node("ui/time_label")
 
@@ -32,6 +32,13 @@ func _process(delta: float) -> void:
 			canvas_modulate.color = NIGHT_COLOUR.lerp(DAY_COLOUR, 1.0 - daynight_tick)
 	else:
 		daynight_tick = 0
+		
+	# dev tools
+	if Input.is_action_just_pressed("dev_toggle"):
+		if TIME_SCALE == 2:
+			TIME_SCALE = 500
+		else:
+			TIME_SCALE = 2
 
 func triangle(x):
 	var fract = x - int(x)

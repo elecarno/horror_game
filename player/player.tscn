@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://d7u7dlgtyldf"]
+[gd_scene load_steps=7 format=3 uid="uid://d7u7dlgtyldf"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_0j5ck"]
 [ext_resource type="Texture2D" uid="uid://cy4nxjsro2jbp" path="res://player/player_dev_sprite.png" id="2_dqlw4"]
+[ext_resource type="Texture2D" uid="uid://6enu1thflr2b" path="res://player/point_light.jpeg" id="3_s3vsq"]
+[ext_resource type="Texture2D" uid="uid://c4dwn42go87k" path="res://player/flashlight_1b.png" id="4_snv2g"]
+[ext_resource type="Texture2D" uid="uid://bkkrgc3k4mtgp" path="res://player/flashlight.png" id="5_umpm3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rp2x"]
 size = Vector2(6, 8)
@@ -17,3 +20,30 @@ shape = SubResource("RectangleShape2D_0rp2x")
 
 [node name="cam" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
+
+[node name="player_ambient" type="PointLight2D" parent="."]
+shadow_enabled = true
+texture = ExtResource("3_s3vsq")
+texture_scale = 0.1
+
+[node name="flashlight" type="Node2D" parent="."]
+
+[node name="spotlight_ambient" type="PointLight2D" parent="flashlight"]
+position = Vector2(-8, 2)
+energy = 0.5
+texture = ExtResource("4_snv2g")
+offset = Vector2(72, 0)
+texture_scale = 0.4
+
+[node name="spotlight" type="PointLight2D" parent="flashlight"]
+position = Vector2(-8, 2)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("4_snv2g")
+offset = Vector2(72, 0)
+texture_scale = 0.4
+
+[node name="sprite" type="Sprite2D" parent="flashlight"]
+position = Vector2(3, 2)
+rotation = 1.5708
+texture = ExtResource("5_umpm3")
