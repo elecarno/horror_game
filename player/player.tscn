@@ -21,10 +21,16 @@ shape = SubResource("RectangleShape2D_0rp2x")
 [node name="cam" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
 
-[node name="player_ambient" type="PointLight2D" parent="."]
+[node name="player_light" type="PointLight2D" parent="."]
+energy = 0.5
 shadow_enabled = true
 texture = ExtResource("3_s3vsq")
 texture_scale = 0.1
+
+[node name="player_ambient" type="PointLight2D" parent="."]
+energy = 0.5
+texture = ExtResource("3_s3vsq")
+texture_scale = 0.2
 
 [node name="flashlight" type="Node2D" parent="."]
 
