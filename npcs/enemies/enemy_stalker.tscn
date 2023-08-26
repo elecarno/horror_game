@@ -20,6 +20,9 @@ height = 20.0
 [node name="enemy_stalker" type="CharacterBody2D"]
 collision_layer = 3
 script = ExtResource("1_vj7lc")
+far_stalk_time_range = Vector2(5, 10)
+close_stalk_time_range = Vector2(10, 20)
+agitated_stalk_time_range = Vector2(5, 10)
 
 [node name="sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_5plv6")
