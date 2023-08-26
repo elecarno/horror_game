@@ -31,6 +31,9 @@ position = Vector2(0, 10)
 texture = ExtResource("2_uf4tf")
 offset = Vector2(0, -9.5)
 
+[node name="nav_obst" type="NavigationObstacle2D" parent="."]
+vertices = PackedVector2Array(-4, -1, 5, -1, 5, 10, -4, 10)
+
 [node name="occluder" type="LightOccluder2D" parent="."]
 z_index = 1
 occluder = SubResource("OccluderPolygon2D_seefd")

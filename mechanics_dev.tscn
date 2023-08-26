@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ny5dojbmly3x"]
+[gd_scene load_steps=14 format=3 uid="uid://ny5dojbmly3x"]
 
 [ext_resource type="PackedScene" uid="uid://d7u7dlgtyldf" path="res://player/player.tscn" id="1_00auf"]
 [ext_resource type="Texture2D" uid="uid://b0x8bvxxmv6id" path="res://bg.png" id="1_d513w"]
@@ -10,6 +10,21 @@
 [ext_resource type="PackedScene" uid="uid://o6x2rmxshtls" path="res://environment/toolkit/wall_ex_1_door.tscn" id="7_n4tah"]
 [ext_resource type="PackedScene" uid="uid://0kwbfuwbaeg6" path="res://npcs/enemies/enemy_stalker.tscn" id="9_owv0a"]
 [ext_resource type="PackedScene" uid="uid://fqgdyci0xjf" path="res://environment/toolkit/door.tscn" id="9_w6cgg"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_8rdnb"]
+vertices = PackedVector2Array(-50, -15, -50, 23, -64.9644, 23, -105, -15, -74.1064, 23, -130, 23, -130, -15, -114, -15, -114, -34, -105, -34, -74, 42, -65, 42)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(7, 8, 9, 3), PackedInt32Array(4, 7, 3, 2), PackedInt32Array(10, 4, 2, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-130, -15, -114, -15, -114, -34, -105, -34, -105, -15, -50, -15, -50, 23, -64.9644, 23, -65, 42, -74, 42, -74.1064, 23, -130, 23)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_sxd4i"]
+vertices = PackedVector2Array(-50, -72, -50, -34, -105, -34, -114, -34, -130, -34, -130, -72)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-50, -72, -50, -34, -105, -34, -114, -34, -130, -34, -130, -72)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_gdge7"]
+vertices = PackedVector2Array(167, 113, -234, 118, -134, 42, -74.0487, 42, -64.981, 42, -46, 42, -232, -164, -134, -91, 165, -164, -46, -91)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(2, 1, 6, 7), PackedInt32Array(7, 6, 8, 9), PackedInt32Array(8, 0, 5, 9)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-134, 42, -74.0487, 42, -64.981, 42, -46, 42, -46, -91, -134, -91, -134, 42, -234, 118, -232, -164, 165, -164, 167, 113, -234, 118)])
 
 [node name="mechanics_dev" type="Node2D"]
 script = ExtResource("1_hsdgl")
@@ -28,91 +43,157 @@ offset = Vector2(0.021, 0.043)
 [node name="environment" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="wall_ex_1_h" parent="environment" instance=ExtResource("3_d1xta")]
+[node name="house" type="Node2D" parent="environment"]
+
+[node name="wall_ex_1_h" parent="environment/house" instance=ExtResource("3_d1xta")]
 position = Vector2(-130, 32)
 
-[node name="wall_ex_1_h2" parent="environment" instance=ExtResource("3_d1xta")]
+[node name="wall_ex_1_h2" parent="environment/house" instance=ExtResource("3_d1xta")]
 position = Vector2(-122, 32)
 
-[node name="wall_ex_1_h3" parent="environment" instance=ExtResource("3_d1xta")]
+[node name="wall_ex_1_h3" parent="environment/house" instance=ExtResource("3_d1xta")]
 position = Vector2(-114, 32)
 
-[node name="wall_ex_1_h4" parent="environment" instance=ExtResource("3_d1xta")]
+[node name="wall_ex_1_h4" parent="environment/house" instance=ExtResource("3_d1xta")]
 position = Vector2(-106, 32)
 
-[node name="wall_ex_1_h5" parent="environment" instance=ExtResource("3_d1xta")]
+[node name="wall_ex_1_h5" parent="environment/house" instance=ExtResource("3_d1xta")]
 position = Vector2(-98, 32)
 
-[node name="wall_ex_1_h6" parent="environment" instance=ExtResource("3_d1xta")]
+[node name="wall_ex_1_h6" parent="environment/house" instance=ExtResource("3_d1xta")]
 position = Vector2(-90, 32)
 
-[node name="wall_ex_1_h7" parent="environment" instance=ExtResource("3_d1xta")]
+[node name="wall_ex_1_h7" parent="environment/house" instance=ExtResource("3_d1xta")]
 position = Vector2(-82, 32)
 
-[node name="wall_ex_1_h10" parent="environment" instance=ExtResource("3_d1xta")]
+[node name="wall_ex_1_h10" parent="environment/house" instance=ExtResource("3_d1xta")]
 position = Vector2(-58, 32)
 
-[node name="wall_ex_1_h11" parent="environment" instance=ExtResource("3_d1xta")]
+[node name="wall_ex_1_h11" parent="environment/house" instance=ExtResource("3_d1xta")]
 position = Vector2(-50, 32)
 
-[node name="wall_1_h" parent="environment" instance=ExtResource("4_5en70")]
+[node name="wall_1_h" parent="environment/house" instance=ExtResource("4_5en70")]
 position = Vector2(-122, -25)
 
-[node name="wall_1_h2" parent="environment" instance=ExtResource("4_5en70")]
-position = Vector2(-114, -25)
-
-[node name="wall_1_h3" parent="environment" instance=ExtResource("4_5en70")]
-position = Vector2(-106, -25)
-
-[node name="wall_1_h4" parent="environment" instance=ExtResource("4_5en70")]
+[node name="wall_1_h4" parent="environment/house" instance=ExtResource("4_5en70")]
 position = Vector2(-98, -25)
 
-[node name="wall_1_h5" parent="environment" instance=ExtResource("4_5en70")]
+[node name="wall_1_h5" parent="environment/house" instance=ExtResource("4_5en70")]
 position = Vector2(-90, -25)
 
-[node name="wall_1_h6" parent="environment" instance=ExtResource("4_5en70")]
+[node name="wall_1_h6" parent="environment/house" instance=ExtResource("4_5en70")]
 position = Vector2(-82, -25)
 
-[node name="wall_1_h7" parent="environment" instance=ExtResource("4_5en70")]
+[node name="wall_1_h7" parent="environment/house" instance=ExtResource("4_5en70")]
 position = Vector2(-74, -25)
 
-[node name="wall_1_h8" parent="environment" instance=ExtResource("4_5en70")]
+[node name="wall_1_h8" parent="environment/house" instance=ExtResource("4_5en70")]
 position = Vector2(-66, -25)
 
-[node name="wall_1_h9" parent="environment" instance=ExtResource("4_5en70")]
+[node name="wall_1_h9" parent="environment/house" instance=ExtResource("4_5en70")]
 position = Vector2(-58, -25)
 
-[node name="wall_1_turn" parent="environment" instance=ExtResource("4_p36ys")]
+[node name="wall_1_turn" parent="environment/house" instance=ExtResource("4_p36ys")]
 position = Vector2(-130, -25)
 
-[node name="wall_1_turn2" parent="environment" instance=ExtResource("4_p36ys")]
+[node name="wall_1_turn2" parent="environment/house" instance=ExtResource("4_p36ys")]
 position = Vector2(-50, -25)
-scale = Vector2(-1, 1)
+rotation = 3.14159
+scale = Vector2(1, -1)
 
-[node name="wall_1_v" parent="environment" instance=ExtResource("5_fi4o3")]
+[node name="wall_1_v" parent="environment/house" instance=ExtResource("5_fi4o3")]
 position = Vector2(-130, -6)
 
-[node name="wall_1_v3" parent="environment" instance=ExtResource("5_fi4o3")]
+[node name="wall_1_v3" parent="environment/house" instance=ExtResource("5_fi4o3")]
 position = Vector2(-50, -6)
-scale = Vector2(-1, 1)
+rotation = 3.14159
+scale = Vector2(1, -1)
 
-[node name="wall_1_v4" parent="environment" instance=ExtResource("5_fi4o3")]
+[node name="wall_1_v4" parent="environment/house" instance=ExtResource("5_fi4o3")]
 position = Vector2(-50, 13)
-scale = Vector2(-1, 1)
+rotation = 3.14159
+scale = Vector2(1, -1)
 
-[node name="wall_1_v2" parent="environment" instance=ExtResource("5_fi4o3")]
+[node name="wall_1_v2" parent="environment/house" instance=ExtResource("5_fi4o3")]
 position = Vector2(-130, 13)
 
-[node name="wall_ex_1_door" parent="environment" instance=ExtResource("7_n4tah")]
+[node name="wall_ex_1_door" parent="environment/house" instance=ExtResource("7_n4tah")]
 position = Vector2(-70, 32)
 
-[node name="door" parent="environment" instance=ExtResource("9_w6cgg")]
+[node name="wall_1_h2" parent="environment/house" instance=ExtResource("4_5en70")]
+position = Vector2(-122, -82)
+
+[node name="wall_1_h10" parent="environment/house" instance=ExtResource("4_5en70")]
+position = Vector2(-98, -82)
+
+[node name="wall_1_h16" parent="environment/house" instance=ExtResource("4_5en70")]
+position = Vector2(-106, -82)
+
+[node name="wall_1_h17" parent="environment/house" instance=ExtResource("4_5en70")]
+position = Vector2(-114, -82)
+
+[node name="wall_1_h11" parent="environment/house" instance=ExtResource("4_5en70")]
+position = Vector2(-90, -82)
+
+[node name="wall_1_h12" parent="environment/house" instance=ExtResource("4_5en70")]
+position = Vector2(-82, -82)
+
+[node name="wall_1_h13" parent="environment/house" instance=ExtResource("4_5en70")]
+position = Vector2(-74, -82)
+
+[node name="wall_1_h14" parent="environment/house" instance=ExtResource("4_5en70")]
+position = Vector2(-66, -82)
+
+[node name="wall_1_h15" parent="environment/house" instance=ExtResource("4_5en70")]
+position = Vector2(-58, -82)
+
+[node name="wall_1_turn3" parent="environment/house" instance=ExtResource("4_p36ys")]
+position = Vector2(-130, -82)
+
+[node name="wall_1_turn4" parent="environment/house" instance=ExtResource("4_p36ys")]
+position = Vector2(-50, -82)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
+[node name="wall_1_v5" parent="environment/house" instance=ExtResource("5_fi4o3")]
+position = Vector2(-130, -63)
+
+[node name="wall_1_v6" parent="environment/house" instance=ExtResource("5_fi4o3")]
+position = Vector2(-50, -63)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
+[node name="wall_1_v7" parent="environment/house" instance=ExtResource("5_fi4o3")]
+position = Vector2(-50, -44)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
+[node name="wall_1_v8" parent="environment/house" instance=ExtResource("5_fi4o3")]
+position = Vector2(-130, -44)
+
+[node name="wall_ex_1_door2" parent="environment/house" instance=ExtResource("7_n4tah")]
+position = Vector2(-110, -25)
+
+[node name="door" parent="environment/house" instance=ExtResource("9_w6cgg")]
 position = Vector2(-70, 32)
+
+[node name="door2" parent="environment/house" instance=ExtResource("9_w6cgg")]
+position = Vector2(-110, -25)
+
+[node name="nav_region" type="NavigationRegion2D" parent="environment/house"]
+navigation_polygon = SubResource("NavigationPolygon_8rdnb")
+
+[node name="nav_region2" type="NavigationRegion2D" parent="environment/house"]
+navigation_polygon = SubResource("NavigationPolygon_sxd4i")
+
+[node name="nav_region" type="NavigationRegion2D" parent="environment"]
+navigation_polygon = SubResource("NavigationPolygon_gdge7")
 
 [node name="npcs" type="Node2D" parent="."]
 
 [node name="enemy_stalker" parent="npcs" instance=ExtResource("9_owv0a")]
-position = Vector2(17, 40)
+position = Vector2(33, -40)
+agitated_stalk_time_range = Vector2(5, 10)
 
 [node name="player" parent="." instance=ExtResource("1_00auf")]
 

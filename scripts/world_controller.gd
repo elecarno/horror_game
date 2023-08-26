@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 	# night to day = 08:00 to 11:00
 	# day to night = 17:00 to 21:00
 	var current_hour = int(tick/60) % 24
-	var reset_daynight = false
+	#var reset_daynight = false
 	if current_hour > 7 and current_hour < 12:
 		if daynight_tick < 1.0:
 			daynight_tick += (delta * TIME_SCALE)/180

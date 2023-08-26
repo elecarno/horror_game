@@ -68,9 +68,8 @@ func flip():
 		#player_sprite.set_flip_h(false)
 		anim.play("idle_right")
 
-func flashlight_update(delta):
+func flashlight_update(_delta):
 	var direction = (get_global_mouse_position() - global_position)
-	var angle_to = flashlight.transform.x.angle_to(direction)
 	var angle = direction.angle()
 	flashlight.rotation = lerp_angle(flashlight.rotation, angle, light_rot_speed)
 	#flashlight.look_at(get_global_mouse_position())

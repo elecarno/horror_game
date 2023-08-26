@@ -1,11 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://0kwbfuwbaeg6"]
+[gd_scene load_steps=11 format=3 uid="uid://0kwbfuwbaeg6"]
 
 [ext_resource type="Script" path="res://npcs/enemies/enemy_stalker.gd" id="1_vj7lc"]
 [ext_resource type="Texture2D" uid="uid://6vfinokjdstk" path="res://npcs/enemies/stalker.png" id="2_5plv6"]
+[ext_resource type="AudioStream" uid="uid://cl3vm0wxcwixm" path="res://npcs/enemies/stalker_close.mp3" id="3_0sdyx"]
 [ext_resource type="Script" path="res://npcs/enemies/hitbox.gd" id="3_wetbe"]
+[ext_resource type="AudioStream" uid="uid://ba1um47bwqilb" path="res://npcs/enemies/stalker_attack.wav" id="4_li7cc"]
+[ext_resource type="AudioStream" uid="uid://bng4gpgclwlxp" path="res://npcs/enemies/stalk_retreat.mp3" id="5_7vt37"]
+[ext_resource type="Texture2D" uid="uid://6enu1thflr2b" path="res://player/point_light.jpeg" id="6_114vx"]
+[ext_resource type="AudioStream" uid="uid://bnddbopmb0dq0" path="res://npcs/enemies/distortion_1.wav" id="6_rq4tc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4hq1m"]
-radius = 4.0
+radius = 3.0
 height = 18.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3qhah"]
@@ -14,7 +19,6 @@ height = 20.0
 
 [node name="enemy_stalker" type="CharacterBody2D"]
 collision_layer = 3
-collision_mask = 3
 script = ExtResource("1_vj7lc")
 
 [node name="sprite" type="Sprite2D" parent="."]
@@ -22,6 +26,9 @@ texture = ExtResource("2_5plv6")
 
 [node name="col" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_4hq1m")
+
+[node name="nav_agent" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
 
 [node name="close_timer" type="Timer" parent="."]
 wait_time = 10.0
@@ -35,6 +42,43 @@ one_shot = true
 wait_time = 20.0
 one_shot = true
 
+[node name="nav_update" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="reset_speed" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="sfx_close" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_0sdyx")
+
+[node name="sfx_attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_li7cc")
+volume_db = 10.0
+
+[node name="sfx_retreat" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_7vt37")
+
+[node name="sfx_distortion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_rq4tc")
+
+[node name="eye_left" type="PointLight2D" parent="."]
+position = Vector2(-1.5, -6)
+enabled = false
+color = Color(1, 0, 0, 1)
+energy = 2.0
+texture = ExtResource("6_114vx")
+texture_scale = 0.05
+
+[node name="eye_right" type="PointLight2D" parent="."]
+position = Vector2(0.5, -6)
+enabled = false
+color = Color(1, 0, 0, 1)
+energy = 2.0
+texture = ExtResource("6_114vx")
+texture_scale = 0.05
+
 [node name="hitbox" type="Area2D" parent="."]
 collision_layer = 7
 collision_mask = 4
@@ -46,3 +90,5 @@ shape = SubResource("CapsuleShape2D_3qhah")
 [connection signal="timeout" from="close_timer" to="." method="_on_close_timer_timeout"]
 [connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="reset_timer" to="." method="_on_reset_timer_timeout"]
+[connection signal="timeout" from="nav_update" to="." method="_on_nav_update_timeout"]
+[connection signal="timeout" from="reset_speed" to="." method="_on_reset_speed_timeout"]
