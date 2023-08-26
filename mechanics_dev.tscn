@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ny5dojbmly3x"]
+[gd_scene load_steps=11 format=3 uid="uid://ny5dojbmly3x"]
 
 [ext_resource type="PackedScene" uid="uid://d7u7dlgtyldf" path="res://player/player.tscn" id="1_00auf"]
 [ext_resource type="Texture2D" uid="uid://b0x8bvxxmv6id" path="res://bg.png" id="1_d513w"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c4uifalf2epyu" path="res://environment/toolkit/wall_in_1_turn.tscn" id="4_p36ys"]
 [ext_resource type="PackedScene" uid="uid://cal1m2bd2vk8f" path="res://environment/toolkit/wall_in_1_v.tscn" id="5_fi4o3"]
 [ext_resource type="PackedScene" uid="uid://o6x2rmxshtls" path="res://environment/toolkit/wall_ex_1_door.tscn" id="7_n4tah"]
+[ext_resource type="PackedScene" uid="uid://0kwbfuwbaeg6" path="res://npcs/enemies/enemy_stalker.tscn" id="9_owv0a"]
 [ext_resource type="PackedScene" uid="uid://fqgdyci0xjf" path="res://environment/toolkit/door.tscn" id="9_w6cgg"]
 
 [node name="mechanics_dev" type="Node2D"]
@@ -18,6 +19,7 @@ visible = false
 color = Color(0.0156863, 0.027451, 0.027451, 1)
 
 [node name="bg" type="Sprite2D" parent="."]
+z_index = -2
 position = Vector2(-21, -43)
 scale = Vector2(1000, 1000)
 texture = ExtResource("1_d513w")
@@ -106,6 +108,11 @@ position = Vector2(-70, 32)
 
 [node name="door" parent="environment" instance=ExtResource("9_w6cgg")]
 position = Vector2(-70, 32)
+
+[node name="npcs" type="Node2D" parent="."]
+
+[node name="enemy_stalker" parent="npcs" instance=ExtResource("9_owv0a")]
+position = Vector2(17, 40)
 
 [node name="player" parent="." instance=ExtResource("1_00auf")]
 

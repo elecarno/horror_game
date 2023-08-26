@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://d7u7dlgtyldf"]
+[gd_scene load_steps=18 format=3 uid="uid://d7u7dlgtyldf"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_0j5ck"]
 [ext_resource type="Texture2D" uid="uid://dyphtlsbgxwml" path="res://player/goober_spritesheet.png" id="2_yvwym"]
 [ext_resource type="Texture2D" uid="uid://6enu1thflr2b" path="res://player/point_light.jpeg" id="3_s3vsq"]
 [ext_resource type="Texture2D" uid="uid://c6u3ytn8u46bq" path="res://player/flashlight_1c.png" id="4_wnarh"]
 [ext_resource type="Texture2D" uid="uid://bkkrgc3k4mtgp" path="res://player/flashlight.png" id="5_umpm3"]
+[ext_resource type="Script" path="res://player/hurtbox.gd" id="6_d01gg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rp2x"]
 size = Vector2(6, 8)
@@ -157,6 +158,9 @@ _data = {
 "walk_towards": SubResource("Animation_h1w8c")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_axnbh"]
+radius = 6.0
+
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_0j5ck")
 
@@ -165,6 +169,7 @@ texture_filter = 1
 texture = ExtResource("2_yvwym")
 hframes = 3
 vframes = 5
+frame = 1
 
 [node name="col" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0rp2x")
@@ -222,3 +227,16 @@ position = Vector2(4, 0)
 rotation = 1.5708
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_umpm3")
+
+[node name="light_hit" type="RayCast2D" parent="flashlight"]
+position = Vector2(0, -2)
+target_position = Vector2(71, 0)
+collision_mask = 2
+
+[node name="hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("6_d01gg")
+
+[node name="col" type="CollisionShape2D" parent="hurtbox"]
+shape = SubResource("CircleShape2D_axnbh")

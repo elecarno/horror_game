@@ -4,14 +4,17 @@ const max_speed = 80
 const accel = 350
 const friction = 240
 
+var input = Vector2.ZERO
+
 var light_rot_speed = 0.1
 
-var input = Vector2.ZERO
+var hp = 3
 
 @onready var flashlight = get_node("flashlight")
 @onready var player_sprite = get_node("sprite")
 @onready var anim = get_node("anim")
 @onready var interact = get_node("interact")
+@onready var light_hit = get_node("flashlight/light_hit")
 
 func _physics_process(delta):
 	player_movement(delta)
@@ -50,6 +53,11 @@ func player_animation():
 		anim.play("walk_away")
 	else:
 		flip()
+		
+	if anim.current_animation == "walk_away":
+		flashlight.z_index = -1
+	else:
+		flashlight.z_index = 0
 
 func flip():
 	var direction = sign(get_global_mouse_position().x - player_sprite.global_position.x)
@@ -69,6 +77,7 @@ func flashlight_update(delta):
 	
 	if Input.is_action_just_pressed("use_item"):
 		flashlight.get_node("spotlight").visible = !flashlight.get_node("spotlight").visible
+		light_hit.enabled = !light_hit.enabled
 	
 func interaction():
 	interact.look_at(get_global_mouse_position())
@@ -76,5 +85,16 @@ func interaction():
 		var collider = interact.get_collider()
 		if collider.has_method("_on_interact"):
 			collider._on_interact()
-
 	
+	if light_hit.enabled:
+		var collider = light_hit.get_collider()
+		if collider != null and collider.has_method("_on_light_hit"):
+			collider._on_light_hit()
+
+func take_damage():
+	hp -= 1
+	print("------------------")
+	print("player lost 1 hp")
+	
+	if hp <= 0:
+		print("player died")
