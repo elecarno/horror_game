@@ -15,6 +15,10 @@ func _process(delta):
 		#using_notebook = true
 		get_node("control/notebook").visible = !get_node("control/notebook").visible
 		
+	if Input.is_action_just_pressed("inventory"):
+		#using_notebook = true
+		get_node("control/inventory").visible = !get_node("control/inventory").visible
+		
 	if Input.is_action_just_pressed("watch"):
 		using_watch = true
 		get_node("control/watch/watch_open").playing = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ny5dojbmly3x"]
+[gd_scene load_steps=24 format=3 uid="uid://ny5dojbmly3x"]
 
 [ext_resource type="PackedScene" uid="uid://d7u7dlgtyldf" path="res://player/player.tscn" id="1_00auf"]
 [ext_resource type="Texture2D" uid="uid://b0x8bvxxmv6id" path="res://bg.png" id="1_d513w"]
@@ -12,7 +12,10 @@
 [ext_resource type="Script" path="res://ui/ui.gd" id="10_s6ipu"]
 [ext_resource type="Texture2D" uid="uid://bgmxhmtv35io2" path="res://ui/watch.png" id="11_h1bbg"]
 [ext_resource type="Texture2D" uid="uid://dh4oyk30rwiq7" path="res://ui/notebook_small.png" id="11_l0vt5"]
+[ext_resource type="Texture2D" uid="uid://b0c5cp0ca0h1u" path="res://ui/pouch_1.png" id="12_6ihle"]
+[ext_resource type="FontFile" uid="uid://b4k31i217ye1u" path="res://ui/Comicoro.ttf" id="12_32y5c"]
 [ext_resource type="Texture2D" uid="uid://d0x56vmqqjedv" path="res://ui/minute_hand.png" id="12_fl3jl"]
+[ext_resource type="Texture2D" uid="uid://c3lspy6at5a41" path="res://ui/bag.png" id="13_a3fyi"]
 [ext_resource type="Texture2D" uid="uid://bevwsiqgnrfqo" path="res://ui/hour_hand.png" id="13_avvjf"]
 [ext_resource type="AudioStream" uid="uid://dx1u5hsjhnh2q" path="res://ui/watch_open.wav" id="14_p1j2x"]
 [ext_resource type="AudioStream" uid="uid://bo6ppjt5tu26x" path="res://ui/tick.wav" id="14_rrw6t"]
@@ -215,7 +218,70 @@ offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="inventory" type="Control" parent="ui/control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -288.0
+offset_right = 384.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(383.5, 288)
+
+[node name="inventory_tex" type="TextureRect" parent="ui/control/inventory"]
+layout_mode = 1
+offset_right = 768.0
+offset_bottom = 576.0
+texture = ExtResource("13_a3fyi")
+
+[node name="pouch_1" type="TextureRect" parent="ui/control/inventory"]
+layout_mode = 1
+offset_left = 112.0
+offset_top = 138.0
+offset_right = 256.0
+offset_bottom = 282.0
+texture = ExtResource("12_6ihle")
+
+[node name="pouch_2" type="TextureRect" parent="ui/control/inventory"]
+layout_mode = 1
+offset_left = 298.0
+offset_top = 138.0
+offset_right = 442.0
+offset_bottom = 282.0
+texture = ExtResource("12_6ihle")
+
+[node name="pouch_3" type="TextureRect" parent="ui/control/inventory"]
+layout_mode = 1
+offset_left = 486.0
+offset_top = 138.0
+offset_right = 630.0
+offset_bottom = 282.0
+texture = ExtResource("12_6ihle")
+
+[node name="pouch_4" type="TextureRect" parent="ui/control/inventory"]
+layout_mode = 1
+offset_left = 201.0
+offset_top = 310.0
+offset_right = 345.0
+offset_bottom = 454.0
+texture = ExtResource("12_6ihle")
+
+[node name="pouch_5" type="TextureRect" parent="ui/control/inventory"]
+layout_mode = 1
+offset_left = 389.0
+offset_top = 310.0
+offset_right = 533.0
+offset_bottom = 454.0
+texture = ExtResource("12_6ihle")
+
 [node name="notebook" type="Control" parent="ui/control"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -244,6 +310,8 @@ offset_top = 57.0
 offset_right = 341.0
 offset_bottom = 138.0
 size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("12_32y5c")
+theme_override_font_sizes/normal_font_size = 32
 text = "Day 10"
 
 [node name="watch" type="Control" parent="ui/control"]
