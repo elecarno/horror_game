@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ny5dojbmly3x"]
+[gd_scene load_steps=21 format=3 uid="uid://ny5dojbmly3x"]
 
 [ext_resource type="PackedScene" uid="uid://d7u7dlgtyldf" path="res://player/player.tscn" id="1_00auf"]
 [ext_resource type="Texture2D" uid="uid://b0x8bvxxmv6id" path="res://bg.png" id="1_d513w"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://fqgdyci0xjf" path="res://environment/toolkit/door.tscn" id="9_w6cgg"]
 [ext_resource type="Script" path="res://ui/ui.gd" id="10_s6ipu"]
 [ext_resource type="Texture2D" uid="uid://bgmxhmtv35io2" path="res://ui/watch.png" id="11_h1bbg"]
+[ext_resource type="Texture2D" uid="uid://dh4oyk30rwiq7" path="res://ui/notebook_small.png" id="11_l0vt5"]
 [ext_resource type="Texture2D" uid="uid://d0x56vmqqjedv" path="res://ui/minute_hand.png" id="12_fl3jl"]
 [ext_resource type="Texture2D" uid="uid://bevwsiqgnrfqo" path="res://ui/hour_hand.png" id="13_avvjf"]
 [ext_resource type="AudioStream" uid="uid://dx1u5hsjhnh2q" path="res://ui/watch_open.wav" id="14_p1j2x"]
@@ -214,7 +215,39 @@ offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="notebook" type="Control" parent="ui/control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -288.0
+offset_right = 384.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(383.5, 288)
+
+[node name="notebook_tex" type="TextureRect" parent="ui/control/notebook"]
+layout_mode = 1
+offset_right = 768.0
+offset_bottom = 576.0
+texture = ExtResource("11_l0vt5")
+
+[node name="day_counter" type="RichTextLabel" parent="ui/control/notebook"]
+modulate = Color(0.0980392, 0.0980392, 0.0980392, 1)
+layout_mode = 2
+offset_left = 62.0
+offset_top = 57.0
+offset_right = 341.0
+offset_bottom = 138.0
+size_flags_vertical = 3
+text = "Day 10"
+
 [node name="watch" type="Control" parent="ui/control"]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -229,7 +262,6 @@ grow_vertical = 0
 size_flags_vertical = 0
 
 [node name="watch_tex" type="TextureRect" parent="ui/control/watch"]
-modulate = Color(0.75, 0.75, 0.75, 1)
 layout_mode = 2
 offset_right = 240.0
 offset_bottom = 240.0
@@ -276,5 +308,9 @@ offset_right = 226.0
 offset_bottom = 258.0
 size_flags_vertical = 3
 text = "Day 10, 21:00"
+
+[node name="modulate" type="CanvasModulate" parent="ui"]
+visible = false
+color = Color(0.301961, 0.301961, 0.301961, 1)
 
 [connection signal="timeout" from="ui/control/watch/minute_tick_timer" to="ui" method="_on_minute_tick_timer_timeout"]

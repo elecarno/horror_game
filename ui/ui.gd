@@ -4,9 +4,16 @@ extends CanvasLayer
 @onready var world_con: world_controller = get_parent()
 
 var using_watch: bool = false
+#var using_notebook: bool = false
 
 func _process(delta):
+	var days = int(world_con.tick/60/24)
+	get_node("control/notebook/day_counter").text = "Day #" + str(days)
 	#get_node("control/time_label").text = world_con.format_time()
+		
+	if Input.is_action_just_pressed("notebook"):
+		#using_notebook = true
+		get_node("control/notebook").visible = !get_node("control/notebook").visible
 		
 	if Input.is_action_just_pressed("watch"):
 		using_watch = true

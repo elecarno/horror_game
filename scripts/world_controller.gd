@@ -3,8 +3,11 @@ extends Node2D
 
 const DAY_COLOUR = Color("#abc4c4")
 const NIGHT_COLOUR = Color("#040707")
+const DAY_COLOUR_UI = Color("#ffffff")
+const NIGHT_COLOUR_UI = Color("#4d4d4d")
 var TIME_SCALE = 2 # 2 seconds per in-game minute, resulting in a 12 minute day
 @onready var canvas_modulate = get_node("modulate")
+@onready var ui_modulate = get_node("ui/modulate")
 
 var tick = 0
 var time = 0
@@ -12,6 +15,7 @@ var daynight_tick = 0
 
 func _ready():
 	canvas_modulate.visible = true
+	ui_modulate.visible = true
 
 func _process(delta: float) -> void:
 	time += delta * TIME_SCALE
@@ -25,10 +29,12 @@ func _process(delta: float) -> void:
 		if daynight_tick < 1.0:
 			daynight_tick += (delta * TIME_SCALE)/180
 			canvas_modulate.color = NIGHT_COLOUR.lerp(DAY_COLOUR, daynight_tick)
+			ui_modulate.color = NIGHT_COLOUR_UI.lerp(DAY_COLOUR_UI, daynight_tick)
 	elif current_hour > 16 and current_hour < 22:
 		if daynight_tick < 1.0:
 			daynight_tick += (delta * TIME_SCALE)/240
 			canvas_modulate.color = NIGHT_COLOUR.lerp(DAY_COLOUR, 1.0 - daynight_tick)
+			ui_modulate.color = NIGHT_COLOUR_UI.lerp(DAY_COLOUR_UI, 1.0 - daynight_tick)
 	else:
 		daynight_tick = 0
 		
