@@ -160,6 +160,7 @@ func _on_attack_timer_timeout():
 
 func _on_reset_timer_timeout():
 	reset_state()
+	get_node("sfx_retreat").playing = true
 	print("enemy failed to attack player, resetting")
 	
 func _on_nav_update_timeout():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ny5dojbmly3x"]
+[gd_scene load_steps=20 format=3 uid="uid://ny5dojbmly3x"]
 
 [ext_resource type="PackedScene" uid="uid://d7u7dlgtyldf" path="res://player/player.tscn" id="1_00auf"]
 [ext_resource type="Texture2D" uid="uid://b0x8bvxxmv6id" path="res://bg.png" id="1_d513w"]
@@ -8,8 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://c4uifalf2epyu" path="res://environment/toolkit/wall_in_1_turn.tscn" id="4_p36ys"]
 [ext_resource type="PackedScene" uid="uid://cal1m2bd2vk8f" path="res://environment/toolkit/wall_in_1_v.tscn" id="5_fi4o3"]
 [ext_resource type="PackedScene" uid="uid://o6x2rmxshtls" path="res://environment/toolkit/wall_ex_1_door.tscn" id="7_n4tah"]
-[ext_resource type="PackedScene" uid="uid://0kwbfuwbaeg6" path="res://npcs/enemies/enemy_stalker.tscn" id="9_owv0a"]
 [ext_resource type="PackedScene" uid="uid://fqgdyci0xjf" path="res://environment/toolkit/door.tscn" id="9_w6cgg"]
+[ext_resource type="Script" path="res://ui/ui.gd" id="10_s6ipu"]
+[ext_resource type="Texture2D" uid="uid://bgmxhmtv35io2" path="res://ui/watch.png" id="11_h1bbg"]
+[ext_resource type="Texture2D" uid="uid://d0x56vmqqjedv" path="res://ui/minute_hand.png" id="12_fl3jl"]
+[ext_resource type="Texture2D" uid="uid://bevwsiqgnrfqo" path="res://ui/hour_hand.png" id="13_avvjf"]
+[ext_resource type="AudioStream" uid="uid://dx1u5hsjhnh2q" path="res://ui/watch_open.wav" id="14_p1j2x"]
+[ext_resource type="AudioStream" uid="uid://bo6ppjt5tu26x" path="res://ui/tick.wav" id="14_rrw6t"]
+[ext_resource type="AudioStream" uid="uid://b5q84nwm26v5y" path="res://ui/watch_close.wav" id="15_mubgd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8rdnb"]
 vertices = PackedVector2Array(-50, -15, -50, 23, -64.9644, 23, -105, -15, -74.1064, 23, -130, 23, -130, -15, -114, -15, -114, -34, -105, -34, -74, 42, -65, 42)
@@ -191,17 +197,84 @@ navigation_polygon = SubResource("NavigationPolygon_gdge7")
 
 [node name="npcs" type="Node2D" parent="."]
 
-[node name="enemy_stalker" parent="npcs" instance=ExtResource("9_owv0a")]
-position = Vector2(33, -40)
-agitated_stalk_time_range = Vector2(5, 10)
-
 [node name="player" parent="." instance=ExtResource("1_00auf")]
 
 [node name="ui" type="CanvasLayer" parent="."]
+script = ExtResource("10_s6ipu")
 
-[node name="time_label" type="RichTextLabel" parent="ui"]
-offset_left = 25.0
-offset_top = 22.0
-offset_right = 298.0
-offset_bottom = 132.0
+[node name="control" type="Control" parent="ui"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 17.0
+offset_right = -23.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="watch" type="Control" parent="ui/control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -240.0
+offset_right = 120.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 0
+
+[node name="watch_tex" type="TextureRect" parent="ui/control/watch"]
+modulate = Color(0.75, 0.75, 0.75, 1)
+layout_mode = 2
+offset_right = 240.0
+offset_bottom = 240.0
+texture = ExtResource("11_h1bbg")
+
+[node name="minute_hand" type="TextureRect" parent="ui/control/watch"]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 77.0
+offset_right = 128.0
+offset_bottom = 176.0
+pivot_offset = Vector2(7.5, 64)
+texture = ExtResource("12_fl3jl")
+
+[node name="hour_hand" type="TextureRect" parent="ui/control/watch"]
+layout_mode = 0
+offset_left = 115.755
+offset_top = 93.4796
+offset_right = 124.755
+offset_bottom = 162.48
+rotation = 1.57079
+pivot_offset = Vector2(4.5, 47)
+texture = ExtResource("13_avvjf")
+
+[node name="watch_open" type="AudioStreamPlayer2D" parent="ui/control/watch"]
+stream = ExtResource("14_p1j2x")
+
+[node name="watch_close" type="AudioStreamPlayer2D" parent="ui/control/watch"]
+stream = ExtResource("15_mubgd")
+
+[node name="minute_tick" type="AudioStreamPlayer2D" parent="ui/control/watch"]
+stream = ExtResource("14_rrw6t")
+
+[node name="minute_tick_timer" type="Timer" parent="ui/control/watch"]
+wait_time = 0.5
+autostart = true
+
+[node name="time_label" type="RichTextLabel" parent="ui/control"]
+visible = false
+layout_mode = 2
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 226.0
+offset_bottom = 258.0
+size_flags_vertical = 3
 text = "Day 10, 21:00"
+
+[connection signal="timeout" from="ui/control/watch/minute_tick_timer" to="ui" method="_on_minute_tick_timer_timeout"]

@@ -82,7 +82,7 @@ func interaction():
 	interact.look_at(get_global_mouse_position())
 	if Input.is_action_just_pressed("interact") and interact.is_colliding():
 		var collider = interact.get_collider()
-		if collider.has_method("_on_interact"):
+		if collider != null and collider.has_method("_on_interact"):
 			collider._on_interact()
 	
 	if light_hit.enabled:

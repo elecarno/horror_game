@@ -1,10 +1,10 @@
+class_name world_controller
 extends Node2D
 
 const DAY_COLOUR = Color("#abc4c4")
 const NIGHT_COLOUR = Color("#040707")
 var TIME_SCALE = 2 # 2 seconds per in-game minute, resulting in a 12 minute day
 @onready var canvas_modulate = get_node("modulate")
-@onready var time_label = get_node("ui/time_label")
 
 var tick = 0
 var time = 0
@@ -16,7 +16,6 @@ func _ready():
 func _process(delta: float) -> void:
 	time += delta * TIME_SCALE
 	tick = floor(time) + 1440 # 1 day = 1440 minutes
-	time_label.text = format_time()
 	
 	# night to day = 08:00 to 11:00
 	# day to night = 17:00 to 21:00
@@ -53,3 +52,4 @@ func format_time():
 	var days = int(tick/60/24)
 	#return "Day %01d, %02d:%02d\ngametick: %02d\ngametime:%5.1f\ndaynight:%5.5f" % [days, hours, minutes, tick, time, daynight_tick]
 	return "Day %01d, %02d:%02d" % [days, hours, minutes]
+
