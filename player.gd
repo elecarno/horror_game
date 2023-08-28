@@ -6,6 +6,7 @@ const friction = 240
 
 var input = Vector2.ZERO
 
+
 var light_rot_speed = 0.1
 
 var hp = 3
