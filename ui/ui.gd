@@ -16,8 +16,7 @@ func _process(delta):
 		get_node("control/notebook").visible = !get_node("control/notebook").visible
 		
 	if Input.is_action_just_pressed("inventory"):
-		#using_notebook = true
-		get_node("control/inventory").visible = !get_node("control/inventory").visible
+		toggle_inventory()
 		
 	if Input.is_action_just_pressed("watch"):
 		using_watch = true
@@ -28,16 +27,19 @@ func _process(delta):
 		
 	if using_watch:
 		get_node("control/watch").visible = true
-		watch_update(delta)
+		watch_update()
 	else:
 		get_node("control/watch").visible = false
 
-func watch_update(delta):
+func watch_update():
 	var minutes = int(world_con.tick) % 60
 	var hours = int(world_con.tick/60) % 24
 	
 	get_node("control/watch/minute_hand").rotation_degrees = (360/60) * minutes
 	get_node("control/watch/hour_hand").rotation = (((2 * PI) / 12) * hours) + (((2 * PI) / 720) * minutes)
+
+func toggle_inventory():
+	get_node("control/inventory").visible = !get_node("control/inventory").visible
 
 func _on_minute_tick_timer_timeout():
 	if using_watch:

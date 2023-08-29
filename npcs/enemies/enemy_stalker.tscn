@@ -6,8 +6,8 @@
 [ext_resource type="Script" path="res://npcs/enemies/hitbox.gd" id="3_wetbe"]
 [ext_resource type="AudioStream" uid="uid://ba1um47bwqilb" path="res://npcs/enemies/stalker_attack.wav" id="4_li7cc"]
 [ext_resource type="AudioStream" uid="uid://bng4gpgclwlxp" path="res://npcs/enemies/stalk_retreat.mp3" id="5_7vt37"]
-[ext_resource type="Texture2D" uid="uid://6enu1thflr2b" path="res://player/point_light.jpeg" id="6_114vx"]
 [ext_resource type="AudioStream" uid="uid://c3t76n8yyqmjv" path="res://npcs/enemies/distortion_1.mp3" id="6_vpw4x"]
+[ext_resource type="Texture2D" uid="uid://bh66e6n7tdwny" path="res://player/star_light.jpg" id="7_ye4s0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4hq1m"]
 radius = 3.0
@@ -21,7 +21,7 @@ height = 20.0
 collision_layer = 3
 script = ExtResource("1_vj7lc")
 far_stalk_time_range = Vector2(5, 10)
-close_stalk_time_range = Vector2(10, 20)
+close_stalk_time_range = Vector2(5, 10)
 agitated_stalk_time_range = Vector2(5, 10)
 
 [node name="sprite" type="Sprite2D" parent="."]
@@ -72,16 +72,16 @@ position = Vector2(-1.5, -6)
 enabled = false
 color = Color(1, 0, 0, 1)
 energy = 2.0
-texture = ExtResource("6_114vx")
-texture_scale = 0.05
+texture = ExtResource("7_ye4s0")
+texture_scale = 0.1
 
 [node name="eye_right" type="PointLight2D" parent="."]
 position = Vector2(0.5, -6)
 enabled = false
 color = Color(1, 0, 0, 1)
 energy = 2.0
-texture = ExtResource("6_114vx")
-texture_scale = 0.05
+texture = ExtResource("7_ye4s0")
+texture_scale = 0.1
 
 [node name="hitbox" type="Area2D" parent="."]
 collision_layer = 7

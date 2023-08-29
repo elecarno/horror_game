@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ny5dojbmly3x"]
+[gd_scene load_steps=33 format=3 uid="uid://ny5dojbmly3x"]
 
 [ext_resource type="PackedScene" uid="uid://d7u7dlgtyldf" path="res://player/player.tscn" id="1_00auf"]
 [ext_resource type="Texture2D" uid="uid://b0x8bvxxmv6id" path="res://bg.png" id="1_d513w"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://o6x2rmxshtls" path="res://environment/toolkit/wall_ex_1_door.tscn" id="7_n4tah"]
 [ext_resource type="PackedScene" uid="uid://fqgdyci0xjf" path="res://environment/toolkit/door.tscn" id="9_w6cgg"]
 [ext_resource type="Script" path="res://ui/ui.gd" id="10_s6ipu"]
+[ext_resource type="Shader" path="res://ui/test_shader.gdshader" id="11_3auck"]
 [ext_resource type="Script" path="res://ui/inventory.gd" id="11_4lv62"]
 [ext_resource type="Texture2D" uid="uid://bgmxhmtv35io2" path="res://ui/watch.png" id="11_h1bbg"]
 [ext_resource type="Texture2D" uid="uid://dh4oyk30rwiq7" path="res://ui/notebook_small.png" id="11_l0vt5"]
@@ -21,7 +22,10 @@
 [ext_resource type="Texture2D" uid="uid://bevwsiqgnrfqo" path="res://ui/hour_hand.png" id="13_avvjf"]
 [ext_resource type="AudioStream" uid="uid://dx1u5hsjhnh2q" path="res://ui/watch_open.wav" id="14_p1j2x"]
 [ext_resource type="AudioStream" uid="uid://bo6ppjt5tu26x" path="res://ui/tick.wav" id="14_rrw6t"]
+[ext_resource type="StyleBox" uid="uid://d1x4mlo7ttagp" path="res://ui/button_clear.tres" id="15_kkpsh"]
 [ext_resource type="AudioStream" uid="uid://b5q84nwm26v5y" path="res://ui/watch_close.wav" id="15_mubgd"]
+[ext_resource type="Texture2D" uid="uid://huyp6055om02" path="res://ui/items/crucifix/t1_crucifix_32.png" id="16_b3mrd"]
+[ext_resource type="Texture2D" uid="uid://c0t0f40wmvu1b" path="res://ui/items/holy_water/t1_holywater_32.png" id="17_8grjy"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8rdnb"]
 vertices = PackedVector2Array(-50, -15, -50, 23, -64.9644, 23, -105, -15, -74.1064, 23, -130, 23, -130, -15, -114, -15, -114, -34, -105, -34, -74, 42, -65, 42)
@@ -37,6 +41,16 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-50, -72, -50, -34, -10
 vertices = PackedVector2Array(167, 113, -234, 118, -134, 42, -74.0487, 42, -64.981, 42, -46, 42, -232, -164, -134, -91, 165, -164, -46, -91)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(2, 1, 6, 7), PackedInt32Array(7, 6, 8, 9), PackedInt32Array(8, 0, 5, 9)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-134, 42, -74.0487, 42, -64.981, 42, -46, 42, -46, -91, -134, -91, -134, 42, -234, 118, -232, -164, 165, -164, 167, 113, -234, 118)])
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kf8r1"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kkf1a"]
+seamless = true
+noise = SubResource("FastNoiseLite_kf8r1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nrnbv"]
+shader = ExtResource("11_3auck")
+shader_parameter/distortion_texture = SubResource("NoiseTexture2D_kkf1a")
 
 [node name="mechanics_dev" type="Node2D"]
 script = ExtResource("1_hsdgl")
@@ -56,6 +70,7 @@ offset = Vector2(0.021, 0.043)
 y_sort_enabled = true
 
 [node name="house" type="Node2D" parent="environment"]
+position = Vector2(590, 383)
 
 [node name="wall_ex_1_h" parent="environment/house" instance=ExtResource("3_d1xta")]
 position = Vector2(-130, 32)
@@ -199,11 +214,13 @@ navigation_polygon = SubResource("NavigationPolygon_8rdnb")
 navigation_polygon = SubResource("NavigationPolygon_sxd4i")
 
 [node name="nav_region" type="NavigationRegion2D" parent="environment"]
+position = Vector2(590, 383)
 navigation_polygon = SubResource("NavigationPolygon_gdge7")
 
 [node name="npcs" type="Node2D" parent="."]
 
 [node name="player" parent="." instance=ExtResource("1_00auf")]
+position = Vector2(590, 383)
 
 [node name="ui" type="CanvasLayer" parent="."]
 script = ExtResource("10_s6ipu")
@@ -221,6 +238,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="inventory" type="Control" parent="ui/control"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -238,10 +256,12 @@ script = ExtResource("11_4lv62")
 
 [node name="pouch_1" type="Control" parent="ui/control/inventory"]
 anchors_preset = 0
-offset_top = 70.0
-offset_right = 164.0
-offset_bottom = 516.0
+offset_left = 309.0
+offset_top = 80.0
+offset_right = 473.0
+offset_bottom = 526.0
 script = ExtResource("12_i60fj")
+held_item = "t1_flashlight"
 
 [node name="pouch_bg" type="TextureRect" parent="ui/control/inventory/pouch_1"]
 self_modulate = Color(0.75, 0.75, 0.75, 1)
@@ -303,6 +323,161 @@ offset_top = -188.0
 offset_right = 72.5
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/normal = ExtResource("15_kkpsh")
+theme_override_styles/hover = ExtResource("15_kkpsh")
+theme_override_styles/pressed = ExtResource("15_kkpsh")
+theme_override_styles/disabled = ExtResource("15_kkpsh")
+theme_override_styles/focus = ExtResource("15_kkpsh")
+
+[node name="pouch_2" type="Control" parent="ui/control/inventory"]
+anchors_preset = 0
+offset_left = 527.0
+offset_top = 80.0
+offset_right = 691.0
+offset_bottom = 526.0
+script = ExtResource("12_i60fj")
+held_item = "t1_crucifix"
+
+[node name="pouch_bg" type="TextureRect" parent="ui/control/inventory/pouch_2"]
+self_modulate = Color(0.75, 0.75, 0.75, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -161.0
+offset_right = 72.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("12_6ihle")
+
+[node name="item_sprite" type="TextureRect" parent="ui/control/inventory/pouch_2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -196.0
+offset_right = 72.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(77, 73)
+texture = ExtResource("16_b3mrd")
+
+[node name="pouch_fg" type="TextureRect" parent="ui/control/inventory/pouch_2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -144.0
+offset_right = 72.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("12_6ihle")
+
+[node name="pouch_button" type="Button" parent="ui/control/inventory/pouch_2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -72.5
+offset_top = -188.0
+offset_right = 72.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = ExtResource("15_kkpsh")
+theme_override_styles/hover = ExtResource("15_kkpsh")
+theme_override_styles/pressed = ExtResource("15_kkpsh")
+theme_override_styles/disabled = ExtResource("15_kkpsh")
+theme_override_styles/focus = ExtResource("15_kkpsh")
+
+[node name="pouch_3" type="Control" parent="ui/control/inventory"]
+anchors_preset = 0
+offset_left = 739.0
+offset_top = 80.0
+offset_right = 903.0
+offset_bottom = 526.0
+script = ExtResource("12_i60fj")
+held_item = "t1_holywater"
+
+[node name="pouch_bg" type="TextureRect" parent="ui/control/inventory/pouch_3"]
+self_modulate = Color(0.75, 0.75, 0.75, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -161.0
+offset_right = 72.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("12_6ihle")
+
+[node name="item_sprite" type="TextureRect" parent="ui/control/inventory/pouch_3"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -196.0
+offset_right = 72.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(77, 73)
+texture = ExtResource("17_8grjy")
+
+[node name="pouch_fg" type="TextureRect" parent="ui/control/inventory/pouch_3"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -144.0
+offset_right = 72.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("12_6ihle")
+
+[node name="pouch_button" type="Button" parent="ui/control/inventory/pouch_3"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -72.5
+offset_top = -188.0
+offset_right = 72.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = ExtResource("15_kkpsh")
+theme_override_styles/hover = ExtResource("15_kkpsh")
+theme_override_styles/pressed = ExtResource("15_kkpsh")
+theme_override_styles/disabled = ExtResource("15_kkpsh")
+theme_override_styles/focus = ExtResource("15_kkpsh")
 
 [node name="notebook" type="Control" parent="ui/control"]
 visible = false
@@ -405,7 +580,20 @@ text = "Day 10, 21:00"
 visible = false
 color = Color(0.301961, 0.301961, 0.301961, 1)
 
+[node name="shader" type="ColorRect" parent="ui"]
+visible = false
+show_behind_parent = true
+material = SubResource("ShaderMaterial_nrnbv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [connection signal="button_down" from="ui/control/inventory/pouch_1/pouch_button" to="ui/control/inventory/pouch_1" method="_on_pouch_button_button_down"]
 [connection signal="button_up" from="ui/control/inventory/pouch_1/pouch_button" to="ui/control/inventory/pouch_1" method="_on_pouch_button_button_up"]
-[connection signal="pressed" from="ui/control/inventory/pouch_1/pouch_button" to="ui/control/inventory/pouch_1" method="_on_pouch_button_pressed"]
+[connection signal="button_down" from="ui/control/inventory/pouch_2/pouch_button" to="ui/control/inventory/pouch_2" method="_on_pouch_button_button_down"]
+[connection signal="button_up" from="ui/control/inventory/pouch_2/pouch_button" to="ui/control/inventory/pouch_2" method="_on_pouch_button_button_up"]
+[connection signal="button_down" from="ui/control/inventory/pouch_3/pouch_button" to="ui/control/inventory/pouch_3" method="_on_pouch_button_button_down"]
+[connection signal="button_up" from="ui/control/inventory/pouch_3/pouch_button" to="ui/control/inventory/pouch_3" method="_on_pouch_button_button_up"]
 [connection signal="timeout" from="ui/control/watch/minute_tick_timer" to="ui" method="_on_minute_tick_timer_timeout"]

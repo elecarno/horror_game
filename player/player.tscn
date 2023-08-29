@@ -201,6 +201,13 @@ energy = 0.5
 texture = ExtResource("3_s3vsq")
 texture_scale = 0.2
 
+[node name="held_item" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(4, 2)
+rotation = 1.5708
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_umpm3")
+
 [node name="flashlight" type="Node2D" parent="."]
 position = Vector2(0, 2)
 

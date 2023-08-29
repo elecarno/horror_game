@@ -6,7 +6,6 @@ const friction = 240
 
 var input = Vector2.ZERO
 
-
 var light_rot_speed = 0.1
 
 var hp = 3
@@ -16,6 +15,8 @@ var hp = 3
 @onready var anim = get_node("anim")
 @onready var interact = get_node("interact")
 @onready var light_hit = get_node("flashlight/light_hit")
+
+#var t1_flashlight_tex = preload("") 
 
 func _physics_process(delta):
 	player_movement(delta)
@@ -98,3 +99,10 @@ func take_damage():
 	
 	if hp <= 0:
 		print("player died")
+		
+func switch_item(item):
+	print("switched to " + item + " (player)")
+	if item == "t1_flashlight":
+		flashlight.visible = true
+	else:
+		flashlight.visible = false

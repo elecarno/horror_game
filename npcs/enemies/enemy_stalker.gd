@@ -82,13 +82,19 @@ func _physics_process(delta):
 		STALK_FAR:
 			radius = 80
 			get_node("hitbox/col").disabled = true
+			get_parent().get_parent().get_node("ui/shader").visible = false
+			get_parent().get_parent().get_node("player/cam").zoom = Vector2(5, 5)
 			move_target = get_circle_position(randnum)
 		STALK_CLOSE:
 			radius = 40
 			get_node("hitbox/col").disabled = true
+			get_parent().get_parent().get_node("ui/shader").visible = false
+			get_parent().get_parent().get_node("player/cam").zoom = Vector2(5, 5)
 			move_target = get_circle_position(randnum)
 		ATTACK:
 			get_node("hitbox/col").disabled = false
+			get_parent().get_parent().get_node("ui/shader").visible = true
+			get_parent().get_parent().get_node("player/cam").zoom = Vector2(7, 7)
 			move_target = player.global_position
 			
 	move(delta)
