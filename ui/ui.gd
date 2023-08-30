@@ -2,6 +2,7 @@ class_name ui
 extends CanvasLayer
 
 @onready var world_con: world_controller = get_parent()
+@onready var playerdata_con: playerdata = get_parent().get_node("playerdata")
 
 var using_watch: bool = false
 
@@ -32,6 +33,9 @@ func watch_update():
 
 func toggle_inventory():
 	get_node("control/inventory").visible = !get_node("control/inventory").visible
+	playerdata_con.pouch_1.update_pouch()
+	playerdata_con.pouch_2.update_pouch()
+	playerdata_con.pouch_3.update_pouch()
 
 func _on_minute_tick_timer_timeout():
 	if using_watch:

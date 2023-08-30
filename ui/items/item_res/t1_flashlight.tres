@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("1_k20jv")
 item_dislay_name = "Flashlight"
+item_type = "flashlight"
 item_tier = 1
 bag_texture = ExtResource("1_jv45j")

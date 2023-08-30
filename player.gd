@@ -100,9 +100,9 @@ func take_damage():
 	if hp <= 0:
 		print("player died")
 		
-func switch_item(item):
-	print("switched to " + item + " (player)")
-	if item == "t1_flashlight":
+func switch_item(item: item_res):
+	print("switched to " + item.item_dislay_name + " (player)")
+	if item.item_type == "flashlight":
 		flashlight.visible = true
 	else:
 		flashlight.visible = false

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="item_res" load_steps=2 format=3 uid="uid://vivx8vauaa45"]
+
+[ext_resource type="Script" path="res://ui/items/item_res.gd" id="1_wamtv"]
+
+[resource]
+script = ExtResource("1_wamtv")
+item_dislay_name = ""
+item_type = "empty"
+item_tier = 0

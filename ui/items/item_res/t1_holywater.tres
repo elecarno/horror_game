@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("2_pg2vd")
 item_dislay_name = "Jar of Holy Water"
+item_type = "holywater"
 item_tier = 1
 bag_texture = ExtResource("1_6k6us")

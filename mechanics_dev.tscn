@@ -1,10 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://ny5dojbmly3x"]
+[gd_scene load_steps=35 format=3 uid="uid://ny5dojbmly3x"]
 
 [ext_resource type="PackedScene" uid="uid://d7u7dlgtyldf" path="res://player/player.tscn" id="1_00auf"]
 [ext_resource type="Texture2D" uid="uid://b0x8bvxxmv6id" path="res://bg.png" id="1_d513w"]
 [ext_resource type="Script" path="res://scripts/world_controller.gd" id="1_hsdgl"]
 [ext_resource type="Script" path="res://scripts/playerdata.gd" id="2_k16ua"]
 [ext_resource type="PackedScene" uid="uid://70pctjy7ynp0" path="res://environment/toolkit/wall_ex_1_h.tscn" id="3_d1xta"]
+[ext_resource type="Resource" uid="uid://dog6m4myw7cwt" path="res://ui/items/item_res/t1_flashlight.tres" id="3_nwtw5"]
 [ext_resource type="PackedScene" uid="uid://c0gkwupkkxacp" path="res://environment/toolkit/wall_in_1_h.tscn" id="4_5en70"]
 [ext_resource type="PackedScene" uid="uid://c4uifalf2epyu" path="res://environment/toolkit/wall_in_1_turn.tscn" id="4_p36ys"]
 [ext_resource type="PackedScene" uid="uid://cal1m2bd2vk8f" path="res://environment/toolkit/wall_in_1_v.tscn" id="5_fi4o3"]
@@ -25,8 +26,8 @@
 [ext_resource type="StyleBox" uid="uid://d1x4mlo7ttagp" path="res://ui/button_clear.tres" id="15_kkpsh"]
 [ext_resource type="AudioStream" uid="uid://b5q84nwm26v5y" path="res://ui/watch_close.wav" id="15_mubgd"]
 [ext_resource type="Texture2D" uid="uid://s2jrsg0kmky3" path="res://ui/items/bag/flashlight/t1_flashlight_32.png" id="15_sjau7"]
-[ext_resource type="Texture2D" uid="uid://huyp6055om02" path="res://ui/items/bag/crucifix/t1_crucifix_32.png" id="17_23m0b"]
-[ext_resource type="Texture2D" uid="uid://c0t0f40wmvu1b" path="res://ui/items/bag/holy_water/t1_holywater_32.png" id="18_mv3du"]
+[ext_resource type="Resource" uid="uid://vivx8vauaa45" path="res://ui/items/item_res/empty.tres" id="18_fgds4"]
+[ext_resource type="Resource" uid="uid://o4ra5nek3p5j" path="res://ui/items/item_res/t1_crucifix.tres" id="18_mngy3"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8rdnb"]
 vertices = PackedVector2Array(-50, -15, -50, 23, -64.9644, 23, -105, -15, -74.1064, 23, -130, 23, -130, -15, -114, -15, -114, -34, -105, -34, -74, 42, -65, 42)
@@ -58,6 +59,7 @@ script = ExtResource("1_hsdgl")
 
 [node name="playerdata" type="Node2D" parent="." node_paths=PackedStringArray("pouch_1", "pouch_2", "pouch_3")]
 script = ExtResource("2_k16ua")
+current_item = ExtResource("3_nwtw5")
 pouch_1 = NodePath("../ui/control/inventory/pouch_1")
 pouch_2 = NodePath("../ui/control/inventory/pouch_2")
 pouch_3 = NodePath("../ui/control/inventory/pouch_3")
@@ -263,15 +265,16 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(383.5, 288)
 
-[node name="pouch_1" type="Control" parent="ui/control/inventory" node_paths=PackedStringArray("inv")]
+[node name="pouch_1" type="Control" parent="ui/control/inventory" node_paths=PackedStringArray("inventory")]
 anchors_preset = 0
 offset_left = 309.0
 offset_top = 80.0
 offset_right = 473.0
 offset_bottom = 526.0
 script = ExtResource("12_i60fj")
-inv = NodePath("../../../../playerdata")
-held_item = "t1_flashlight"
+inventory = NodePath("../../../../playerdata")
+held_item = ExtResource("3_nwtw5")
+type_to_hold = "flashlight"
 
 [node name="pouch_bg" type="TextureRect" parent="ui/control/inventory/pouch_1"]
 self_modulate = Color(0.75, 0.75, 0.75, 1)
@@ -339,15 +342,16 @@ theme_override_styles/pressed = ExtResource("15_kkpsh")
 theme_override_styles/disabled = ExtResource("15_kkpsh")
 theme_override_styles/focus = ExtResource("15_kkpsh")
 
-[node name="pouch_2" type="Control" parent="ui/control/inventory" node_paths=PackedStringArray("inv")]
+[node name="pouch_2" type="Control" parent="ui/control/inventory" node_paths=PackedStringArray("inventory")]
 anchors_preset = 0
 offset_left = 527.0
 offset_top = 80.0
 offset_right = 691.0
 offset_bottom = 526.0
 script = ExtResource("12_i60fj")
-inv = NodePath("../../../../playerdata")
-held_item = "t1_crucifix"
+inventory = NodePath("../../../../playerdata")
+held_item = ExtResource("18_mngy3")
+type_to_hold = "crucifix"
 
 [node name="pouch_bg" type="TextureRect" parent="ui/control/inventory/pouch_2"]
 self_modulate = Color(0.75, 0.75, 0.75, 1)
@@ -380,7 +384,7 @@ offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(77, 73)
-texture = ExtResource("17_23m0b")
+texture = ExtResource("15_sjau7")
 
 [node name="pouch_fg" type="TextureRect" parent="ui/control/inventory/pouch_2"]
 layout_mode = 1
@@ -415,15 +419,16 @@ theme_override_styles/pressed = ExtResource("15_kkpsh")
 theme_override_styles/disabled = ExtResource("15_kkpsh")
 theme_override_styles/focus = ExtResource("15_kkpsh")
 
-[node name="pouch_3" type="Control" parent="ui/control/inventory" node_paths=PackedStringArray("inv")]
+[node name="pouch_3" type="Control" parent="ui/control/inventory" node_paths=PackedStringArray("inventory")]
 anchors_preset = 0
 offset_left = 739.0
 offset_top = 80.0
 offset_right = 903.0
 offset_bottom = 526.0
 script = ExtResource("12_i60fj")
-inv = NodePath("../../../../playerdata")
-held_item = "t1_holywater"
+inventory = NodePath("../../../../playerdata")
+held_item = ExtResource("18_fgds4")
+type_to_hold = "holywater"
 
 [node name="pouch_bg" type="TextureRect" parent="ui/control/inventory/pouch_3"]
 self_modulate = Color(0.75, 0.75, 0.75, 1)
@@ -456,7 +461,7 @@ offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(77, 73)
-texture = ExtResource("18_mv3du")
+texture = ExtResource("15_sjau7")
 
 [node name="pouch_fg" type="TextureRect" parent="ui/control/inventory/pouch_3"]
 layout_mode = 1

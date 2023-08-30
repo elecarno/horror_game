@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("2_066cq")
 item_dislay_name = "Hunter's Crucifix"
+item_type = "crucifix"
 item_tier = 3
 bag_texture = ExtResource("1_5sr14")
