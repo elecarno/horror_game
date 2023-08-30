@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-var closed = true
+var closed: bool = true
 
 func _on_interact():
 	if closed:

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="item_res" load_steps=3 format=3 uid="uid://dog6m4myw7cwt"]
+
+[ext_resource type="Texture2D" uid="uid://s2jrsg0kmky3" path="res://ui/items/bag/flashlight/t1_flashlight_32.png" id="1_jv45j"]
+[ext_resource type="Script" path="res://ui/items/item_res.gd" id="1_k20jv"]
+
+[resource]
+script = ExtResource("1_k20jv")
+item_dislay_name = "Flashlight"
+item_tier = 1
+bag_texture = ExtResource("1_jv45j")

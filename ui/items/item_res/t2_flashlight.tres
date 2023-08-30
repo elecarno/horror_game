@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="item_res" load_steps=2 format=3 uid="uid://b5rf06h8l1w8p"]
+
+[ext_resource type="Script" path="res://ui/items/item_res.gd" id="2_a8kuv"]
+
+[resource]
+script = ExtResource("2_a8kuv")
+item_dislay_name = ""
+item_tier = 0

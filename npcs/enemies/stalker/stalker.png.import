@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crksl1op8fe7n"
-path="res://.godot/imported/t2_crucifix_32.png-6f402a8ae3db1fc84793dade9ccf5ca1.ctex"
+uid="uid://6vfinokjdstk"
+path="res://.godot/imported/stalker.png-966dd426350544b5182b5eb279100a25.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/items/crucifix/t2_crucifix_32.png"
-dest_files=["res://.godot/imported/t2_crucifix_32.png-6f402a8ae3db1fc84793dade9ccf5ca1.ctex"]
+source_file="res://npcs/enemies/stalker/stalker.png"
+dest_files=["res://.godot/imported/stalker.png-966dd426350544b5182b5eb279100a25.ctex"]
 
 [params]
 

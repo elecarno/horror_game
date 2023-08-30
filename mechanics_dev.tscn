@@ -1,20 +1,20 @@
-[gd_scene load_steps=33 format=3 uid="uid://ny5dojbmly3x"]
+[gd_scene load_steps=34 format=3 uid="uid://ny5dojbmly3x"]
 
 [ext_resource type="PackedScene" uid="uid://d7u7dlgtyldf" path="res://player/player.tscn" id="1_00auf"]
 [ext_resource type="Texture2D" uid="uid://b0x8bvxxmv6id" path="res://bg.png" id="1_d513w"]
 [ext_resource type="Script" path="res://scripts/world_controller.gd" id="1_hsdgl"]
+[ext_resource type="Script" path="res://scripts/playerdata.gd" id="2_k16ua"]
 [ext_resource type="PackedScene" uid="uid://70pctjy7ynp0" path="res://environment/toolkit/wall_ex_1_h.tscn" id="3_d1xta"]
 [ext_resource type="PackedScene" uid="uid://c0gkwupkkxacp" path="res://environment/toolkit/wall_in_1_h.tscn" id="4_5en70"]
 [ext_resource type="PackedScene" uid="uid://c4uifalf2epyu" path="res://environment/toolkit/wall_in_1_turn.tscn" id="4_p36ys"]
 [ext_resource type="PackedScene" uid="uid://cal1m2bd2vk8f" path="res://environment/toolkit/wall_in_1_v.tscn" id="5_fi4o3"]
 [ext_resource type="PackedScene" uid="uid://o6x2rmxshtls" path="res://environment/toolkit/wall_ex_1_door.tscn" id="7_n4tah"]
 [ext_resource type="PackedScene" uid="uid://fqgdyci0xjf" path="res://environment/toolkit/door.tscn" id="9_w6cgg"]
+[ext_resource type="PackedScene" uid="uid://0kwbfuwbaeg6" path="res://npcs/enemies/stalker/enemy_stalker.tscn" id="10_3kjya"]
 [ext_resource type="Script" path="res://ui/ui.gd" id="10_s6ipu"]
 [ext_resource type="Shader" path="res://ui/test_shader.gdshader" id="11_3auck"]
-[ext_resource type="Script" path="res://ui/inventory.gd" id="11_4lv62"]
 [ext_resource type="Texture2D" uid="uid://bgmxhmtv35io2" path="res://ui/watch.png" id="11_h1bbg"]
 [ext_resource type="Texture2D" uid="uid://dh4oyk30rwiq7" path="res://ui/notebook_small.png" id="11_l0vt5"]
-[ext_resource type="Texture2D" uid="uid://s2jrsg0kmky3" path="res://ui/items/flashlight/t1_flashlight_32.png" id="11_n7llr"]
 [ext_resource type="Texture2D" uid="uid://b0c5cp0ca0h1u" path="res://ui/pouch_1.png" id="12_6ihle"]
 [ext_resource type="FontFile" uid="uid://b4k31i217ye1u" path="res://ui/Comicoro.ttf" id="12_32y5c"]
 [ext_resource type="Texture2D" uid="uid://d0x56vmqqjedv" path="res://ui/minute_hand.png" id="12_fl3jl"]
@@ -24,8 +24,9 @@
 [ext_resource type="AudioStream" uid="uid://bo6ppjt5tu26x" path="res://ui/tick.wav" id="14_rrw6t"]
 [ext_resource type="StyleBox" uid="uid://d1x4mlo7ttagp" path="res://ui/button_clear.tres" id="15_kkpsh"]
 [ext_resource type="AudioStream" uid="uid://b5q84nwm26v5y" path="res://ui/watch_close.wav" id="15_mubgd"]
-[ext_resource type="Texture2D" uid="uid://huyp6055om02" path="res://ui/items/crucifix/t1_crucifix_32.png" id="16_b3mrd"]
-[ext_resource type="Texture2D" uid="uid://c0t0f40wmvu1b" path="res://ui/items/holy_water/t1_holywater_32.png" id="17_8grjy"]
+[ext_resource type="Texture2D" uid="uid://s2jrsg0kmky3" path="res://ui/items/bag/flashlight/t1_flashlight_32.png" id="15_sjau7"]
+[ext_resource type="Texture2D" uid="uid://huyp6055om02" path="res://ui/items/bag/crucifix/t1_crucifix_32.png" id="17_23m0b"]
+[ext_resource type="Texture2D" uid="uid://c0t0f40wmvu1b" path="res://ui/items/bag/holy_water/t1_holywater_32.png" id="18_mv3du"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8rdnb"]
 vertices = PackedVector2Array(-50, -15, -50, 23, -64.9644, 23, -105, -15, -74.1064, 23, -130, 23, -130, -15, -114, -15, -114, -34, -105, -34, -74, 42, -65, 42)
@@ -54,6 +55,12 @@ shader_parameter/distortion_texture = SubResource("NoiseTexture2D_kkf1a")
 
 [node name="mechanics_dev" type="Node2D"]
 script = ExtResource("1_hsdgl")
+
+[node name="playerdata" type="Node2D" parent="." node_paths=PackedStringArray("pouch_1", "pouch_2", "pouch_3")]
+script = ExtResource("2_k16ua")
+pouch_1 = NodePath("../ui/control/inventory/pouch_1")
+pouch_2 = NodePath("../ui/control/inventory/pouch_2")
+pouch_3 = NodePath("../ui/control/inventory/pouch_3")
 
 [node name="modulate" type="CanvasModulate" parent="."]
 visible = false
@@ -201,23 +208,26 @@ position = Vector2(-130, -44)
 [node name="wall_ex_1_door2" parent="environment/house" instance=ExtResource("7_n4tah")]
 position = Vector2(-110, -25)
 
-[node name="door" parent="environment/house" instance=ExtResource("9_w6cgg")]
-position = Vector2(-70, 32)
-
-[node name="door2" parent="environment/house" instance=ExtResource("9_w6cgg")]
-position = Vector2(-110, -25)
-
 [node name="nav_region" type="NavigationRegion2D" parent="environment/house"]
 navigation_polygon = SubResource("NavigationPolygon_8rdnb")
 
 [node name="nav_region2" type="NavigationRegion2D" parent="environment/house"]
 navigation_polygon = SubResource("NavigationPolygon_sxd4i")
 
+[node name="door" parent="environment/house" instance=ExtResource("9_w6cgg")]
+position = Vector2(-70, 32)
+
+[node name="door2" parent="environment/house" instance=ExtResource("9_w6cgg")]
+position = Vector2(-110, -25)
+
 [node name="nav_region" type="NavigationRegion2D" parent="environment"]
 position = Vector2(590, 383)
 navigation_polygon = SubResource("NavigationPolygon_gdge7")
 
 [node name="npcs" type="Node2D" parent="."]
+
+[node name="enemy_stalker" parent="npcs" instance=ExtResource("10_3kjya")]
+DEBUG_DEACTIVATE = true
 
 [node name="player" parent="." instance=ExtResource("1_00auf")]
 position = Vector2(590, 383)
@@ -252,15 +262,15 @@ offset_bottom = 288.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(383.5, 288)
-script = ExtResource("11_4lv62")
 
-[node name="pouch_1" type="Control" parent="ui/control/inventory"]
+[node name="pouch_1" type="Control" parent="ui/control/inventory" node_paths=PackedStringArray("inv")]
 anchors_preset = 0
 offset_left = 309.0
 offset_top = 80.0
 offset_right = 473.0
 offset_bottom = 526.0
 script = ExtResource("12_i60fj")
+inv = NodePath("../../../../playerdata")
 held_item = "t1_flashlight"
 
 [node name="pouch_bg" type="TextureRect" parent="ui/control/inventory/pouch_1"]
@@ -294,7 +304,7 @@ offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(77, 73)
-texture = ExtResource("11_n7llr")
+texture = ExtResource("15_sjau7")
 
 [node name="pouch_fg" type="TextureRect" parent="ui/control/inventory/pouch_1"]
 layout_mode = 1
@@ -329,13 +339,14 @@ theme_override_styles/pressed = ExtResource("15_kkpsh")
 theme_override_styles/disabled = ExtResource("15_kkpsh")
 theme_override_styles/focus = ExtResource("15_kkpsh")
 
-[node name="pouch_2" type="Control" parent="ui/control/inventory"]
+[node name="pouch_2" type="Control" parent="ui/control/inventory" node_paths=PackedStringArray("inv")]
 anchors_preset = 0
 offset_left = 527.0
 offset_top = 80.0
 offset_right = 691.0
 offset_bottom = 526.0
 script = ExtResource("12_i60fj")
+inv = NodePath("../../../../playerdata")
 held_item = "t1_crucifix"
 
 [node name="pouch_bg" type="TextureRect" parent="ui/control/inventory/pouch_2"]
@@ -369,7 +380,7 @@ offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(77, 73)
-texture = ExtResource("16_b3mrd")
+texture = ExtResource("17_23m0b")
 
 [node name="pouch_fg" type="TextureRect" parent="ui/control/inventory/pouch_2"]
 layout_mode = 1
@@ -404,13 +415,14 @@ theme_override_styles/pressed = ExtResource("15_kkpsh")
 theme_override_styles/disabled = ExtResource("15_kkpsh")
 theme_override_styles/focus = ExtResource("15_kkpsh")
 
-[node name="pouch_3" type="Control" parent="ui/control/inventory"]
+[node name="pouch_3" type="Control" parent="ui/control/inventory" node_paths=PackedStringArray("inv")]
 anchors_preset = 0
 offset_left = 739.0
 offset_top = 80.0
 offset_right = 903.0
 offset_bottom = 526.0
 script = ExtResource("12_i60fj")
+inv = NodePath("../../../../playerdata")
 held_item = "t1_holywater"
 
 [node name="pouch_bg" type="TextureRect" parent="ui/control/inventory/pouch_3"]
@@ -444,7 +456,7 @@ offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(77, 73)
-texture = ExtResource("17_8grjy")
+texture = ExtResource("18_mv3du")
 
 [node name="pouch_fg" type="TextureRect" parent="ui/control/inventory/pouch_3"]
 layout_mode = 1
@@ -565,16 +577,6 @@ stream = ExtResource("14_rrw6t")
 [node name="minute_tick_timer" type="Timer" parent="ui/control/watch"]
 wait_time = 0.5
 autostart = true
-
-[node name="time_label" type="RichTextLabel" parent="ui/control"]
-visible = false
-layout_mode = 2
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 226.0
-offset_bottom = 258.0
-size_flags_vertical = 3
-text = "Day 10, 21:00"
 
 [node name="modulate" type="CanvasModulate" parent="ui"]
 visible = false

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://huyp6055om02"
-path="res://.godot/imported/t1_crucifix_32.png-17dcccf817fb19b0a57868b6c3276a00.ctex"
+uid="uid://duwp1reyt8m44"
+path="res://.godot/imported/t3_crucifix_32.png-581abad132be0766fab4995210e72da3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/items/crucifix/t1_crucifix_32.png"
-dest_files=["res://.godot/imported/t1_crucifix_32.png-17dcccf817fb19b0a57868b6c3276a00.ctex"]
+source_file="res://ui/items/bag/crucifix/t3_crucifix_32.png"
+dest_files=["res://.godot/imported/t3_crucifix_32.png-581abad132be0766fab4995210e72da3.ctex"]
 
 [params]
 

@@ -13,11 +13,20 @@ var tick = 0
 var time = 0
 var daynight_tick = 0
 
+# updating references for time values
+var minute_ref: int
+var hour_ref: int
+var day_ref: int
+
 func _ready():
 	canvas_modulate.visible = true
 	ui_modulate.visible = true
 
 func _process(delta: float) -> void:
+	minute_ref = int(tick) % 60
+	hour_ref = int(tick/60) % 24
+	day_ref = int(tick/60/24)
+	
 	time += delta * TIME_SCALE
 	tick = floor(time) + 1440 # 1 day = 1440 minutes
 	
@@ -53,9 +62,14 @@ func triangle(x):
 		return (1.0 - fract) * 2.0
 	
 func format_time():
-	var minutes = int(tick) % 60
-	var hours = int(tick/60) % 24
-	var days = int(tick/60/24)
 	#return "Day %01d, %02d:%02d\ngametick: %02d\ngametime:%5.1f\ndaynight:%5.5f" % [days, hours, minutes, tick, time, daynight_tick]
-	return "Day %01d, %02d:%02d" % [days, hours, minutes]
+	return "Day %01d, %02d:%02d" % [day_ref, hour_ref, minute_ref]
+
+func toggle_attack_shaders(on: bool):
+	if on:
+		get_node("ui/shader").visible = true
+		get_node("player/cam").zoom = Vector2(7, 7)
+	else:
+		get_node("ui/shader").visible = false
+		get_node("player/cam").zoom = Vector2(5, 5)
 

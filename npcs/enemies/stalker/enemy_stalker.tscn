@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=3 uid="uid://0kwbfuwbaeg6"]
 
-[ext_resource type="Script" path="res://npcs/enemies/enemy_stalker.gd" id="1_vj7lc"]
-[ext_resource type="Texture2D" uid="uid://6vfinokjdstk" path="res://npcs/enemies/stalker.png" id="2_5plv6"]
-[ext_resource type="AudioStream" uid="uid://cl3vm0wxcwixm" path="res://npcs/enemies/stalker_close.mp3" id="3_0sdyx"]
-[ext_resource type="Script" path="res://npcs/enemies/hitbox.gd" id="3_wetbe"]
-[ext_resource type="AudioStream" uid="uid://ba1um47bwqilb" path="res://npcs/enemies/stalker_attack.wav" id="4_li7cc"]
-[ext_resource type="AudioStream" uid="uid://bng4gpgclwlxp" path="res://npcs/enemies/stalk_retreat.mp3" id="5_7vt37"]
-[ext_resource type="AudioStream" uid="uid://c3t76n8yyqmjv" path="res://npcs/enemies/distortion_1.mp3" id="6_vpw4x"]
-[ext_resource type="Texture2D" uid="uid://bh66e6n7tdwny" path="res://player/star_light.jpg" id="7_ye4s0"]
+[ext_resource type="Script" path="res://npcs/enemies/stalker/enemy_stalker.gd" id="1_kkxas"]
+[ext_resource type="Texture2D" uid="uid://6vfinokjdstk" path="res://npcs/enemies/stalker/stalker.png" id="2_iy1t4"]
+[ext_resource type="AudioStream" uid="uid://cl3vm0wxcwixm" path="res://npcs/enemies/stalker/stalker_close.mp3" id="3_75nvr"]
+[ext_resource type="AudioStream" uid="uid://ba1um47bwqilb" path="res://npcs/enemies/stalker/stalker_attack.wav" id="4_6rx3w"]
+[ext_resource type="AudioStream" uid="uid://bng4gpgclwlxp" path="res://npcs/enemies/stalker/stalk_retreat.mp3" id="5_2ryxr"]
+[ext_resource type="AudioStream" uid="uid://c3t76n8yyqmjv" path="res://npcs/enemies/distortion_1.mp3" id="6_0e4dp"]
+[ext_resource type="Texture2D" uid="uid://bh66e6n7tdwny" path="res://player/star_light.jpg" id="7_2lper"]
+[ext_resource type="Script" path="res://npcs/enemies/hitbox.gd" id="8_kgxfw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4hq1m"]
 radius = 3.0
@@ -19,13 +19,13 @@ height = 20.0
 
 [node name="enemy_stalker" type="CharacterBody2D"]
 collision_layer = 3
-script = ExtResource("1_vj7lc")
+script = ExtResource("1_kkxas")
 far_stalk_time_range = Vector2(5, 10)
 close_stalk_time_range = Vector2(5, 10)
 agitated_stalk_time_range = Vector2(5, 10)
 
 [node name="sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_5plv6")
+texture = ExtResource("2_iy1t4")
 
 [node name="col" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_4hq1m")
@@ -54,17 +54,17 @@ wait_time = 2.0
 one_shot = true
 
 [node name="sfx_close" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_0sdyx")
+stream = ExtResource("3_75nvr")
 
 [node name="sfx_attack" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_li7cc")
+stream = ExtResource("4_6rx3w")
 volume_db = 10.0
 
 [node name="sfx_retreat" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_7vt37")
+stream = ExtResource("5_2ryxr")
 
 [node name="sfx_distortion" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_vpw4x")
+stream = ExtResource("6_0e4dp")
 volume_db = 1.0
 
 [node name="eye_left" type="PointLight2D" parent="."]
@@ -72,7 +72,7 @@ position = Vector2(-1.5, -6)
 enabled = false
 color = Color(1, 0, 0, 1)
 energy = 2.0
-texture = ExtResource("7_ye4s0")
+texture = ExtResource("7_2lper")
 texture_scale = 0.1
 
 [node name="eye_right" type="PointLight2D" parent="."]
@@ -80,13 +80,13 @@ position = Vector2(0.5, -6)
 enabled = false
 color = Color(1, 0, 0, 1)
 energy = 2.0
-texture = ExtResource("7_ye4s0")
+texture = ExtResource("7_2lper")
 texture_scale = 0.1
 
 [node name="hitbox" type="Area2D" parent="."]
 collision_layer = 7
 collision_mask = 4
-script = ExtResource("3_wetbe")
+script = ExtResource("8_kgxfw")
 
 [node name="col" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource("CapsuleShape2D_3qhah")

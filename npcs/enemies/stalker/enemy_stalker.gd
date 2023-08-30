@@ -1,14 +1,16 @@
 extends CharacterBody2D
 
-var speed = 50
-@export var walk_speed = 50
-@export var run_speed = 100
-var vel = Vector2.ZERO
+@export var DEBUG_DEACTIVATE: bool = false
+
+var speed: int = 50
+@export var walk_speed: int = 50
+@export var run_speed: int = 100
+var vel: Vector2 = Vector2.ZERO
 
 var move_target
 var global_delta
 
-@onready var player = get_parent().get_parent().get_node("player")
+@onready var player: CharacterBody2D = get_parent().get_parent().get_node("player")
 @onready var close_timer: Timer = get_node("close_timer")
 @onready var attack_timer: Timer = get_node("attack_timer")
 @onready var reset_timer: Timer = get_node("reset_timer")
@@ -17,13 +19,13 @@ var global_delta
 @export var far_stalk_time_range: Vector2 = Vector2(60, 120)
 @export var close_stalk_time_range: Vector2 = Vector2(20, 30)
 @export var agitated_stalk_time_range: Vector2 = Vector2(30, 60)
-@export var attack_persistence_time = 20
+@export var attack_persistence_time: int = 20
 
-var randnum
-var radius = 40
-var counter = 0
+var randnum: int
+var radius: int = 40
+var counter: int = 0
 
-var retreats_left = 2
+var retreats_left: int = 2
 
 enum {
 	STALK_FAR,
@@ -34,6 +36,9 @@ enum {
 var state = STALK_FAR
 
 func _ready():
+	if DEBUG_DEACTIVATE:
+		return
+
 	nav_agent.path_desired_distance = 4.0
 	nav_agent.target_desired_distance = 4.0
 	
@@ -43,6 +48,9 @@ func _ready():
 	reset_state()
 
 func reset_state():
+	if DEBUG_DEACTIVATE:
+		return
+		
 	attack_timer.stop()
 	state = STALK_FAR
 	
@@ -75,6 +83,9 @@ func set_movement_target(target_point: Vector2):
 	nav_agent.target_position = target_point
 
 func _physics_process(delta):
+	if DEBUG_DEACTIVATE:
+		return
+	
 	global_delta = delta
 #	counter += delta
 #	radius = lerp(80, 40, abs(sin(counter)))
@@ -82,19 +93,16 @@ func _physics_process(delta):
 		STALK_FAR:
 			radius = 80
 			get_node("hitbox/col").disabled = true
-			get_parent().get_parent().get_node("ui/shader").visible = false
-			get_parent().get_parent().get_node("player/cam").zoom = Vector2(5, 5)
+			get_parent().get_parent().toggle_attack_shaders(false)
 			move_target = get_circle_position(randnum)
 		STALK_CLOSE:
 			radius = 40
 			get_node("hitbox/col").disabled = true
-			get_parent().get_parent().get_node("ui/shader").visible = false
-			get_parent().get_parent().get_node("player/cam").zoom = Vector2(5, 5)
+			get_parent().get_parent().toggle_attack_shaders(false)
 			move_target = get_circle_position(randnum)
 		ATTACK:
 			get_node("hitbox/col").disabled = false
-			get_parent().get_parent().get_node("ui/shader").visible = true
-			get_parent().get_parent().get_node("player/cam").zoom = Vector2(7, 7)
+			get_parent().get_parent().toggle_attack_shaders(true)
 			move_target = player.global_position
 			
 	move(delta)
@@ -113,13 +121,6 @@ func move(delta):
 	velocity += steering
 	
 	move_and_slide()
-
-#func move(target, delta):
-#	var direction = (target - global_position).normalized()
-#	var desired_vel = direction * speed
-#	var steering = (desired_vel - velocity) * delta * 2.5
-#	velocity += steering
-#	move_and_slide()
 
 func get_circle_position(random):
 	var surround_circle_centre = player.global_position
@@ -170,6 +171,9 @@ func _on_reset_timer_timeout():
 	print("enemy failed to attack player, resetting")
 	
 func _on_nav_update_timeout():
+	if DEBUG_DEACTIVATE:
+		return
+		
 	nav_agent.target_position = move_target
 
 func _on_reset_speed_timeout():

@@ -4,16 +4,11 @@ extends CanvasLayer
 @onready var world_con: world_controller = get_parent()
 
 var using_watch: bool = false
-#var using_notebook: bool = false
 
 func _process(delta):
-	var days = int(world_con.tick/60/24)
-	get_node("control/notebook/day_counter").text = "Day #" + str(days)
-	#get_node("control/time_label").text = world_con.format_time()
-		
 	if Input.is_action_just_pressed("notebook"):
-		#using_notebook = true
 		get_node("control/notebook").visible = !get_node("control/notebook").visible
+		get_node("control/notebook/day_counter").text = "Day #" + str(world_con.day_ref)
 		
 	if Input.is_action_just_pressed("inventory"):
 		toggle_inventory()
@@ -32,11 +27,8 @@ func _process(delta):
 		get_node("control/watch").visible = false
 
 func watch_update():
-	var minutes = int(world_con.tick) % 60
-	var hours = int(world_con.tick/60) % 24
-	
-	get_node("control/watch/minute_hand").rotation_degrees = (360/60) * minutes
-	get_node("control/watch/hour_hand").rotation = (((2 * PI) / 12) * hours) + (((2 * PI) / 720) * minutes)
+	get_node("control/watch/minute_hand").rotation_degrees = (360/60) * world_con.minute_ref
+	get_node("control/watch/hour_hand").rotation = (((2 * PI) / 12) * world_con.hour_ref) + (((2 * PI) / 720) * world_con.minute_ref)
 
 func toggle_inventory():
 	get_node("control/inventory").visible = !get_node("control/inventory").visible

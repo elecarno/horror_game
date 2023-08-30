@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="item_res" load_steps=3 format=3 uid="uid://o4ra5nek3p5j"]
+
+[ext_resource type="Texture2D" uid="uid://huyp6055om02" path="res://ui/items/bag/crucifix/t1_crucifix_32.png" id="1_tymjr"]
+[ext_resource type="Script" path="res://ui/items/item_res.gd" id="2_qjk0l"]
+
+[resource]
+script = ExtResource("2_qjk0l")
+item_dislay_name = "Old Crucifix"
+item_tier = 1
+bag_texture = ExtResource("1_tymjr")

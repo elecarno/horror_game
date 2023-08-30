@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ba1um47bwqilb"
-path="res://.godot/imported/stalker_attack.wav-67f169b03aabe4798e0a9fc3be5ebc34.sample"
+path="res://.godot/imported/stalker_attack.wav-cefaa106ab71345063a87a32ebfb5299.sample"
 
 [deps]
 
-source_file="res://npcs/enemies/stalker_attack.wav"
-dest_files=["res://.godot/imported/stalker_attack.wav-67f169b03aabe4798e0a9fc3be5ebc34.sample"]
+source_file="res://npcs/enemies/stalker/stalker_attack.wav"
+dest_files=["res://.godot/imported/stalker_attack.wav-cefaa106ab71345063a87a32ebfb5299.sample"]
 
 [params]
 
