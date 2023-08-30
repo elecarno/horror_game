@@ -1,11 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://d7u7dlgtyldf"]
+[gd_scene load_steps=19 format=3 uid="uid://d7u7dlgtyldf"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_0j5ck"]
 [ext_resource type="Texture2D" uid="uid://dyphtlsbgxwml" path="res://player/goober_spritesheet.png" id="2_yvwym"]
 [ext_resource type="Texture2D" uid="uid://6enu1thflr2b" path="res://player/point_light.jpeg" id="3_s3vsq"]
+[ext_resource type="Texture2D" uid="uid://cx0u3xrdxtjru" path="res://ui/items/ingame/t2_flashlight_16.png" id="4_vb65q"]
 [ext_resource type="Texture2D" uid="uid://c6u3ytn8u46bq" path="res://player/flashlight_1c.png" id="4_wnarh"]
-[ext_resource type="Texture2D" uid="uid://bkkrgc3k4mtgp" path="res://player/flashlight.png" id="5_umpm3"]
 [ext_resource type="Script" path="res://player/hurtbox.gd" id="6_d01gg"]
+[ext_resource type="Texture2D" uid="uid://dmk6w6exjao8m" path="res://ui/items/ingame/t1_flashlight_16.png" id="6_rvb88"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rp2x"]
 size = Vector2(6, 8)
@@ -203,10 +204,9 @@ texture_scale = 0.2
 
 [node name="held_item" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(4, 2)
-rotation = 1.5708
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("5_umpm3")
+position = Vector2(4, 7.10543e-15)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_vb65q")
 
 [node name="flashlight" type="Node2D" parent="."]
 position = Vector2(0, 2)
@@ -231,9 +231,9 @@ texture_scale = 0.4
 
 [node name="sprite" type="Sprite2D" parent="flashlight"]
 position = Vector2(4, 0)
-rotation = 1.5708
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("5_umpm3")
+rotation = 0.785397
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_rvb88")
 
 [node name="light_hit" type="RayCast2D" parent="flashlight"]
 position = Vector2(0, -2)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5psi5tn7we3f"
-path="res://.godot/imported/t2_flashlight_32.png-98261b7a84818fe048633724cccd6e55.ctex"
+uid="uid://dq17g050lkper"
+path="res://.godot/imported/green_glowstick_16.png-14b8e290592ce7db3a987efe0d80c5cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/items/bag/flashlight/t2_flashlight_32.png"
-dest_files=["res://.godot/imported/t2_flashlight_32.png-98261b7a84818fe048633724cccd6e55.ctex"]
+source_file="res://ui/items/ingame/green_glowstick_16.png"
+dest_files=["res://.godot/imported/green_glowstick_16.png-14b8e290592ce7db3a987efe0d80c5cc.ctex"]
 
 [params]
 

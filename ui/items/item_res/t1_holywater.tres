@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="item_res" load_steps=3 format=3 uid="uid://66816cveb188"]
 
-[ext_resource type="Texture2D" uid="uid://c0t0f40wmvu1b" path="res://ui/items/bag/holy_water/t1_holywater_32.png" id="1_6k6us"]
+[ext_resource type="Texture2D" uid="uid://c0t0f40wmvu1b" path="res://ui/items/bag/t1_holywater_32.png" id="1_6k6us"]
 [ext_resource type="Script" path="res://ui/items/item_res.gd" id="2_pg2vd"]
 
 [resource]

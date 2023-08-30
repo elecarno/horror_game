@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://d7u7dlgtyldf" path="res://player/player.tscn" id="1_00auf"]
 [ext_resource type="Texture2D" uid="uid://b0x8bvxxmv6id" path="res://bg.png" id="1_d513w"]
 [ext_resource type="Script" path="res://scripts/world_controller.gd" id="1_hsdgl"]
-[ext_resource type="Script" path="res://scripts/playerdata.gd" id="2_k16ua"]
+[ext_resource type="Script" path="res://scripts/playerdata_controller.gd" id="2_jtmjk"]
 [ext_resource type="PackedScene" uid="uid://70pctjy7ynp0" path="res://environment/toolkit/wall_ex_1_h.tscn" id="3_d1xta"]
 [ext_resource type="Resource" uid="uid://dog6m4myw7cwt" path="res://ui/items/item_res/t1_flashlight.tres" id="3_nwtw5"]
 [ext_resource type="PackedScene" uid="uid://c0gkwupkkxacp" path="res://environment/toolkit/wall_in_1_h.tscn" id="4_5en70"]
@@ -25,7 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://bo6ppjt5tu26x" path="res://ui/tick.wav" id="14_rrw6t"]
 [ext_resource type="StyleBox" uid="uid://d1x4mlo7ttagp" path="res://ui/button_clear.tres" id="15_kkpsh"]
 [ext_resource type="AudioStream" uid="uid://b5q84nwm26v5y" path="res://ui/watch_close.wav" id="15_mubgd"]
-[ext_resource type="Texture2D" uid="uid://s2jrsg0kmky3" path="res://ui/items/bag/flashlight/t1_flashlight_32.png" id="15_sjau7"]
+[ext_resource type="Texture2D" uid="uid://s2jrsg0kmky3" path="res://ui/items/bag/t1_flashlight_32.png" id="16_raufb"]
 [ext_resource type="Resource" uid="uid://vivx8vauaa45" path="res://ui/items/item_res/empty.tres" id="18_fgds4"]
 [ext_resource type="Resource" uid="uid://o4ra5nek3p5j" path="res://ui/items/item_res/t1_crucifix.tres" id="18_mngy3"]
 
@@ -57,8 +57,8 @@ shader_parameter/distortion_texture = SubResource("NoiseTexture2D_kkf1a")
 [node name="mechanics_dev" type="Node2D"]
 script = ExtResource("1_hsdgl")
 
-[node name="playerdata" type="Node2D" parent="." node_paths=PackedStringArray("pouch_1", "pouch_2", "pouch_3")]
-script = ExtResource("2_k16ua")
+[node name="playerdata_con" type="Node2D" parent="." node_paths=PackedStringArray("pouch_1", "pouch_2", "pouch_3")]
+script = ExtResource("2_jtmjk")
 current_item = ExtResource("3_nwtw5")
 pouch_1 = NodePath("../ui/control/inventory/pouch_1")
 pouch_2 = NodePath("../ui/control/inventory/pouch_2")
@@ -272,7 +272,7 @@ offset_top = 80.0
 offset_right = 473.0
 offset_bottom = 526.0
 script = ExtResource("12_i60fj")
-inventory = NodePath("../../../../playerdata")
+inventory = NodePath("../../../../playerdata_con")
 held_item = ExtResource("3_nwtw5")
 type_to_hold = "flashlight"
 
@@ -307,7 +307,7 @@ offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(77, 73)
-texture = ExtResource("15_sjau7")
+texture = ExtResource("16_raufb")
 
 [node name="pouch_fg" type="TextureRect" parent="ui/control/inventory/pouch_1"]
 layout_mode = 1
@@ -342,14 +342,31 @@ theme_override_styles/pressed = ExtResource("15_kkpsh")
 theme_override_styles/disabled = ExtResource("15_kkpsh")
 theme_override_styles/focus = ExtResource("15_kkpsh")
 
+[node name="item_name" type="RichTextLabel" parent="ui/control/inventory/pouch_1"]
+visible = false
+layout_mode = 2
+anchor_left = 0.466
+anchor_top = 0.074
+anchor_right = 0.466
+anchor_bottom = 0.074
+offset_left = -103.424
+offset_top = 425.996
+offset_right = 113.576
+offset_bottom = 496.996
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("12_32y5c")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Survivor's Flashlight"
+
 [node name="pouch_2" type="Control" parent="ui/control/inventory" node_paths=PackedStringArray("inventory")]
 anchors_preset = 0
-offset_left = 527.0
+offset_left = 541.0
 offset_top = 80.0
-offset_right = 691.0
+offset_right = 705.0
 offset_bottom = 526.0
 script = ExtResource("12_i60fj")
-inventory = NodePath("../../../../playerdata")
+inventory = NodePath("../../../../playerdata_con")
 held_item = ExtResource("18_mngy3")
 type_to_hold = "crucifix"
 
@@ -384,7 +401,7 @@ offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(77, 73)
-texture = ExtResource("15_sjau7")
+texture = ExtResource("16_raufb")
 
 [node name="pouch_fg" type="TextureRect" parent="ui/control/inventory/pouch_2"]
 layout_mode = 1
@@ -419,14 +436,31 @@ theme_override_styles/pressed = ExtResource("15_kkpsh")
 theme_override_styles/disabled = ExtResource("15_kkpsh")
 theme_override_styles/focus = ExtResource("15_kkpsh")
 
+[node name="item_name" type="RichTextLabel" parent="ui/control/inventory/pouch_2"]
+visible = false
+layout_mode = 2
+anchor_left = 0.466
+anchor_top = 0.074
+anchor_right = 0.466
+anchor_bottom = 0.074
+offset_left = -103.424
+offset_top = 425.996
+offset_right = 113.576
+offset_bottom = 496.996
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("12_32y5c")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Survivor's Flashlight"
+
 [node name="pouch_3" type="Control" parent="ui/control/inventory" node_paths=PackedStringArray("inventory")]
 anchors_preset = 0
-offset_left = 739.0
+offset_left = 773.0
 offset_top = 80.0
-offset_right = 903.0
+offset_right = 937.0
 offset_bottom = 526.0
 script = ExtResource("12_i60fj")
-inventory = NodePath("../../../../playerdata")
+inventory = NodePath("../../../../playerdata_con")
 held_item = ExtResource("18_fgds4")
 type_to_hold = "holywater"
 
@@ -461,7 +495,7 @@ offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(77, 73)
-texture = ExtResource("15_sjau7")
+texture = ExtResource("16_raufb")
 
 [node name="pouch_fg" type="TextureRect" parent="ui/control/inventory/pouch_3"]
 layout_mode = 1
@@ -495,6 +529,23 @@ theme_override_styles/hover = ExtResource("15_kkpsh")
 theme_override_styles/pressed = ExtResource("15_kkpsh")
 theme_override_styles/disabled = ExtResource("15_kkpsh")
 theme_override_styles/focus = ExtResource("15_kkpsh")
+
+[node name="item_name" type="RichTextLabel" parent="ui/control/inventory/pouch_3"]
+visible = false
+layout_mode = 2
+anchor_left = 0.466
+anchor_top = 0.074
+anchor_right = 0.466
+anchor_bottom = 0.074
+offset_left = -103.424
+offset_top = 425.996
+offset_right = 113.576
+offset_bottom = 496.996
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("12_32y5c")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Survivor's Flashlight"
 
 [node name="notebook" type="Control" parent="ui/control"]
 visible = false

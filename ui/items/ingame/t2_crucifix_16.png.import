@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0t0f40wmvu1b"
-path="res://.godot/imported/t1_holywater_32.png-b84d0cee2f82361f60835a8a93b77258.ctex"
+uid="uid://divxav0ea732s"
+path="res://.godot/imported/t2_crucifix_16.png-f9c48050a3667be56118b032b2d86ee8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/items/bag/holy_water/t1_holywater_32.png"
-dest_files=["res://.godot/imported/t1_holywater_32.png-b84d0cee2f82361f60835a8a93b77258.ctex"]
+source_file="res://ui/items/ingame/t2_crucifix_16.png"
+dest_files=["res://.godot/imported/t2_crucifix_16.png-f9c48050a3667be56118b032b2d86ee8.ctex"]
 
 [params]
 

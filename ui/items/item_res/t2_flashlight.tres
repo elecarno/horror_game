@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="item_res" load_steps=3 format=3 uid="uid://b5rf06h8l1w8p"]
+[gd_resource type="Resource" script_class="item_res" load_steps=4 format=3 uid="uid://b5rf06h8l1w8p"]
 
-[ext_resource type="Texture2D" uid="uid://b5psi5tn7we3f" path="res://ui/items/bag/flashlight/t2_flashlight_32.png" id="1_162ho"]
+[ext_resource type="Texture2D" uid="uid://b5psi5tn7we3f" path="res://ui/items/bag/t2_flashlight_32.png" id="1_4yaek"]
 [ext_resource type="Script" path="res://ui/items/item_res.gd" id="2_a8kuv"]
+[ext_resource type="Texture2D" uid="uid://cx0u3xrdxtjru" path="res://ui/items/ingame/t2_flashlight_16.png" id="2_mxs5k"]
 
 [resource]
 script = ExtResource("2_a8kuv")
 item_dislay_name = "Heavy Flashlight"
 item_type = "flashlight"
 item_tier = 2
-bag_texture = ExtResource("1_162ho")
+bag_texture = ExtResource("1_4yaek")
+game_texture = ExtResource("2_mxs5k")

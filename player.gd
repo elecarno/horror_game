@@ -15,6 +15,7 @@ var hp = 3
 @onready var anim = get_node("anim")
 @onready var interact = get_node("interact")
 @onready var light_hit = get_node("flashlight/light_hit")
+@onready var held_item_sprite = get_node("held_item")
 
 #var t1_flashlight_tex = preload("") 
 
@@ -47,8 +48,10 @@ func player_movement(delta):
 func player_animation():
 	if input.x > 0:
 		anim.play("walk_right")
+		held_item_sprite.position = Vector2(4, 0)
 	elif input.x < 0:
 		anim.play("walk_left")
+		held_item_sprite.position = Vector2(-4, 0)
 	elif input.y > 0:
 		anim.play("walk_towards")
 	elif input.y < 0:
@@ -58,17 +61,21 @@ func player_animation():
 		
 	if anim.current_animation == "walk_away":
 		flashlight.z_index = -1
+		held_item_sprite.z_index = -1
 	else:
 		flashlight.z_index = 0
+		held_item_sprite.z_index = 0
 
 func flip():
 	var direction = sign(get_global_mouse_position().x - player_sprite.global_position.x)
 	if direction < 0:
 		#player_sprite.set_flip_h(true)
 		anim.play("idle_left")
+		held_item_sprite.position = Vector2(-4, 0)
 	else:
 		#player_sprite.set_flip_h(false)
 		anim.play("idle_right")
+		held_item_sprite.position = Vector2(4, 0)
 
 func flashlight_update(_delta):
 	var direction = (get_global_mouse_position() - global_position)
@@ -103,6 +110,10 @@ func take_damage():
 func switch_item(item: item_res):
 	print("switched to " + item.item_dislay_name + " (player)")
 	if item.item_type == "flashlight":
+		flashlight.get_node("sprite").texture = item.game_texture
 		flashlight.visible = true
+		held_item_sprite.visible = false
 	else:
+		held_item_sprite.texture = item.game_texture
 		flashlight.visible = false
+		held_item_sprite.visible = true

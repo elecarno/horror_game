@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s2jrsg0kmky3"
-path="res://.godot/imported/t1_flashlight_32.png-bcb2481dae20e8a339a4bde409bbdfc5.ctex"
+uid="uid://c0t0f40wmvu1b"
+path="res://.godot/imported/t1_holywater_32.png-2657fb215ba3fbf520e02d591669185a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/items/bag/flashlight/t1_flashlight_32.png"
-dest_files=["res://.godot/imported/t1_flashlight_32.png-bcb2481dae20e8a339a4bde409bbdfc5.ctex"]
+source_file="res://ui/items/bag/t1_holywater_32.png"
+dest_files=["res://.godot/imported/t1_holywater_32.png-2657fb215ba3fbf520e02d591669185a.ctex"]
 
 [params]
 

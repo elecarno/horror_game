@@ -2,7 +2,7 @@ class_name ui
 extends CanvasLayer
 
 @onready var world_con: world_controller = get_parent()
-@onready var playerdata_con: playerdata = get_parent().get_node("playerdata")
+@onready var playerdata_con: playerdata = get_parent().get_node("playerdata_con")
 
 var using_watch: bool = false
 

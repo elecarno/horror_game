@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="item_res" load_steps=3 format=3 uid="uid://18ykll0251n3"]
+[gd_resource type="Resource" script_class="item_res" load_steps=4 format=3 uid="uid://18ykll0251n3"]
 
-[ext_resource type="Texture2D" uid="uid://duwp1reyt8m44" path="res://ui/items/bag/crucifix/t3_crucifix_32.png" id="1_5sr14"]
+[ext_resource type="Texture2D" uid="uid://duwp1reyt8m44" path="res://ui/items/bag/t3_crucifix_32.png" id="1_lvyvq"]
+[ext_resource type="Texture2D" uid="uid://dnr4vbjp1mlqn" path="res://ui/items/ingame/t3_crucifix_16.png" id="2_0bpxd"]
 [ext_resource type="Script" path="res://ui/items/item_res.gd" id="2_066cq"]
 
 [resource]
@@ -8,4 +9,5 @@ script = ExtResource("2_066cq")
 item_dislay_name = "Hunter's Crucifix"
 item_type = "crucifix"
 item_tier = 3
-bag_texture = ExtResource("1_5sr14")
+bag_texture = ExtResource("1_lvyvq")
+game_texture = ExtResource("2_0bpxd")
