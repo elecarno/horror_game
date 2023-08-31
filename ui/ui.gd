@@ -2,14 +2,13 @@ class_name ui
 extends CanvasLayer
 
 @onready var world_con: world_controller = get_parent()
-@onready var playerdata_con: playerdata = get_parent().get_node("playerdata_con")
+@onready var playerdata_con: playerdata_controller = get_parent().get_node("playerdata_con")
 
 var using_watch: bool = false
 
 func _process(delta):
 	if Input.is_action_just_pressed("notebook"):
-		get_node("control/notebook").visible = !get_node("control/notebook").visible
-		get_node("control/notebook/day_counter").text = "Day #" + str(world_con.day_ref)
+		toggle_notebook()
 		
 	if Input.is_action_just_pressed("inventory"):
 		toggle_inventory()
@@ -37,6 +36,15 @@ func toggle_inventory():
 	playerdata_con.pouch_2.update_pouch()
 	playerdata_con.pouch_3.update_pouch()
 
+func toggle_notebook():
+	get_node("control/notebook").visible = !get_node("control/notebook").visible
+	get_node("control/notebook/day_counter").text = "Day #" + str(world_con.day_ref)
+	get_node("control/notebook/journals_counter").text = "Journals: " + str(playerdata.collected_journals.size()) + "/" + str(playerdata.journals.size())
+
 func _on_minute_tick_timer_timeout():
 	if using_watch:
 		get_node("control/watch/minute_tick").playing = true
+
+
+func _on_journals_counter_pressed():
+	get_node("control/notebook/journals_container").visible = !get_node("control/notebook/journals_container").visible

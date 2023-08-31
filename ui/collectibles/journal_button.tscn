@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxmg8spvloqsx"]
+
+[ext_resource type="FontFile" uid="uid://b4k31i217ye1u" path="res://ui/Comicoro.ttf" id="1_2kpae"]
+[ext_resource type="Script" path="res://ui/collectibles/journal_button.gd" id="2_0endg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jclx8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_327kh"]
+bg_color = Color(0.823529, 0.623529, 0.407843, 0.498039)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pdj4"]
+bg_color = Color(0.65098, 0.482353, 0.356863, 0.498039)
+
+[node name="journal_button" type="Button"]
+modulate = Color(0.0980392, 0.0980392, 0.0980392, 1)
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_2kpae")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_jclx8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_327kh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7pdj4")
+toggle_mode = true
+text = "Journal #1"
+script = ExtResource("2_0endg")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

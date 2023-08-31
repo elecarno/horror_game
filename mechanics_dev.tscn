@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://ny5dojbmly3x"]
+[gd_scene load_steps=46 format=3 uid="uid://ny5dojbmly3x"]
 
 [ext_resource type="PackedScene" uid="uid://d7u7dlgtyldf" path="res://player/player.tscn" id="1_00auf"]
 [ext_resource type="Texture2D" uid="uid://b0x8bvxxmv6id" path="res://bg.png" id="1_d513w"]
@@ -28,6 +28,8 @@
 [ext_resource type="Texture2D" uid="uid://s2jrsg0kmky3" path="res://ui/items/bag/t1_flashlight_32.png" id="16_raufb"]
 [ext_resource type="Resource" uid="uid://vivx8vauaa45" path="res://ui/items/item_res/empty.tres" id="18_fgds4"]
 [ext_resource type="Resource" uid="uid://o4ra5nek3p5j" path="res://ui/items/item_res/t1_crucifix.tres" id="18_mngy3"]
+[ext_resource type="ButtonGroup" uid="uid://cjidawusdsoxb" path="res://ui/notebook_buttons.tres" id="22_c040o"]
+[ext_resource type="PackedScene" uid="uid://dxmg8spvloqsx" path="res://ui/collectibles/journal_button.tscn" id="23_quinn"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8rdnb"]
 vertices = PackedVector2Array(-50, -15, -50, 23, -64.9644, 23, -105, -15, -74.1064, 23, -130, 23, -130, -15, -114, -15, -114, -34, -105, -34, -74, 42, -65, 42)
@@ -43,6 +45,33 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-50, -72, -50, -34, -10
 vertices = PackedVector2Array(167, 113, -234, 118, -134, 42, -74.0487, 42, -64.981, 42, -46, 42, -232, -164, -134, -91, 165, -164, -46, -91)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(2, 1, 6, 7), PackedInt32Array(7, 6, 8, 9), PackedInt32Array(8, 0, 5, 9)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-134, 42, -74.0487, 42, -64.981, 42, -46, 42, -46, -91, -134, -91, -134, 42, -234, 118, -232, -164, 165, -164, 167, 113, -234, 118)])
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jclx8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_327kh"]
+bg_color = Color(0.823529, 0.623529, 0.407843, 0.498039)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pdj4"]
+bg_color = Color(0.65098, 0.482353, 0.356863, 0.498039)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amyb8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4apxc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70usd"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mhtd"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4lm71"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3hxr"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_kf8r1"]
 
@@ -548,7 +577,6 @@ bbcode_enabled = true
 text = "[center]Survivor's Flashlight"
 
 [node name="notebook" type="Control" parent="ui/control"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -575,11 +603,81 @@ layout_mode = 2
 offset_left = 62.0
 offset_top = 57.0
 offset_right = 341.0
-offset_bottom = 138.0
+offset_bottom = 93.0
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("12_32y5c")
 theme_override_font_sizes/normal_font_size = 32
 text = "Day 10"
+
+[node name="paragraph" type="RichTextLabel" parent="ui/control/notebook"]
+modulate = Color(0.0980392, 0.0980392, 0.0980392, 1)
+layout_mode = 2
+offset_left = 418.0
+offset_top = 57.0
+offset_right = 746.0
+offset_bottom = 601.0
+scale = Vector2(0.85, 0.85)
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("12_32y5c")
+theme_override_font_sizes/normal_font_size = 32
+text = "Day 10"
+
+[node name="journals_counter" type="Button" parent="ui/control/notebook"]
+modulate = Color(0.0980392, 0.0980392, 0.0980392, 1)
+layout_mode = 2
+offset_left = 62.0
+offset_top = 93.0
+offset_right = 253.0
+offset_bottom = 123.0
+scale = Vector2(0.85, 0.85)
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("12_32y5c")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_jclx8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_327kh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7pdj4")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_amyb8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_4apxc")
+toggle_mode = true
+button_group = ExtResource("22_c040o")
+text = "Journals: x/x"
+
+[node name="notes_counter" type="Button" parent="ui/control/notebook"]
+modulate = Color(0.0980392, 0.0980392, 0.0980392, 1)
+layout_mode = 2
+offset_left = 62.0
+offset_top = 119.0
+offset_right = 253.0
+offset_bottom = 149.0
+scale = Vector2(0.85, 0.85)
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("12_32y5c")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_jclx8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_327kh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7pdj4")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_70usd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7mhtd")
+toggle_mode = true
+button_group = ExtResource("22_c040o")
+text = "Notes: x/x"
+
+[node name="journals_container" type="ScrollContainer" parent="ui/control/notebook"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 167.0
+offset_right = 373.0
+offset_bottom = 567.0
+scale = Vector2(0.85, 0.85)
+
+[node name="vbox" type="VBoxContainer" parent="ui/control/notebook/journals_container"]
+layout_mode = 2
+
+[node name="journal_button" parent="ui/control/notebook/journals_container/vbox" instance=ExtResource("23_quinn")]
+layout_mode = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4lm71")
+theme_override_styles/focus = SubResource("StyleBoxFlat_a3hxr")
+toggle_mode = false
 
 [node name="watch" type="Control" parent="ui/control"]
 visible = false
@@ -654,4 +752,5 @@ grow_vertical = 2
 [connection signal="button_up" from="ui/control/inventory/pouch_2/pouch_button" to="ui/control/inventory/pouch_2" method="_on_pouch_button_button_up"]
 [connection signal="button_down" from="ui/control/inventory/pouch_3/pouch_button" to="ui/control/inventory/pouch_3" method="_on_pouch_button_button_down"]
 [connection signal="button_up" from="ui/control/inventory/pouch_3/pouch_button" to="ui/control/inventory/pouch_3" method="_on_pouch_button_button_up"]
+[connection signal="pressed" from="ui/control/notebook/journals_counter" to="ui" method="_on_journals_counter_pressed"]
 [connection signal="timeout" from="ui/control/watch/minute_tick_timer" to="ui" method="_on_minute_tick_timer_timeout"]

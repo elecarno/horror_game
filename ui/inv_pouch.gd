@@ -1,7 +1,7 @@
 class_name inv_pouch
 extends Control
 
-@export var inventory: playerdata
+@export var inventory: playerdata_controller
 @export var held_item: item_res
 @export var type_to_hold: String
 

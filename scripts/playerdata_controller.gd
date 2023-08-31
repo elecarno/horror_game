@@ -1,4 +1,4 @@
-class_name playerdata
+class_name playerdata_controller
 extends Node2D
 
 @export var current_item: item_res

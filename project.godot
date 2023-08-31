@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-PlayerdataHandler="*res://scripts/playerdata_handler.gd"
+playerdata="*res://scripts/playerdata_handler.gd"
 
 [display]
 
