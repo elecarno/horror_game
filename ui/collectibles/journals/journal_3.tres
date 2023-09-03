@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="collect_res" load_steps=2 format=3 uid="uid://c7s6f7elsxhx5"]
+
+[ext_resource type="Script" path="res://ui/collectibles/collect_res.gd" id="1_6ct2t"]
+
+[resource]
+script = ExtResource("1_6ct2t")
+collect_type = "journal"
+collect_display_name = "Old Journal Scrap #3"
+collect_content = "beans but new beans but new beans but new beans but new beans but new beans but new beans but new beans but new beans but new beans but new beans but new beans but new beans but new beans but new beans but new beans but new beans but new beans but new beans but new beans but new beans but new beans but new "

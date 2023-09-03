@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://ny5dojbmly3x"]
+[gd_scene load_steps=44 format=3 uid="uid://ny5dojbmly3x"]
 
 [ext_resource type="PackedScene" uid="uid://d7u7dlgtyldf" path="res://player/player.tscn" id="1_00auf"]
 [ext_resource type="Texture2D" uid="uid://b0x8bvxxmv6id" path="res://bg.png" id="1_d513w"]
@@ -14,22 +14,22 @@
 [ext_resource type="PackedScene" uid="uid://0kwbfuwbaeg6" path="res://npcs/enemies/stalker/enemy_stalker.tscn" id="10_3kjya"]
 [ext_resource type="Script" path="res://ui/ui.gd" id="10_s6ipu"]
 [ext_resource type="Shader" path="res://ui/test_shader.gdshader" id="11_3auck"]
-[ext_resource type="Texture2D" uid="uid://bgmxhmtv35io2" path="res://ui/watch.png" id="11_h1bbg"]
-[ext_resource type="Texture2D" uid="uid://dh4oyk30rwiq7" path="res://ui/notebook_small.png" id="11_l0vt5"]
-[ext_resource type="Texture2D" uid="uid://b0c5cp0ca0h1u" path="res://ui/pouch_1.png" id="12_6ihle"]
 [ext_resource type="FontFile" uid="uid://b4k31i217ye1u" path="res://ui/Comicoro.ttf" id="12_32y5c"]
-[ext_resource type="Texture2D" uid="uid://d0x56vmqqjedv" path="res://ui/minute_hand.png" id="12_fl3jl"]
 [ext_resource type="Script" path="res://ui/inv_pouch.gd" id="12_i60fj"]
-[ext_resource type="Texture2D" uid="uid://bevwsiqgnrfqo" path="res://ui/hour_hand.png" id="13_avvjf"]
-[ext_resource type="AudioStream" uid="uid://dx1u5hsjhnh2q" path="res://ui/watch_open.wav" id="14_p1j2x"]
-[ext_resource type="AudioStream" uid="uid://bo6ppjt5tu26x" path="res://ui/tick.wav" id="14_rrw6t"]
 [ext_resource type="StyleBox" uid="uid://d1x4mlo7ttagp" path="res://ui/button_clear.tres" id="15_kkpsh"]
-[ext_resource type="AudioStream" uid="uid://b5q84nwm26v5y" path="res://ui/watch_close.wav" id="15_mubgd"]
+[ext_resource type="Texture2D" uid="uid://b0c5cp0ca0h1u" path="res://ui/inventories/bag/pouch_1.png" id="16_opfxs"]
 [ext_resource type="Texture2D" uid="uid://s2jrsg0kmky3" path="res://ui/items/bag/t1_flashlight_32.png" id="16_raufb"]
 [ext_resource type="Resource" uid="uid://vivx8vauaa45" path="res://ui/items/item_res/empty.tres" id="18_fgds4"]
 [ext_resource type="Resource" uid="uid://o4ra5nek3p5j" path="res://ui/items/item_res/t1_crucifix.tres" id="18_mngy3"]
 [ext_resource type="ButtonGroup" uid="uid://cjidawusdsoxb" path="res://ui/notebook_buttons.tres" id="22_c040o"]
-[ext_resource type="PackedScene" uid="uid://dxmg8spvloqsx" path="res://ui/collectibles/journal_button.tscn" id="23_quinn"]
+[ext_resource type="Texture2D" uid="uid://dh4oyk30rwiq7" path="res://ui/inventories/notebook/notebook_small.png" id="22_hdmg2"]
+[ext_resource type="Texture2D" uid="uid://bgmxhmtv35io2" path="res://ui/inventories/watch/watch.png" id="24_wf82o"]
+[ext_resource type="Texture2D" uid="uid://d0x56vmqqjedv" path="res://ui/inventories/watch/minute_hand.png" id="25_b4yvi"]
+[ext_resource type="Texture2D" uid="uid://bevwsiqgnrfqo" path="res://ui/inventories/watch/hour_hand.png" id="26_pedn6"]
+[ext_resource type="AudioStream" uid="uid://dx1u5hsjhnh2q" path="res://ui/inventories/watch/watch_open.wav" id="27_bd1cv"]
+[ext_resource type="AudioStream" uid="uid://b5q84nwm26v5y" path="res://ui/inventories/watch/watch_close.wav" id="28_j2fiq"]
+[ext_resource type="AudioStream" uid="uid://bo6ppjt5tu26x" path="res://ui/inventories/watch/tick.wav" id="29_gr2xy"]
+[ext_resource type="PackedScene" uid="uid://djyu3hjv4mp6y" path="res://environment/toolkit/cabinet.tscn" id="30_emvi6"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8rdnb"]
 vertices = PackedVector2Array(-50, -15, -50, 23, -64.9644, 23, -105, -15, -74.1064, 23, -130, 23, -130, -15, -114, -15, -114, -34, -105, -34, -74, 42, -65, 42)
@@ -65,12 +65,6 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mhtd"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4lm71"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3hxr"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_kf8r1"]
@@ -251,6 +245,9 @@ position = Vector2(-70, 32)
 [node name="door2" parent="environment/house" instance=ExtResource("9_w6cgg")]
 position = Vector2(-110, -25)
 
+[node name="cabinet" parent="environment/house" instance=ExtResource("30_emvi6")]
+position = Vector2(-9, -18)
+
 [node name="nav_region" type="NavigationRegion2D" parent="environment"]
 position = Vector2(590, 383)
 navigation_polygon = SubResource("NavigationPolygon_gdge7")
@@ -320,7 +317,7 @@ offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
-texture = ExtResource("12_6ihle")
+texture = ExtResource("16_opfxs")
 
 [node name="item_sprite" type="TextureRect" parent="ui/control/inventory/pouch_1"]
 layout_mode = 1
@@ -351,7 +348,7 @@ offset_right = 72.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
-texture = ExtResource("12_6ihle")
+texture = ExtResource("16_opfxs")
 
 [node name="pouch_button" type="Button" parent="ui/control/inventory/pouch_1"]
 layout_mode = 1
@@ -414,7 +411,7 @@ offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
-texture = ExtResource("12_6ihle")
+texture = ExtResource("16_opfxs")
 
 [node name="item_sprite" type="TextureRect" parent="ui/control/inventory/pouch_2"]
 layout_mode = 1
@@ -445,7 +442,7 @@ offset_right = 72.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
-texture = ExtResource("12_6ihle")
+texture = ExtResource("16_opfxs")
 
 [node name="pouch_button" type="Button" parent="ui/control/inventory/pouch_2"]
 layout_mode = 1
@@ -508,7 +505,7 @@ offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
-texture = ExtResource("12_6ihle")
+texture = ExtResource("16_opfxs")
 
 [node name="item_sprite" type="TextureRect" parent="ui/control/inventory/pouch_3"]
 layout_mode = 1
@@ -539,7 +536,7 @@ offset_right = 72.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
-texture = ExtResource("12_6ihle")
+texture = ExtResource("16_opfxs")
 
 [node name="pouch_button" type="Button" parent="ui/control/inventory/pouch_3"]
 layout_mode = 1
@@ -577,6 +574,7 @@ bbcode_enabled = true
 text = "[center]Survivor's Flashlight"
 
 [node name="notebook" type="Control" parent="ui/control"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -595,7 +593,7 @@ pivot_offset = Vector2(383.5, 288)
 layout_mode = 1
 offset_right = 768.0
 offset_bottom = 576.0
-texture = ExtResource("11_l0vt5")
+texture = ExtResource("22_hdmg2")
 
 [node name="day_counter" type="RichTextLabel" parent="ui/control/notebook"]
 modulate = Color(0.0980392, 0.0980392, 0.0980392, 1)
@@ -620,7 +618,6 @@ scale = Vector2(0.85, 0.85)
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("12_32y5c")
 theme_override_font_sizes/normal_font_size = 32
-text = "Day 10"
 
 [node name="journals_counter" type="Button" parent="ui/control/notebook"]
 modulate = Color(0.0980392, 0.0980392, 0.0980392, 1)
@@ -673,11 +670,16 @@ scale = Vector2(0.85, 0.85)
 [node name="vbox" type="VBoxContainer" parent="ui/control/notebook/journals_container"]
 layout_mode = 2
 
-[node name="journal_button" parent="ui/control/notebook/journals_container/vbox" instance=ExtResource("23_quinn")]
+[node name="notes_container" type="ScrollContainer" parent="ui/control/notebook"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 167.0
+offset_right = 373.0
+offset_bottom = 567.0
+scale = Vector2(0.85, 0.85)
+
+[node name="vbox" type="VBoxContainer" parent="ui/control/notebook/notes_container"]
 layout_mode = 2
-theme_override_styles/disabled = SubResource("StyleBoxFlat_4lm71")
-theme_override_styles/focus = SubResource("StyleBoxFlat_a3hxr")
-toggle_mode = false
 
 [node name="watch" type="Control" parent="ui/control"]
 visible = false
@@ -698,7 +700,7 @@ size_flags_vertical = 0
 layout_mode = 2
 offset_right = 240.0
 offset_bottom = 240.0
-texture = ExtResource("11_h1bbg")
+texture = ExtResource("24_wf82o")
 
 [node name="minute_hand" type="TextureRect" parent="ui/control/watch"]
 layout_mode = 0
@@ -707,7 +709,7 @@ offset_top = 77.0
 offset_right = 128.0
 offset_bottom = 176.0
 pivot_offset = Vector2(7.5, 64)
-texture = ExtResource("12_fl3jl")
+texture = ExtResource("25_b4yvi")
 
 [node name="hour_hand" type="TextureRect" parent="ui/control/watch"]
 layout_mode = 0
@@ -717,20 +719,25 @@ offset_right = 124.755
 offset_bottom = 162.48
 rotation = 1.57079
 pivot_offset = Vector2(4.5, 47)
-texture = ExtResource("13_avvjf")
+texture = ExtResource("26_pedn6")
 
 [node name="watch_open" type="AudioStreamPlayer2D" parent="ui/control/watch"]
-stream = ExtResource("14_p1j2x")
+stream = ExtResource("27_bd1cv")
 
 [node name="watch_close" type="AudioStreamPlayer2D" parent="ui/control/watch"]
-stream = ExtResource("15_mubgd")
+stream = ExtResource("28_j2fiq")
 
 [node name="minute_tick" type="AudioStreamPlayer2D" parent="ui/control/watch"]
-stream = ExtResource("14_rrw6t")
+stream = ExtResource("29_gr2xy")
 
 [node name="minute_tick_timer" type="Timer" parent="ui/control/watch"]
 wait_time = 0.5
 autostart = true
+
+[node name="lootables" type="Control" parent="ui/control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="modulate" type="CanvasModulate" parent="ui"]
 visible = false
@@ -753,4 +760,5 @@ grow_vertical = 2
 [connection signal="button_down" from="ui/control/inventory/pouch_3/pouch_button" to="ui/control/inventory/pouch_3" method="_on_pouch_button_button_down"]
 [connection signal="button_up" from="ui/control/inventory/pouch_3/pouch_button" to="ui/control/inventory/pouch_3" method="_on_pouch_button_button_up"]
 [connection signal="pressed" from="ui/control/notebook/journals_counter" to="ui" method="_on_journals_counter_pressed"]
+[connection signal="pressed" from="ui/control/notebook/notes_counter" to="ui" method="_on_notes_counter_pressed"]
 [connection signal="timeout" from="ui/control/watch/minute_tick_timer" to="ui" method="_on_minute_tick_timer_timeout"]

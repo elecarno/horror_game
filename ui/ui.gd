@@ -3,6 +3,7 @@ extends CanvasLayer
 
 @onready var world_con: world_controller = get_parent()
 @onready var playerdata_con: playerdata_controller = get_parent().get_node("playerdata_con")
+@onready var journal_button: PackedScene = preload("res://ui/collectibles/journal_button.tscn")
 
 var using_watch: bool = false
 
@@ -48,3 +49,25 @@ func _on_minute_tick_timer_timeout():
 
 func _on_journals_counter_pressed():
 	get_node("control/notebook/journals_container").visible = !get_node("control/notebook/journals_container").visible
+	get_node("control/notebook/notes_container").visible = false
+	var container = get_node("control/notebook/journals_container/vbox")
+	for i in container.get_children():
+		i.queue_free()
+		
+	for i in range(0, playerdata.collected_journals.size()):
+		var journal_button_instance = journal_button.instantiate()
+		journal_button_instance.collectible = load(playerdata.journals_path + playerdata.journals[playerdata.collected_journals[i]])
+		container.add_child(journal_button_instance)
+
+
+func _on_notes_counter_pressed():
+	get_node("control/notebook/notes_container").visible = !get_node("control/notebook/notes_container").visible
+	get_node("control/notebook/journals_container").visible = false
+	var container = get_node("control/notebook/notes_container/vbox")
+	for i in container.get_children():
+		i.queue_free()
+		
+	for i in range(0, playerdata.collected_notes.size()):
+		var journal_button_instance = journal_button.instantiate()
+		journal_button_instance.collectible = load(playerdata.notes_path + playerdata.notes[playerdata.collected_journals[i]])
+		container.add_child(journal_button_instance)

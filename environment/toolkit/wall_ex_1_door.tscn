@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://o6x2rmxshtls"]
 
-[ext_resource type="Texture2D" uid="uid://cthh7j6d8efl7" path="res://environment/toolkit_sprites/wall_ex_1_doorframe.png" id="1_2o8uc"]
+[ext_resource type="Texture2D" uid="uid://cthh7j6d8efl7" path="res://environment/toolkit_sprites/scructures/wall_ex_1_doorframe.png" id="1_c4itr"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4sfku"]
 polygon = PackedVector2Array(-8, -9, -4, -9, -4, -5, -8, -5)
@@ -18,7 +18,7 @@ size = Vector2(3, 12)
 
 [node name="sprite_frame" type="Sprite2D" parent="."]
 position = Vector2(0, 10)
-texture = ExtResource("1_2o8uc")
+texture = ExtResource("1_c4itr")
 offset = Vector2(0, -9.5)
 
 [node name="occluder_left" type="LightOccluder2D" parent="."]
