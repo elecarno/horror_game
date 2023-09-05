@@ -32,10 +32,13 @@ func watch_update():
 	get_node("control/watch/hour_hand").rotation = (((2 * PI) / 12) * world_con.hour_ref) + (((2 * PI) / 720) * world_con.minute_ref)
 
 func toggle_inventory():
-	get_node("control/inventory").visible = !get_node("control/inventory").visible
-	playerdata_con.pouch_1.update_pouch()
-	playerdata_con.pouch_2.update_pouch()
-	playerdata_con.pouch_3.update_pouch()
+	if get_node("control/lootables").visible:
+		get_node("control/lootables").visible = false
+	else:
+		get_node("control/inventory").visible = !get_node("control/inventory").visible
+		playerdata_con.pouch_1.update_pouch()
+		playerdata_con.pouch_2.update_pouch()
+		playerdata_con.pouch_3.update_pouch()
 
 func toggle_notebook():
 	get_node("control/notebook").visible = !get_node("control/notebook").visible

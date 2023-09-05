@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://ny5dojbmly3x"]
+[gd_scene load_steps=45 format=3 uid="uid://ny5dojbmly3x"]
 
 [ext_resource type="PackedScene" uid="uid://d7u7dlgtyldf" path="res://player/player.tscn" id="1_00auf"]
 [ext_resource type="Texture2D" uid="uid://b0x8bvxxmv6id" path="res://bg.png" id="1_d513w"]
@@ -30,6 +30,7 @@
 [ext_resource type="AudioStream" uid="uid://b5q84nwm26v5y" path="res://ui/inventories/watch/watch_close.wav" id="28_j2fiq"]
 [ext_resource type="AudioStream" uid="uid://bo6ppjt5tu26x" path="res://ui/inventories/watch/tick.wav" id="29_gr2xy"]
 [ext_resource type="PackedScene" uid="uid://djyu3hjv4mp6y" path="res://environment/toolkit/cabinet.tscn" id="30_emvi6"]
+[ext_resource type="Texture2D" uid="uid://bhkji6kww88qb" path="res://ui/inventories/drawer/drawer_interior_dusty.png" id="30_i783q"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8rdnb"]
 vertices = PackedVector2Array(-50, -15, -50, 23, -64.9644, 23, -105, -15, -74.1064, 23, -130, 23, -130, -15, -114, -15, -114, -34, -105, -34, -74, 42, -65, 42)
@@ -735,9 +736,27 @@ wait_time = 0.5
 autostart = true
 
 [node name="lootables" type="Control" parent="ui/control"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -288.0
+offset_right = 384.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(383.5, 288)
+
+[node name="drawer" type="TextureRect" parent="ui/control/lootables"]
+visible = false
+layout_mode = 1
+offset_right = 768.0
+offset_bottom = 576.0
+texture = ExtResource("30_i783q")
 
 [node name="modulate" type="CanvasModulate" parent="ui"]
 visible = false
