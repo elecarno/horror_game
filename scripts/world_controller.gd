@@ -19,10 +19,13 @@ var hour_ref: int
 var day_ref: int
 
 func _ready():
+	# turns on day/night modulates, 
+	# they are turned off in the editor for visbility during development
 	canvas_modulate.visible = true
 	ui_modulate.visible = true
 
 func _process(delta: float) -> void:
+	# updates global references for time values
 	minute_ref = int(tick) % 60
 	hour_ref = int(tick/60) % 24
 	day_ref = int(tick/60/24)
@@ -33,7 +36,6 @@ func _process(delta: float) -> void:
 	# night to day = 08:00 to 11:00
 	# day to night = 17:00 to 21:00
 	var current_hour = int(tick/60) % 24
-	#var reset_daynight = false
 	if current_hour > 7 and current_hour < 12:
 		if daynight_tick < 1.0:
 			daynight_tick += (delta * TIME_SCALE)/180
@@ -47,25 +49,19 @@ func _process(delta: float) -> void:
 	else:
 		daynight_tick = 0
 		
-	# dev tools
+	# dev tools - time warp
 	if Input.is_action_just_pressed("dev_toggle"):
 		if TIME_SCALE == 2:
 			TIME_SCALE = 500
 		else:
 			TIME_SCALE = 2
-
-func triangle(x):
-	var fract = x - int(x)
-	if fract < 0.5:
-		return fract * 2.0
-	else:
-		return (1.0 - fract) * 2.0
 	
 func format_time():
 	#return "Day %01d, %02d:%02d\ngametick: %02d\ngametime:%5.1f\ndaynight:%5.5f" % [days, hours, minutes, tick, time, daynight_tick]
 	return "Day %01d, %02d:%02d" % [day_ref, hour_ref, minute_ref]
 
-func toggle_attack_shaders(on: bool):
+func toggle_attack_shaders(on: bool): 
+	# bool is required as this function is sometimes called each frame
 	if on:
 		get_node("ui/shader").visible = true
 		get_node("player/cam").zoom = Vector2(7, 7)

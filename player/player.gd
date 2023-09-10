@@ -17,14 +17,11 @@ var hp = 3
 @onready var light_hit = get_node("flashlight/light_hit")
 @onready var held_item_sprite = get_node("held_item")
 
-#var t1_flashlight_tex = preload("") 
-
 func _physics_process(delta):
 	player_movement(delta)
 	player_animation()
 	flashlight_update(delta)
 	interaction()
-#	flip()
 
 func get_input():
 	input.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
@@ -59,6 +56,8 @@ func player_animation():
 	else:
 		flip()
 		
+	# this is here to ensure that the flashlight renders behind the player
+	# sprite when it is looking away from the camera
 	if anim.current_animation == "walk_away":
 		flashlight.z_index = -1
 		held_item_sprite.z_index = -1
@@ -66,6 +65,7 @@ func player_animation():
 		flashlight.z_index = 0
 		held_item_sprite.z_index = 0
 
+# when called (each frame), the player sprite will flip based on mouse position instead of movement
 func flip():
 	var direction = sign(get_global_mouse_position().x - player_sprite.global_position.x)
 	if direction < 0:
@@ -77,16 +77,17 @@ func flip():
 		anim.play("idle_right")
 		held_item_sprite.position = Vector2(4, 0)
 
+# contols the flashlight movement
 func flashlight_update(_delta):
 	var direction = (get_global_mouse_position() - global_position)
 	var angle = direction.angle()
 	flashlight.rotation = lerp_angle(flashlight.rotation, angle, light_rot_speed)
-	#flashlight.look_at(get_global_mouse_position())
 	
 	if Input.is_action_just_pressed("use_item"):
 		flashlight.get_node("spotlight").visible = !flashlight.get_node("spotlight").visible
 		light_hit.enabled = !light_hit.enabled
-	
+
+# controls both object click interaction and flashlight interaction
 func interaction():
 	interact.look_at(get_global_mouse_position())
 	if Input.is_action_just_pressed("interact") and interact.is_colliding():
@@ -107,6 +108,7 @@ func take_damage():
 	if hp <= 0:
 		print("player died")
 		
+# purely aesthetic, changes the in-game item sprite for the player character
 func switch_item(item: item_res):
 	print("switched to " + item.item_dislay_name + " (player)")
 	if item.item_type == "flashlight":

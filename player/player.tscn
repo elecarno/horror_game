@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://d7u7dlgtyldf"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_0j5ck"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_rks8w"]
 [ext_resource type="Texture2D" uid="uid://dyphtlsbgxwml" path="res://player/goober_spritesheet.png" id="2_yvwym"]
 [ext_resource type="Texture2D" uid="uid://6enu1thflr2b" path="res://player/point_light.jpeg" id="3_s3vsq"]
 [ext_resource type="Texture2D" uid="uid://cx0u3xrdxtjru" path="res://ui/items/ingame/t2_flashlight_16.png" id="4_vb65q"]
@@ -163,7 +163,7 @@ _data = {
 radius = 6.0
 
 [node name="player" type="CharacterBody2D"]
-script = ExtResource("1_0j5ck")
+script = ExtResource("1_rks8w")
 
 [node name="sprite" type="Sprite2D" parent="."]
 texture_filter = 1

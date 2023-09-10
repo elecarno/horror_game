@@ -1,12 +1,12 @@
 extends Node
 
 var journals: Array
-var collected_journals: Array = [0, 2, 1]
+var collected_journals: Array = [2, 1]
 var journals_path: String = "res://ui/collectibles/journals/" 
 
 var notes: Array
 var collected_notes: Array = [0]
-var notes_path: String = "res://ui/collectibles/notes/" 
+var notes_path: String = "res://ui/collectibles/notes/"
 
 func _ready():
 	journals = _collect_resources(journals_path)
@@ -14,6 +14,7 @@ func _ready():
 	print(journals)
 	print(notes)
 
+# creates array based on files in `dir_path`
 func _collect_resources(dir_path: String):
 	var dir = DirAccess.open(dir_path)
 	var files = []
