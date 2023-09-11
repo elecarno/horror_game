@@ -2,6 +2,8 @@ extends TextureButton
 
 var contained_collectible: String = "journal_1.tres"
 
+var collected: bool = false
+
 func _on_pressed():
 	for i in range(playerdata.journals.size()):
 		if playerdata.journals[i] == contained_collectible and !playerdata.collected_journals.has(i):
@@ -10,4 +12,7 @@ func _on_pressed():
 		if playerdata.notes[i] == contained_collectible and !playerdata.collected_notes.has(i):
 			playerdata.collected_notes.append(i)
 			
+	collected = true
+	get_parent().get_parent().update_object_data()
+	
 	queue_free()

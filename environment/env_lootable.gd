@@ -4,7 +4,7 @@ extends StaticBody2D
 
 @export var type: String = "drawer"
 
-var content_data: Array
+var content_data: Array = ["null"]
 
 func _on_interact():
 	control.get_node("lootables").visible = true
@@ -13,6 +13,7 @@ func _on_interact():
 		control.get_node("lootables").get_child(i).visible = false
 	
 	control.get_node("lootables").get_node(type).visible = true
-	control.get_node("lootables").get_node(type).generate_contents(["null"])
-	content_data = control.get_node("lootables").get_node(type).new_content_data
+	control.get_node("lootables").get_node(type).current_object = self
+	control.get_node("lootables").get_node(type).generate_contents(content_data)
+	#content_data = control.get_node("lootables").get_node(type).new_content_data
 

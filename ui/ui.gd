@@ -41,12 +41,11 @@ func toggle_inventory():
 		playerdata_con.pouch_3.update_pouch()
 
 func toggle_notebook():
-	
-	
+	playerdata.sort_collected_arrays()
 	get_node("control/notebook").visible = !get_node("control/notebook").visible
 	get_node("control/notebook/day_counter").text = "Day #" + str(world_con.day_ref)
 	get_node("control/notebook/journals_counter").text = "Journals: " + str(playerdata.collected_journals.size()) + "/" + str(playerdata.journals.size())
-	get_node("control/notebook/notes_counter").text = "Journals: " + str(playerdata.collected_notes.size()) + "/" + str(playerdata.notes.size())
+	get_node("control/notebook/notes_counter").text = "Notes: " + str(playerdata.collected_notes.size()) + "/" + str(playerdata.notes.size())
 
 func _on_minute_tick_timer_timeout():
 	if using_watch:

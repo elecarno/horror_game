@@ -259,6 +259,18 @@ position = Vector2(9, -18)
 [node name="cabinet4" parent="environment/house" instance=ExtResource("30_emvi6")]
 position = Vector2(18, -18)
 
+[node name="cabinet5" parent="environment/house" instance=ExtResource("30_emvi6")]
+position = Vector2(27, -18)
+
+[node name="cabinet6" parent="environment/house" instance=ExtResource("30_emvi6")]
+position = Vector2(36, -18)
+
+[node name="cabinet7" parent="environment/house" instance=ExtResource("30_emvi6")]
+position = Vector2(45, -18)
+
+[node name="cabinet8" parent="environment/house" instance=ExtResource("30_emvi6")]
+position = Vector2(54, -18)
+
 [node name="nav_region" type="NavigationRegion2D" parent="environment"]
 position = Vector2(590, 383)
 navigation_polygon = SubResource("NavigationPolygon_gdge7")

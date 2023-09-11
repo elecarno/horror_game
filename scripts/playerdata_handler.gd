@@ -30,3 +30,21 @@ func _collect_resources(dir_path: String):
 	dir.list_dir_end()
 	
 	return files
+	
+func sort_collected_arrays():
+	collected_journals.sort()
+	collected_notes.sort()
+	
+func check_for_completion(type: String):
+	sort_collected_arrays()
+	var counter: int
+	if type == "journals":
+		if collected_journals.size() == journals.size():
+			return true
+		else:
+			return false
+	if type == "notes":
+		if collected_notes.size() == notes.size():
+			return true
+		else:
+			return false
