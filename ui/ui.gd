@@ -41,6 +41,8 @@ func toggle_inventory():
 		playerdata_con.pouch_3.update_pouch()
 
 func toggle_notebook():
+	
+	
 	get_node("control/notebook").visible = !get_node("control/notebook").visible
 	get_node("control/notebook/day_counter").text = "Day #" + str(world_con.day_ref)
 	get_node("control/notebook/journals_counter").text = "Journals: " + str(playerdata.collected_journals.size()) + "/" + str(playerdata.journals.size())
@@ -73,5 +75,5 @@ func _on_notes_counter_pressed():
 		
 	for i in range(0, playerdata.collected_notes.size()):
 		var journal_button_instance = journal_button.instantiate()
-		journal_button_instance.collectible = load(playerdata.notes_path + playerdata.notes[playerdata.collected_journals[i]])
+		journal_button_instance.collectible = load(playerdata.notes_path + playerdata.notes[playerdata.collected_notes[i]])
 		container.add_child(journal_button_instance)

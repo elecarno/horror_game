@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="collect_res" load_steps=2 format=3 uid="uid://g4q0jlp6m634"]
+
+[ext_resource type="Script" path="res://ui/collectibles/collect_res.gd" id="1_lf6gc"]
+
+[resource]
+script = ExtResource("1_lf6gc")
+collect_type = "note"
+collect_display_name = "Note #2"
+collect_content = "please help this code is bonked"

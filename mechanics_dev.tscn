@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://ny5dojbmly3x"]
+[gd_scene load_steps=46 format=3 uid="uid://ny5dojbmly3x"]
 
 [ext_resource type="PackedScene" uid="uid://d7u7dlgtyldf" path="res://player/player.tscn" id="1_00auf"]
 [ext_resource type="Texture2D" uid="uid://b0x8bvxxmv6id" path="res://bg.png" id="1_d513w"]
@@ -31,8 +31,7 @@
 [ext_resource type="AudioStream" uid="uid://bo6ppjt5tu26x" path="res://ui/inventories/watch/tick.wav" id="29_gr2xy"]
 [ext_resource type="PackedScene" uid="uid://djyu3hjv4mp6y" path="res://environment/toolkit/cabinet.tscn" id="30_emvi6"]
 [ext_resource type="Texture2D" uid="uid://bhkji6kww88qb" path="res://ui/inventories/drawer/drawer_interior_dusty.png" id="30_i783q"]
-[ext_resource type="Texture2D" uid="uid://c3bmoyi1j2n7p" path="res://ui/collectibles/sprites/scrap_1.png" id="31_vgmiv"]
-[ext_resource type="Script" path="res://ui/collectibles/collectible.gd" id="32_0v4xe"]
+[ext_resource type="Script" path="res://ui/collectibles/lootable.gd" id="31_52hgd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8rdnb"]
 vertices = PackedVector2Array(-50, -15, -50, 23, -64.9644, 23, -105, -15, -74.1064, 23, -130, 23, -130, -15, -114, -15, -114, -34, -105, -34, -74, 42, -65, 42)
@@ -250,6 +249,15 @@ position = Vector2(-110, -25)
 
 [node name="cabinet" parent="environment/house" instance=ExtResource("30_emvi6")]
 position = Vector2(-9, -18)
+
+[node name="cabinet2" parent="environment/house" instance=ExtResource("30_emvi6")]
+position = Vector2(0, -18)
+
+[node name="cabinet3" parent="environment/house" instance=ExtResource("30_emvi6")]
+position = Vector2(9, -18)
+
+[node name="cabinet4" parent="environment/house" instance=ExtResource("30_emvi6")]
+position = Vector2(18, -18)
 
 [node name="nav_region" type="NavigationRegion2D" parent="environment"]
 position = Vector2(590, 383)
@@ -755,36 +763,40 @@ grow_vertical = 2
 pivot_offset = Vector2(383.5, 288)
 
 [node name="drawer" type="TextureRect" parent="ui/control/lootables"]
+visible = false
 layout_mode = 1
 offset_right = 768.0
 offset_bottom = 576.0
 texture = ExtResource("30_i783q")
+script = ExtResource("31_52hgd")
 
-[node name="collect_spawn" type="Marker2D" parent="ui/control/lootables"]
-position = Vector2(226, 200)
+[node name="collect_spawn" type="Control" parent="ui/control/lootables/drawer"]
+anchors_preset = 0
+offset_left = 206.0
+offset_top = 175.0
+offset_right = 246.0
+offset_bottom = 215.0
 
-[node name="collect_spawn2" type="Marker2D" parent="ui/control/lootables"]
-position = Vector2(517, 368)
+[node name="collect_spawn2" type="Control" parent="ui/control/lootables/drawer"]
+anchors_preset = 0
+offset_left = 477.0
+offset_top = 231.0
+offset_right = 517.0
+offset_bottom = 271.0
 
-[node name="collect_spawn3" type="Marker2D" parent="ui/control/lootables"]
-position = Vector2(460, 226)
+[node name="collect_spawn3" type="Control" parent="ui/control/lootables/drawer"]
+anchors_preset = 0
+offset_left = 231.0
+offset_top = 352.0
+offset_right = 271.0
+offset_bottom = 392.0
 
-[node name="collect_spawn4" type="Marker2D" parent="ui/control/lootables"]
-position = Vector2(290, 352)
-
-[node name="collectible" type="TextureButton" parent="ui/control/lootables"]
-layout_mode = 0
-offset_left = 202.0
-offset_top = 179.0
-offset_right = 442.0
-offset_bottom = 371.0
-texture_normal = ExtResource("31_vgmiv")
-texture_pressed = ExtResource("31_vgmiv")
-texture_hover = ExtResource("31_vgmiv")
-texture_disabled = ExtResource("31_vgmiv")
-texture_focused = ExtResource("31_vgmiv")
-stretch_mode = 0
-script = ExtResource("32_0v4xe")
+[node name="collect_spawn4" type="Control" parent="ui/control/lootables/drawer"]
+anchors_preset = 0
+offset_left = 460.0
+offset_top = 377.0
+offset_right = 500.0
+offset_bottom = 417.0
 
 [node name="modulate" type="CanvasModulate" parent="ui"]
 visible = false
@@ -809,4 +821,3 @@ grow_vertical = 2
 [connection signal="pressed" from="ui/control/notebook/journals_counter" to="ui" method="_on_journals_counter_pressed"]
 [connection signal="pressed" from="ui/control/notebook/notes_counter" to="ui" method="_on_notes_counter_pressed"]
 [connection signal="timeout" from="ui/control/watch/minute_tick_timer" to="ui" method="_on_minute_tick_timer_timeout"]
-[connection signal="pressed" from="ui/control/lootables/collectible" to="ui/control/lootables/collectible" method="_on_pressed"]

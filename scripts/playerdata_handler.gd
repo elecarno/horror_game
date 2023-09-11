@@ -1,11 +1,11 @@
 extends Node
 
 var journals: Array
-var collected_journals: Array = [2, 1]
+var collected_journals: Array = []
 var journals_path: String = "res://ui/collectibles/journals/" 
 
 var notes: Array
-var collected_notes: Array = [0]
+var collected_notes: Array = []
 var notes_path: String = "res://ui/collectibles/notes/"
 
 func _ready():
