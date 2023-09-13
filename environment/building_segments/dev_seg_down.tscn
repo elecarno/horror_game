@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://iivwrqfsvy6q"]
+
+[ext_resource type="Script" path="res://house_segment.gd" id="1_jvy6b"]
+[ext_resource type="Texture2D" uid="uid://75h8adqxh3l6" path="res://test_square.png" id="2_lhiqk"]
+
+[node name="dev_seg_down" type="Node2D"]
+script = ExtResource("1_jvy6b")
+connections = [NodePath("connector_top")]
+room_position = "down"
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_lhiqk")
+
+[node name="connector_top" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(0, -4)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_lhiqk")
