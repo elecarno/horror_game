@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var DEBUG_CAM_DISABLE: bool = false
+
 const max_speed = 80
 const accel = 350
 const friction = 240
@@ -16,6 +18,10 @@ var hp = 3
 @onready var interact = get_node("interact")
 @onready var light_hit = get_node("flashlight/light_hit")
 @onready var held_item_sprite = get_node("held_item")
+
+func _ready():
+	if DEBUG_CAM_DISABLE:
+		get_node("cam").enabled = false
 
 func _physics_process(delta):
 	player_movement(delta)

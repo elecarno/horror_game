@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cal1m2bd2vk8f"]
 
-[ext_resource type="Texture2D" uid="uid://duyq3waspk7w1" path="res://environment/toolkit_sprites/scructures/wall_1_v.png" id="1_3jf2e"]
+[ext_resource type="Texture2D" uid="uid://duyq3waspk7w1" path="res://environment/env_sprites/house_pieces/wall_1_v.png" id="1_3jf2e"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4sfku"]
 polygon = PackedVector2Array(-4, -9, 0, -9, 0, 10, -4, 10)

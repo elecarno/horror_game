@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://fqgdyci0xjf"]
 
 [ext_resource type="Script" path="res://environment/env_door.gd" id="1_bp6cx"]
-[ext_resource type="Texture2D" uid="uid://nkqp61w8aioe" path="res://environment/toolkit_sprites/scructures/door.png" id="2_ifgoi"]
-[ext_resource type="Texture2D" uid="uid://cfhltv2avjvbi" path="res://environment/toolkit_sprites/scructures/door_opened.png" id="3_yxqjw"]
-[ext_resource type="Texture2D" uid="uid://bqrotsm4c6ui7" path="res://environment/toolkit_sprites/scructures/wall_ex_1_doortop.png" id="4_sojs6"]
+[ext_resource type="Texture2D" uid="uid://nkqp61w8aioe" path="res://environment/env_sprites/house_pieces/door.png" id="2_ifgoi"]
+[ext_resource type="Texture2D" uid="uid://cfhltv2avjvbi" path="res://environment/env_sprites/house_pieces/door_opened.png" id="3_yxqjw"]
+[ext_resource type="Texture2D" uid="uid://bqrotsm4c6ui7" path="res://environment/env_sprites/house_pieces/wall_ex_1_doortop.png" id="4_sojs6"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_seefd"]
 polygon = PackedVector2Array(-8, -9, 8, -9, 8, -5, -8, -5)
