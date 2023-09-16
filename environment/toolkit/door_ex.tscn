@@ -11,7 +11,7 @@ polygon = PackedVector2Array(-8, -9, 8, -9, 8, -5, -8, -5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hl8v"]
 size = Vector2(9, 12)
 
-[node name="door" type="StaticBody2D"]
+[node name="door_ex" type="StaticBody2D"]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_bp6cx")
@@ -32,6 +32,7 @@ texture = ExtResource("4_sojs6")
 offset = Vector2(0, -9.5)
 
 [node name="nav_obst" type="NavigationObstacle2D" parent="."]
+visible = false
 vertices = PackedVector2Array(-4, -1, 5, -1, 5, 10, -4, 10)
 
 [node name="occluder" type="LightOccluder2D" parent="."]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbrcrt1t0h3yp"]
+
+[ext_resource type="Texture2D" uid="uid://bv4nvur78bamj" path="res://environment/env_sprites/house_pieces/wall_in_1_doorframe.png" id="1_ni14u"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4sfku"]
+polygon = PackedVector2Array(-8, -9, -4, -9, -4, -5, -8, -5)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_seefd"]
+polygon = PackedVector2Array(5, -9, 8, -9, 8, -5, 5, -5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hl8v"]
+size = Vector2(4, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i33xu"]
+size = Vector2(3, 12)
+
+[node name="wall_ex_1_door" type="StaticBody2D"]
+
+[node name="sprite_frame" type="Sprite2D" parent="."]
+position = Vector2(0, 10)
+texture = ExtResource("1_ni14u")
+offset = Vector2(0, -9.5)
+
+[node name="occluder_left" type="LightOccluder2D" parent="."]
+z_index = 1
+z_as_relative = false
+occluder = SubResource("OccluderPolygon2D_4sfku")
+
+[node name="occluder_right" type="LightOccluder2D" parent="."]
+z_index = 1
+z_as_relative = false
+occluder = SubResource("OccluderPolygon2D_seefd")
+
+[node name="col_left" type="CollisionShape2D" parent="."]
+position = Vector2(-6, -3)
+shape = SubResource("RectangleShape2D_0hl8v")
+
+[node name="col_right" type="CollisionShape2D" parent="."]
+position = Vector2(6.5, -3)
+shape = SubResource("RectangleShape2D_i33xu")

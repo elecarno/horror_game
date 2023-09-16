@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://ny5dojbmly3x"]
+[gd_scene load_steps=61 format=3 uid="uid://ny5dojbmly3x"]
 
 [ext_resource type="PackedScene" uid="uid://d7u7dlgtyldf" path="res://player/player.tscn" id="1_00auf"]
 [ext_resource type="Texture2D" uid="uid://b0x8bvxxmv6id" path="res://bg.png" id="1_d513w"]
@@ -12,18 +12,26 @@
 [ext_resource type="PackedScene" uid="uid://cal1m2bd2vk8f" path="res://environment/toolkit/wall_in_1_v.tscn" id="5_fi4o3"]
 [ext_resource type="Texture2D" uid="uid://bfs5xw8vmdp22" path="res://environment/world_1_tileset.png" id="5_g7f7l"]
 [ext_resource type="PackedScene" uid="uid://o6x2rmxshtls" path="res://environment/toolkit/wall_ex_1_door.tscn" id="7_n4tah"]
-[ext_resource type="PackedScene" uid="uid://fqgdyci0xjf" path="res://environment/toolkit/door.tscn" id="9_w6cgg"]
+[ext_resource type="PackedScene" uid="uid://fqgdyci0xjf" path="res://environment/toolkit/door_ex.tscn" id="9_w6cgg"]
 [ext_resource type="PackedScene" uid="uid://0kwbfuwbaeg6" path="res://npcs/enemies/stalker/enemy_stalker.tscn" id="10_3kjya"]
 [ext_resource type="Script" path="res://ui/ui.gd" id="10_s6ipu"]
 [ext_resource type="Shader" path="res://ui/test_shader.gdshader" id="11_3auck"]
 [ext_resource type="FontFile" uid="uid://b4k31i217ye1u" path="res://ui/Comicoro.ttf" id="12_32y5c"]
 [ext_resource type="Script" path="res://ui/inv_pouch.gd" id="12_i60fj"]
-[ext_resource type="PackedScene" uid="uid://bfr6bved5sb0x" path="res://environment/devhouse.tscn" id="13_cf8t7"]
 [ext_resource type="StyleBox" uid="uid://d1x4mlo7ttagp" path="res://ui/button_clear.tres" id="15_kkpsh"]
+[ext_resource type="Script" path="res://environment/house_segment.gd" id="15_vk03t"]
+[ext_resource type="PackedScene" uid="uid://dbrcrt1t0h3yp" path="res://environment/toolkit/wall_in_1_door.tscn" id="15_xhffx"]
 [ext_resource type="Texture2D" uid="uid://b0c5cp0ca0h1u" path="res://ui/inventories/bag/pouch_1.png" id="16_opfxs"]
 [ext_resource type="Texture2D" uid="uid://s2jrsg0kmky3" path="res://ui/items/bag/t1_flashlight_32.png" id="16_raufb"]
+[ext_resource type="PackedScene" uid="uid://bktv1ygbvjrlj" path="res://environment/toolkit/long_table.tscn" id="16_vpgx1"]
+[ext_resource type="PackedScene" uid="uid://yj8fkp0gcqm2" path="res://environment/toolkit/shelf.tscn" id="17_kndil"]
+[ext_resource type="PackedScene" uid="uid://867mbiys4h1f" path="res://environment/toolkit/simple_table.tscn" id="18_5olje"]
 [ext_resource type="Resource" uid="uid://vivx8vauaa45" path="res://ui/items/item_res/empty.tres" id="18_fgds4"]
 [ext_resource type="Resource" uid="uid://o4ra5nek3p5j" path="res://ui/items/item_res/t1_crucifix.tres" id="18_mngy3"]
+[ext_resource type="PackedScene" uid="uid://ccjpkw30oveu7" path="res://environment/toolkit/chair_left.tscn" id="19_mnpdv"]
+[ext_resource type="PackedScene" uid="uid://ccaiosnt0gfgb" path="res://environment/toolkit/radio.tscn" id="20_65fgp"]
+[ext_resource type="PackedScene" uid="uid://ghagig4x3h6u" path="res://environment/toolkit/chair_right.tscn" id="20_k3321"]
+[ext_resource type="PackedScene" uid="uid://dut41k3sl8os8" path="res://environment/toolkit/television.tscn" id="22_8c6td"]
 [ext_resource type="ButtonGroup" uid="uid://cjidawusdsoxb" path="res://ui/notebook_buttons.tres" id="22_c040o"]
 [ext_resource type="Texture2D" uid="uid://dh4oyk30rwiq7" path="res://ui/inventories/notebook/notebook_small.png" id="22_hdmg2"]
 [ext_resource type="Texture2D" uid="uid://bgmxhmtv35io2" path="res://ui/inventories/watch/watch.png" id="24_wf82o"]
@@ -35,6 +43,7 @@
 [ext_resource type="PackedScene" uid="uid://djyu3hjv4mp6y" path="res://environment/toolkit/cabinet.tscn" id="30_emvi6"]
 [ext_resource type="Texture2D" uid="uid://bhkji6kww88qb" path="res://ui/inventories/drawer/drawer_interior_dusty.png" id="30_i783q"]
 [ext_resource type="Script" path="res://ui/collectibles/lootable.gd" id="31_52hgd"]
+[ext_resource type="PackedScene" uid="uid://dn3hgcmasthft" path="res://environment/toolkit/couch.tscn" id="36_alx8t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8t6xo"]
 texture = ExtResource("5_g7f7l")
@@ -61,6 +70,11 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-50, -72, -50, -34, -10
 vertices = PackedVector2Array(167, 113, -234, 118, -134, 42, -74.0487, 42, -64.981, 42, -46, 42, -232, -164, -134, -91, 165, -164, -46, -91)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(2, 1, 6, 7), PackedInt32Array(7, 6, 8, 9), PackedInt32Array(8, 0, 5, 9)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-134, 42, -74.0487, 42, -64.981, 42, -46, 42, -46, -91, -134, -91, -134, 42, -234, 118, -232, -164, 165, -164, 167, 113, -234, 118)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_0yuyy"]
+vertices = PackedVector2Array(-12, 37, -12, -1, 40, -1, -4, 37, 40, -20, 49, -20, 49, -1, 60, -1, 60, 37, 5.0405, 37, 5, 56, -4, 56)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 4, 5, 6), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(2, 6, 9, 3), PackedInt32Array(3, 9, 10, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-12, -1, 40, -1, 40, -20, 49, -20, 49, -1, 60, -1, 60, 37, 5.0405, 37, 5, 56, -4, 56, -4, 37, -12, 37)])
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jclx8"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -108,7 +122,6 @@ visible = false
 color = Color(0.0156863, 0.027451, 0.027451, 1)
 
 [node name="bg" type="Sprite2D" parent="."]
-visible = false
 z_index = -2
 position = Vector2(-21, -43)
 scale = Vector2(1000, 1000)
@@ -295,8 +308,6 @@ position = Vector2(45, -18)
 [node name="cabinet8" parent="environment/house" instance=ExtResource("30_emvi6")]
 position = Vector2(54, -18)
 
-[node name="devhouse" parent="environment" instance=ExtResource("13_cf8t7")]
-
 [node name="nav_region" type="NavigationRegion2D" parent="environment"]
 position = Vector2(590, 383)
 navigation_polygon = SubResource("NavigationPolygon_gdge7")
@@ -305,13 +316,131 @@ navigation_polygon = SubResource("NavigationPolygon_gdge7")
 wait_time = 0.1
 autostart = true
 
+[node name="living_room_1" type="Node2D" parent="environment"]
+position = Vector2(-104, -64)
+script = ExtResource("15_vk03t")
+
+[node name="nav_region" type="NavigationRegion2D" parent="environment/living_room_1"]
+navigation_polygon = SubResource("NavigationPolygon_0yuyy")
+
+[node name="wall_in_1_h" parent="environment/living_room_1" instance=ExtResource("4_5en70")]
+position = Vector2(-8, -11)
+
+[node name="wall_in_1_h2" parent="environment/living_room_1" instance=ExtResource("4_5en70")]
+position = Vector2(0, -11)
+
+[node name="wall_in_1_h3" parent="environment/living_room_1" instance=ExtResource("4_5en70")]
+position = Vector2(8, -11)
+
+[node name="wall_in_1_h4" parent="environment/living_room_1" instance=ExtResource("4_5en70")]
+position = Vector2(16, -11)
+
+[node name="wall_in_1_h5" parent="environment/living_room_1" instance=ExtResource("4_5en70")]
+position = Vector2(24, -11)
+
+[node name="wall_in_1_h6" parent="environment/living_room_1" instance=ExtResource("4_5en70")]
+position = Vector2(32, -11)
+
+[node name="wall_in_1_h9" parent="environment/living_room_1" instance=ExtResource("4_5en70")]
+position = Vector2(56, -11)
+
+[node name="wall_ex_1_h" parent="environment/living_room_1" instance=ExtResource("3_d1xta")]
+position = Vector2(-12, 46)
+
+[node name="wall_ex_1_h2" parent="environment/living_room_1" instance=ExtResource("3_d1xta")]
+position = Vector2(12, 46)
+
+[node name="wall_ex_1_h3" parent="environment/living_room_1" instance=ExtResource("3_d1xta")]
+position = Vector2(20, 46)
+
+[node name="wall_ex_1_h4" parent="environment/living_room_1" instance=ExtResource("3_d1xta")]
+position = Vector2(28, 46)
+
+[node name="wall_ex_1_h5" parent="environment/living_room_1" instance=ExtResource("3_d1xta")]
+position = Vector2(52, 46)
+
+[node name="wall_ex_1_h8" parent="environment/living_room_1" instance=ExtResource("3_d1xta")]
+position = Vector2(60, 46)
+
+[node name="wall_ex_1_h6" parent="environment/living_room_1" instance=ExtResource("3_d1xta")]
+position = Vector2(44, 46)
+
+[node name="wall_ex_1_door" parent="environment/living_room_1" instance=ExtResource("7_n4tah")]
+position = Vector2(0, 46)
+
+[node name="wall_ex_1_h7" parent="environment/living_room_1" instance=ExtResource("3_d1xta")]
+position = Vector2(36, 46)
+
+[node name="wall_in_1_v" parent="environment/living_room_1" instance=ExtResource("5_fi4o3")]
+position = Vector2(-12, 27)
+
+[node name="wall_in_1_v2" parent="environment/living_room_1" instance=ExtResource("5_fi4o3")]
+position = Vector2(-12, 8)
+
+[node name="wall_in_1_v3" parent="environment/living_room_1" instance=ExtResource("5_fi4o3")]
+position = Vector2(64, 27)
+
+[node name="wall_in_1_v5" parent="environment/living_room_1" instance=ExtResource("5_fi4o3")]
+position = Vector2(-12, -11)
+
+[node name="wall_in_1_v6" parent="environment/living_room_1" instance=ExtResource("5_fi4o3")]
+position = Vector2(64, -11)
+
+[node name="wall_in_1_v4" parent="environment/living_room_1" instance=ExtResource("5_fi4o3")]
+position = Vector2(64, 8)
+
+[node name="wall_ex_1_door2" parent="environment/living_room_1" instance=ExtResource("15_xhffx")]
+position = Vector2(44, -11)
+
+[node name="couch" parent="environment/living_room_1" instance=ExtResource("36_alx8t")]
+position = Vector2(23, 16)
+
+[node name="long_table" parent="environment/living_room_1" instance=ExtResource("16_vpgx1")]
+position = Vector2(23, 27)
+
+[node name="cabinet" parent="environment/living_room_1" instance=ExtResource("30_emvi6")]
+position = Vector2(-8, -1)
+
+[node name="cabinet2" parent="environment/living_room_1" instance=ExtResource("30_emvi6")]
+position = Vector2(-1, -1)
+
+[node name="cabinet3" parent="environment/living_room_1" instance=ExtResource("30_emvi6")]
+position = Vector2(6, -1)
+
+[node name="shelf" parent="environment/living_room_1" instance=ExtResource("17_kndil")]
+position = Vector2(32, -4)
+
+[node name="simple_table" parent="environment/living_room_1" instance=ExtResource("18_5olje")]
+position = Vector2(-7, 20)
+
+[node name="simple_table3" parent="environment/living_room_1" instance=ExtResource("18_5olje")]
+position = Vector2(19, 0)
+
+[node name="simple_table2" parent="environment/living_room_1" instance=ExtResource("18_5olje")]
+position = Vector2(48, 29)
+
+[node name="chair_left" parent="environment/living_room_1" instance=ExtResource("19_mnpdv")]
+position = Vector2(0, 19)
+
+[node name="chair_right" parent="environment/living_room_1" instance=ExtResource("20_k3321")]
+position = Vector2(40, 28)
+
+[node name="chair_left2" parent="environment/living_room_1" instance=ExtResource("19_mnpdv")]
+position = Vector2(56, 28)
+
+[node name="radio" parent="environment/living_room_1" instance=ExtResource("20_65fgp")]
+position = Vector2(-9, 16)
+
+[node name="television" parent="environment/living_room_1" instance=ExtResource("22_8c6td")]
+position = Vector2(19, -6)
+
 [node name="npcs" type="Node2D" parent="."]
 
 [node name="enemy_stalker" parent="npcs" instance=ExtResource("10_3kjya")]
-DEBUG_DEACTIVATE = true
+position = Vector2(-56, -61)
 
 [node name="player" parent="." instance=ExtResource("1_00auf")]
-position = Vector2(419, 321)
+position = Vector2(104, 93)
 
 [node name="world_overview_cam" type="Camera2D" parent="."]
 enabled = false

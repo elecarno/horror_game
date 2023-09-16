@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ghagig4x3h6u"]
+
+[ext_resource type="Texture2D" uid="uid://bh2dxwrf1xnfi" path="res://environment/env_sprites/indoor/seats/chair_right.png" id="1_ffhlj"]
+
+[node name="chair_right" type="StaticBody2D"]
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_ffhlj")
+offset = Vector2(0, 0.5)
+
+[node name="col" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-2, -4, -2, 0, -2, 3, 2, 3, 2, 0, -1, 0, -1, -4)
+
+[node name="nav_obst" type="NavigationObstacle2D" parent="."]
+visible = false
+vertices = PackedVector2Array(-2, -4, -1, -4, -1, 0, 2, 0, 2, 3, -2, 3)

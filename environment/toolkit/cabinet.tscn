@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://environment/env_lootable.gd" id="1_nv1on"]
 [ext_resource type="Texture2D" uid="uid://5txt744lli0v" path="res://environment/env_sprites/indoor/lootables/cabinet.png" id="2_bruhg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wdik"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0snc4"]
 size = Vector2(7, 2)
 
 [node name="cabinet" type="StaticBody2D"]
@@ -20,4 +20,4 @@ vertices = PackedVector2Array(-3, -3, 3, -3, 3, 3, -3, 3)
 
 [node name="col_down" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_6wdik")
+shape = SubResource("RectangleShape2D_0snc4")

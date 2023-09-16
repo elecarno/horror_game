@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bktv1ygbvjrlj"]
+
+[ext_resource type="Texture2D" uid="uid://cu6xypfm83ube" path="res://environment/env_sprites/indoor/tables/long_table.png" id="1_ex0i6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4srf"]
+size = Vector2(13, 2)
+
+[node name="long_table" type="StaticBody2D"]
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_ex0i6")
+
+[node name="col" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_j4srf")
+
+[node name="nav_obst" type="NavigationObstacle2D" parent="."]
+visible = false
+vertices = PackedVector2Array(-6, -3, -6, 1, 6, 1, 6, -3)

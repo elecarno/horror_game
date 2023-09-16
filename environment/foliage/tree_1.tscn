@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://ufisx84o60gv"]
+[gd_scene load_steps=4 format=3 uid="uid://ufisx84o60gv"]
 
 [ext_resource type="Texture2D" uid="uid://ddcw8hv7g6qjo" path="res://environment/env_sprites/outdoor/tree_1.png" id="1_ybpud"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_igs2u"]
 size = Vector2(9, 7)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_whf1r"]
+polygon = PackedVector2Array(-4, 0, -4, -1, -3, -1, -3, -2, -2, -2, -2, -4, -1, -4, -1, -11, -2, -11, -2, -13, -1, -13, 0, -13, 0, -10, 0, -9, 0, -6, 1, -6, 1, -3, 2, -3, 2, -1, 3, -1, 3, 0)
 
 [node name="tree_1" type="StaticBody2D"]
 z_index = 1
@@ -18,3 +21,6 @@ offset = Vector2(0, 0.5)
 [node name="col" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -3.5)
 shape = SubResource("RectangleShape2D_igs2u")
+
+[node name="occ" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_whf1r")

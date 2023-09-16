@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://yj8fkp0gcqm2"]
+
+[ext_resource type="Script" path="res://environment/env_lootable.gd" id="1_qo0xh"]
+[ext_resource type="Texture2D" uid="uid://p68y3aciopfa" path="res://environment/env_sprites/indoor/lootables/shelf.png" id="2_7jj4h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wdik"]
+size = Vector2(7, 8)
+
+[node name="shelf" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_qo0xh")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_7jj4h")
+
+[node name="nav_obst" type="NavigationObstacle2D" parent="."]
+visible = false
+vertices = PackedVector2Array(-3, -6, -3, 6, 3, 6, 3, -6)
+
+[node name="col_down" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_6wdik")

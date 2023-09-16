@@ -19,6 +19,9 @@ var hour_ref: int
 var day_ref: int
 
 func _ready():
+	## disables development background
+	get_node("bg").visible = false
+	
 	# turns on day/night modulates, 
 	# they are turned off in the editor for visbility during development
 	canvas_modulate.visible = true

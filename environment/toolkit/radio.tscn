@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccaiosnt0gfgb"]
+
+[ext_resource type="Texture2D" uid="uid://cp4q61c0n5xai" path="res://environment/env_sprites/indoor/technology/radio.png" id="1_3sk2t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4srf"]
+size = Vector2(4, 5)
+
+[node name="radio" type="StaticBody2D"]
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_3sk2t")
+offset = Vector2(0, 0.5)
+
+[node name="col" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_j4srf")
+
+[node name="nav_obst" type="NavigationObstacle2D" parent="."]
+visible = false
+vertices = PackedVector2Array(-1, 0, -1, 1, 1, 1, 1, 0)

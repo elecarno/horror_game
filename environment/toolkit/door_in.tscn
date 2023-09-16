@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmjsofucfgm4v"]
+
+[ext_resource type="Script" path="res://environment/env_door.gd" id="1_r0rhk"]
+[ext_resource type="Texture2D" uid="uid://nkqp61w8aioe" path="res://environment/env_sprites/house_pieces/door.png" id="2_difpu"]
+[ext_resource type="Texture2D" uid="uid://cfhltv2avjvbi" path="res://environment/env_sprites/house_pieces/door_opened.png" id="3_wlyeu"]
+[ext_resource type="Texture2D" uid="uid://c4do0m761452b" path="res://environment/env_sprites/house_pieces/wall_in_1_doortop.png" id="4_m2nm7"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_seefd"]
+polygon = PackedVector2Array(-8, -9, 8, -9, 8, -5, -8, -5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hl8v"]
+size = Vector2(9, 12)
+
+[node name="door_ex" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_r0rhk")
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(0.5, 4.5)
+texture = ExtResource("2_difpu")
+
+[node name="sprite_open" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0.5, 4.5)
+texture = ExtResource("3_wlyeu")
+
+[node name="sprite_top" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(0, 10)
+texture = ExtResource("4_m2nm7")
+offset = Vector2(0, -9.5)
+
+[node name="nav_obst" type="NavigationObstacle2D" parent="."]
+visible = false
+vertices = PackedVector2Array(-4, -1, 5, -1, 5, 10, -4, 10)
+
+[node name="occluder" type="LightOccluder2D" parent="."]
+z_index = 1
+occluder = SubResource("OccluderPolygon2D_seefd")
+
+[node name="col_main" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -3)
+shape = SubResource("RectangleShape2D_0hl8v")
