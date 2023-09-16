@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bfr6bved5sb0x"]
 
-[ext_resource type="Script" path="res://house_generator.gd" id="1_2ee7t"]
+[ext_resource type="Script" path="res://environment/house_generator.gd" id="1_2ee7t"]
 
 [node name="devhouse" type="Node2D"]
 position = Vector2(640, 424)

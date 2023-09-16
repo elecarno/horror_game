@@ -163,6 +163,7 @@ _data = {
 radius = 6.0
 
 [node name="player" type="CharacterBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_rks8w")
 
 [node name="sprite" type="Sprite2D" parent="."]

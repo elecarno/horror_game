@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2xo4jgnrkdx8"]
 
-[ext_resource type="Script" path="res://house_segment.gd" id="1_ndm3o"]
+[ext_resource type="Script" path="res://environment/house_segment.gd" id="1_ndm3o"]
 [ext_resource type="Texture2D" uid="uid://75h8adqxh3l6" path="res://test_square.png" id="2_64h5r"]
 
 [node name="dev_seg_right" type="Node2D"]

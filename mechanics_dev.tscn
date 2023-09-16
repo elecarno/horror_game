@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://dog6m4myw7cwt" path="res://ui/items/item_res/t1_flashlight.tres" id="3_nwtw5"]
 [ext_resource type="PackedScene" uid="uid://c0gkwupkkxacp" path="res://environment/toolkit/wall_in_1_h.tscn" id="4_5en70"]
 [ext_resource type="PackedScene" uid="uid://c4uifalf2epyu" path="res://environment/toolkit/wall_in_1_turn.tscn" id="4_p36ys"]
-[ext_resource type="Script" path="res://world_generation.gd" id="5_2he5p"]
+[ext_resource type="Script" path="res://environment/world_generation.gd" id="5_deqbl"]
 [ext_resource type="PackedScene" uid="uid://cal1m2bd2vk8f" path="res://environment/toolkit/wall_in_1_v.tscn" id="5_fi4o3"]
 [ext_resource type="Texture2D" uid="uid://bfs5xw8vmdp22" path="res://environment/world_1_tileset.png" id="5_g7f7l"]
 [ext_resource type="PackedScene" uid="uid://o6x2rmxshtls" path="res://environment/toolkit/wall_ex_1_door.tscn" id="7_n4tah"]
@@ -115,12 +115,17 @@ scale = Vector2(1000, 1000)
 texture = ExtResource("1_d513w")
 offset = Vector2(0.021, 0.043)
 
-[node name="environment" type="TileMap" parent="."]
+[node name="environment" type="Node2D" parent="."]
+script = ExtResource("5_deqbl")
+
+[node name="tilemap" type="TileMap" parent="environment"]
+z_index = -1
 y_sort_enabled = true
 tile_set = SubResource("TileSet_78onr")
 format = 2
-script = ExtResource("5_2he5p")
-chunk_size = 48
+
+[node name="objects" type="Node2D" parent="environment"]
+y_sort_enabled = true
 
 [node name="house" type="Node2D" parent="environment"]
 position = Vector2(590, 383)
@@ -296,13 +301,17 @@ position = Vector2(54, -18)
 position = Vector2(590, 383)
 navigation_polygon = SubResource("NavigationPolygon_gdge7")
 
+[node name="worldgen_update" type="Timer" parent="environment"]
+wait_time = 0.1
+autostart = true
+
 [node name="npcs" type="Node2D" parent="."]
 
 [node name="enemy_stalker" parent="npcs" instance=ExtResource("10_3kjya")]
 DEBUG_DEACTIVATE = true
 
 [node name="player" parent="." instance=ExtResource("1_00auf")]
-position = Vector2(61, 39)
+position = Vector2(419, 321)
 
 [node name="world_overview_cam" type="Camera2D" parent="."]
 enabled = false
@@ -849,6 +858,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[connection signal="timeout" from="environment/worldgen_update" to="environment" method="_on_worldgen_update_timeout"]
 [connection signal="button_down" from="ui/control/inventory/pouch_1/pouch_button" to="ui/control/inventory/pouch_1" method="_on_pouch_button_button_down"]
 [connection signal="button_up" from="ui/control/inventory/pouch_1/pouch_button" to="ui/control/inventory/pouch_1" method="_on_pouch_button_button_up"]
 [connection signal="button_down" from="ui/control/inventory/pouch_2/pouch_button" to="ui/control/inventory/pouch_2" method="_on_pouch_button_button_down"]
