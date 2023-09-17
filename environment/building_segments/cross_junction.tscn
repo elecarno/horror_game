@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=3 uid="uid://cemri5wtjlbed"]
+
+[ext_resource type="Script" path="res://environment/house_segment.gd" id="1_c41fr"]
+[ext_resource type="PackedScene" uid="uid://c0gkwupkkxacp" path="res://environment/toolkit/wall_in_1_h.tscn" id="2_4ok3c"]
+[ext_resource type="PackedScene" uid="uid://cal1m2bd2vk8f" path="res://environment/toolkit/wall_in_1_v.tscn" id="3_tp14p"]
+[ext_resource type="PackedScene" uid="uid://dbrcrt1t0h3yp" path="res://environment/toolkit/wall_in_1_door.tscn" id="4_utygo"]
+[ext_resource type="PackedScene" uid="uid://lpc2ymfupp2k" path="res://environment/toolkit/wall_door_v.tscn" id="5_f65uv"]
+[ext_resource type="PackedScene" uid="uid://yj8fkp0gcqm2" path="res://environment/toolkit/shelf.tscn" id="5_xnowk"]
+[ext_resource type="PackedScene" uid="uid://867mbiys4h1f" path="res://environment/toolkit/simple_table.tscn" id="6_lxc04"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_0yuyy"]
+vertices = PackedVector2Array(-4, 37, -4, -1, 8, -1, 20, 37, 8, -10, 17, -10, 17, -1, 52, -1, 29, 37, 52, 37, 29, 47, 20, 47)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 4, 5, 6), PackedInt32Array(3, 2, 6), PackedInt32Array(3, 6, 7, 8), PackedInt32Array(7, 9, 8), PackedInt32Array(3, 8, 10, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-4, -1, 8, -1, 8, -10, 17, -10, 17, -1, 52, -1, 52, 37, 29, 37, 29, 47, 20, 47, 20, 37, -4, 37)])
+
+[node name="cross_junction" type="Node2D"]
+script = ExtResource("1_c41fr")
+connections = [NodePath("connector_top"), NodePath("connector_down"), NodePath("connector_right"), NodePath("connector_top")]
+
+[node name="nav_region" type="NavigationRegion2D" parent="."]
+position = Vector2(-24, -18)
+navigation_polygon = SubResource("NavigationPolygon_0yuyy")
+
+[node name="wall_in_1_h" parent="." instance=ExtResource("2_4ok3c")]
+position = Vector2(-24, -29)
+
+[node name="wall_in_1_h2" parent="." instance=ExtResource("2_4ok3c")]
+position = Vector2(16, -29)
+
+[node name="wall_in_1_h3" parent="." instance=ExtResource("2_4ok3c")]
+position = Vector2(24, -29)
+
+[node name="wall_in_1_h4" parent="." instance=ExtResource("2_4ok3c")]
+position = Vector2(0, -29)
+
+[node name="wall_in_1_h6" parent="." instance=ExtResource("2_4ok3c")]
+position = Vector2(8, -29)
+
+[node name="wall_in_1_v" parent="." instance=ExtResource("3_tp14p")]
+position = Vector2(-28, 9)
+
+[node name="wall_in_1_v3" parent="." instance=ExtResource("3_tp14p")]
+position = Vector2(32, 9)
+
+[node name="wall_in_1_v5" parent="." instance=ExtResource("3_tp14p")]
+position = Vector2(-28, -29)
+
+[node name="wall_in_1_v6" parent="." instance=ExtResource("3_tp14p")]
+position = Vector2(32, -29)
+
+[node name="wall_ex_1_door2" parent="." instance=ExtResource("4_utygo")]
+position = Vector2(-12, -29)
+
+[node name="wall_in_1_h7" parent="." instance=ExtResource("2_4ok3c")]
+position = Vector2(-28, 28)
+
+[node name="wall_in_1_h8" parent="." instance=ExtResource("2_4ok3c")]
+position = Vector2(12, 28)
+
+[node name="wall_in_1_h10" parent="." instance=ExtResource("2_4ok3c")]
+position = Vector2(20, 28)
+
+[node name="wall_in_1_h15" parent="." instance=ExtResource("2_4ok3c")]
+position = Vector2(28, 28)
+
+[node name="wall_in_1_h11" parent="." instance=ExtResource("2_4ok3c")]
+position = Vector2(-12, 28)
+
+[node name="wall_in_1_h12" parent="." instance=ExtResource("2_4ok3c")]
+position = Vector2(-20, 28)
+
+[node name="wall_ex_1_door3" parent="." instance=ExtResource("4_utygo")]
+position = Vector2(0, 28)
+
+[node name="wall_door_v" parent="." instance=ExtResource("5_f65uv")]
+position = Vector2(-28, -10)
+
+[node name="wall_door_v2" parent="." instance=ExtResource("5_f65uv")]
+position = Vector2(32, -10)
+
+[node name="shelf" parent="." instance=ExtResource("5_xnowk")]
+position = Vector2(3, -23)
+
+[node name="shelf2" parent="." instance=ExtResource("5_xnowk")]
+position = Vector2(11, -23)
+
+[node name="shelf3" parent="." instance=ExtResource("5_xnowk")]
+position = Vector2(19, -23)
+
+[node name="simple_table3" parent="." instance=ExtResource("6_lxc04")]
+position = Vector2(-22, 14)
+
+[node name="connector_down" type="Node2D" parent="."]
+position = Vector2(0, 28)
+
+[node name="connector_left" type="Node2D" parent="."]
+position = Vector2(-28, -10)
+
+[node name="connector_right" type="Node2D" parent="."]
+position = Vector2(32, -10)
+
+[node name="connector_top" type="Node2D" parent="."]
+position = Vector2(-12, -29)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ufisx84o60gv"]
 
-[ext_resource type="Texture2D" uid="uid://ddcw8hv7g6qjo" path="res://environment/env_sprites/outdoor/tree_1.png" id="1_ybpud"]
+[ext_resource type="Texture2D" uid="uid://ddcw8hv7g6qjo" path="res://environment/env_sprites/outdoor/trees/tree_1.png" id="1_iqwtn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_igs2u"]
 size = Vector2(9, 7)
@@ -15,7 +15,7 @@ y_sort_enabled = true
 [node name="sprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
 position = Vector2(-0.5, -11)
-texture = ExtResource("1_ybpud")
+texture = ExtResource("1_iqwtn")
 offset = Vector2(0, 0.5)
 
 [node name="col" type="CollisionShape2D" parent="."]

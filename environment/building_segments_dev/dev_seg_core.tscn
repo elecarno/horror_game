@@ -6,7 +6,6 @@
 [node name="dev_seg_core" type="Node2D"]
 script = ExtResource("1_7x4c0")
 connections = [NodePath("connector_left"), NodePath("connector_right"), NodePath("connector_down"), NodePath("connector_top")]
-room_position = "core"
 
 [node name="sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_kg1dp")

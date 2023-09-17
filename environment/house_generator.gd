@@ -53,18 +53,18 @@ func spawn_viable_segment(core_index, keyword):
 	var connection_point_core_index: int
 	for i in range(0, get_child(core_index).get_children().size()):
 		if keyword in get_child(core_index).get_child(i).name:
-			connection_pos_core = get_child(core_index).get_child(i).position
+			connection_pos_core = get_child(core_index).get_child(i).global_position
 			connection_point_core_index = i
 	
 	var connection_pos_seg: Vector2
 	var connection_point_seg_index: int
 	for i in range(0, segment_to_spawn_instance.get_children().size()):
 		if keyword in segment_to_spawn_instance.get_child(i).name:
-			connection_pos_seg = segment_to_spawn_instance.get_child(i).position
+			connection_pos_seg = segment_to_spawn_instance.get_child(i).global_position
 			connection_point_seg_index = i
 	
 	segment_to_spawn_instance.position = connection_pos_core
-	segment_to_spawn_instance.position += connection_pos_seg
+	#segment_to_spawn_instance.position += connection_pos_seg
 	
 	get_child(core_index).get_child(connection_point_core_index).queue_free()
 	segment_to_spawn_instance.get_child(connection_point_seg_index).queue_free()
