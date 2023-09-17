@@ -61,9 +61,7 @@ func generate_chunk(position):
 				### spawn street lamps
 				if randf_range(0.0, 1.0) < 0.01:
 					var streetlamp_instance = streetlamp.instantiate()
-					streetlamp_instance.position = tilemap.map_to_local(pos_vector)
 					object_data[str(pos_vector)] = streetlamp
-					objects.add_child(streetlamp_instance)
 			else:
 				tilemap.set_cell(0, pos_vector, 0, Vector2(0,0))
 				tile_data[str(pos_vector)] = Vector2(0,0)
@@ -73,19 +71,15 @@ func generate_chunk(position):
 				tile_data[str(pos_vector)] = Vector2(0,1)
 				
 				### spawn foliage
-				if randf_range(0.0, 1.0) < 0.01:
+				if randf_range(0.0, 1.0) < 0.01 and !object_data.has(str(pos_vector)):
 					var rand_foliage = foliage[randi() % foliage.size()]
 					var foliage_scene: PackedScene = load(foliage_path + rand_foliage)
-					var foliage_instance = foliage_scene.instantiate()
-					foliage_instance.position = tilemap.map_to_local(pos_vector)
-					objects.add_child(foliage_instance)
 					object_data[str(pos_vector)] = foliage_scene
 					
 			if object_data.has(str(pos_vector)):
 				var object_instance = object_data[str(pos_vector)].instantiate()
 				object_instance.position = tilemap.map_to_local(pos_vector)
 				objects.add_child(object_instance)
-				
 	#print(object_data)
 
 func cleanup_objects(position):

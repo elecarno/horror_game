@@ -310,9 +310,9 @@ DEBUG_DEACTIVATE = true
 
 [node name="player" parent="." instance=ExtResource("1_00auf")]
 position = Vector2(-44, 191)
-DEBUG_CAM_DISABLE = true
 
 [node name="world_overview_cam" type="Camera2D" parent="."]
+enabled = false
 zoom = Vector2(0.5, 0.5)
 
 [node name="ui" type="CanvasLayer" parent="."]
