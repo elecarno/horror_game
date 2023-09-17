@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx1lxssy21um5"
-path="res://.godot/imported/tent_02.png-46d59104d8272f88ceee4288ef1f60e7.ctex"
+uid="uid://cgw40o1djhvad"
+path="res://.godot/imported/bathtub.png-bdde4bcbdb393004bc110191805d9fa2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://environment/env_sprites/outdoor/tents/tent_02.png"
-dest_files=["res://.godot/imported/tent_02.png-46d59104d8272f88ceee4288ef1f60e7.ctex"]
+source_file="res://environment/env_sprites/indoor/bathroom/bathtub.png"
+dest_files=["res://.godot/imported/bathtub.png-bdde4bcbdb393004bc110191805d9fa2.ctex"]
 
 [params]
 

@@ -4,6 +4,8 @@ extends StaticBody2D
 
 @export var type: String = "drawer"
 
+var pos_vector: Vector2i
+
 var content_data: Array = ["null"]
 
 func _on_interact():

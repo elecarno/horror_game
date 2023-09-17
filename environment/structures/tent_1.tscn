@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://5dhyppaljwcg"]
+
+[ext_resource type="Texture2D" uid="uid://d22jrcl83qka2" path="res://environment/env_sprites/outdoor/tents/tent_1.png" id="1_qon77"]
+[ext_resource type="Script" path="res://environment/tilepos_store.gd" id="1_uohcj"]
+
+[node name="tent_1" type="StaticBody2D"]
+z_index = 1
+y_sort_enabled = true
+script = ExtResource("1_uohcj")
+
+[node name="sprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -5)
+texture = ExtResource("1_qon77")
+offset = Vector2(-0.5, -0.5)
+
+[node name="col" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-11, 0, -6, -11, 5, -11, 10, 0)

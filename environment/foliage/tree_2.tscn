@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2sucldmvcikw"]
+[gd_scene load_steps=5 format=3 uid="uid://b2sucldmvcikw"]
 
+[ext_resource type="Script" path="res://environment/tilepos_store.gd" id="1_ckjsc"]
 [ext_resource type="Texture2D" uid="uid://b4ouslauxlmeu" path="res://environment/env_sprites/outdoor/trees/tree_2.png" id="1_rruje"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_igs2u"]
@@ -11,6 +12,7 @@ polygon = PackedVector2Array(-6, 0, -6, -1, -5, -1, -5, -2, -4, -2, -4, -5, -3, 
 [node name="tree_2" type="StaticBody2D"]
 z_index = 1
 y_sort_enabled = true
+script = ExtResource("1_ckjsc")
 
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(-0.5, -11)

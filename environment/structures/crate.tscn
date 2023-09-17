@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bewjnw247u2s5"]
+
+[ext_resource type="Script" path="res://environment/env_lootable.gd" id="1_iygmd"]
+[ext_resource type="Texture2D" uid="uid://c1yd2m2ra8ofe" path="res://environment/env_sprites/outdoor/item_locations/crate.png" id="2_by237"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anyay"]
+
+[node name="crate" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_iygmd")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_by237")
+
+[node name="col_down" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_anyay")

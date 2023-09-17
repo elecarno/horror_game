@@ -34,7 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://djyu3hjv4mp6y" path="res://environment/toolkit/cabinet.tscn" id="30_emvi6"]
 [ext_resource type="Texture2D" uid="uid://bhkji6kww88qb" path="res://ui/inventories/drawer/drawer_interior_dusty.png" id="30_i783q"]
 [ext_resource type="Script" path="res://ui/collectibles/lootable.gd" id="31_52hgd"]
-[ext_resource type="PackedScene" uid="uid://esf02473srl8" path="res://environment/foliage/streetlamp.tscn" id="35_3k2t7"]
+[ext_resource type="PackedScene" uid="uid://esf02473srl8" path="res://environment/path_structures/streetlamp.tscn" id="35_3k2t7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8t6xo"]
 texture = ExtResource("5_g7f7l")
@@ -310,9 +310,10 @@ DEBUG_DEACTIVATE = true
 
 [node name="player" parent="." instance=ExtResource("1_00auf")]
 position = Vector2(-44, 191)
+DEBUG_CAM_DISABLE = true
 
-[node name="world_overview_cam" type="Camera2D" parent="."]
-enabled = false
+[node name="world_overview_cam" type="Camera2D" parent="player"]
+position = Vector2(44, -191)
 zoom = Vector2(0.5, 0.5)
 
 [node name="ui" type="CanvasLayer" parent="."]
