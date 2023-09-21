@@ -45,11 +45,14 @@ func generate_chunk(position):
 			var pos_vector = Vector2i(tile_pos.x-chunk_size/2 + x, tile_pos.y-chunk_size/2 + y)
 			var biome = biome_noise.get_noise_2d(pos_vector.x, pos_vector.y)
 			var biome2 = biome2_noise.get_noise_2d(pos_vector.x, pos_vector.y)
+			var tile_has_object: bool = false
 			
 			if object_tiles.has(str(pos_vector)):
 				continue
 			
 			if tile_data.has(str(pos_vector)):
+				if object_data.has(str(pos_vector)):
+					spawn_object(pos_vector)
 				continue
 			
 			if biome2 < 0.2:
@@ -86,20 +89,23 @@ func generate_chunk(position):
 					object_data[str(pos_vector)] = foliage_scene
 					
 			if object_data.has(str(pos_vector)):
-				var object_instance = object_data[str(pos_vector)].instantiate()
-				object_instance.position = tilemap.map_to_local(pos_vector)
-				object_instance.pos_vector = pos_vector
-				objects.add_child(object_instance)
-				object_tiles.append(str(pos_vector))
+				spawn_object(pos_vector)
 				
 	#print("help: " + str(object_tiles))
 	
+func spawn_object(pos_vector: Vector2i):
+	var object_instance = object_data[str(pos_vector)].instantiate()
+	object_instance.position = tilemap.map_to_local(pos_vector)
+	object_instance.pos_vector = pos_vector
+	objects.add_child(object_instance)
+	object_tiles.append(str(pos_vector))
+
 func cleanup_objects(position):
 	for i in range(0, objects.get_children().size()):
 		var distance = objects.get_child(i).global_position.distance_to(position)
 		if distance > 250:
 			for j in range(0, object_tiles.size()-1): 
 				if object_tiles[j] == str(objects.get_child(i).pos_vector):
-					print("remove: " + str(objects.get_child(i).pos_vector))
+					#print("remove: " + str(objects.get_child(i).pos_vector))
 					object_tiles.remove_at(j)
 			objects.get_child(i).queue_free()
