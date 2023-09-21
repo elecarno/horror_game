@@ -37,7 +37,6 @@ func sort_collected_arrays():
 	
 func check_for_completion(type: String):
 	sort_collected_arrays()
-	var counter: int
 	if type == "journals":
 		if collected_journals.size() == journals.size():
 			return true
@@ -48,3 +47,32 @@ func check_for_completion(type: String):
 			return true
 		else:
 			return false
+
+func get_random_collectible():
+	randomize()
+	var type_number = randi_range(0, 100) # use (0, 2) when adding items
+	var type_array: Array
+	var collected_type_array: Array
+	if type_number <= 75:
+		if !playerdata.check_for_completion("journals"):
+			type_array = playerdata.journals
+			collected_type_array = playerdata.collected_journals
+		else:
+			type_array = playerdata.notes
+			collected_type_array = playerdata.collected_notes
+	elif type_number >= 75:
+		if !playerdata.check_for_completion("notes"):
+			type_array = playerdata.notes
+			collected_type_array = playerdata.collected_notes
+		else:
+			type_array = playerdata.journals
+			collected_type_array = playerdata.collected_journals
+		
+	var cleared_type_array: Array
+	for i in range(0, type_array.size()):
+		if !collected_type_array.has(i):
+			cleared_type_array.append(type_array[i])
+	
+#	print(type_array)
+#	print(cleared_type_array)
+	return cleared_type_array[randi() % cleared_type_array.size()]

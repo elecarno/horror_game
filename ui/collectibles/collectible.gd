@@ -13,6 +13,6 @@ func _on_pressed():
 			playerdata.collected_notes.append(i)
 			
 	collected = true
-	get_parent().get_parent().update_object_data()
+	get_parent().get_parent().update_object_data(self)
 	
 	queue_free()

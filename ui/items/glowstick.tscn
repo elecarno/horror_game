@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqq8wmibh8aym"]
+
+[ext_resource type="Texture2D" uid="uid://bdnvuni0fwp8h" path="res://ui/items/bag/green_glowstick_32.png" id="1_qk46o"]
+[ext_resource type="Script" path="res://ui/items/glowstick.gd" id="2_78l1i"]
+
+[node name="glowstick" type="TextureButton"]
+anchors_preset = -1
+anchor_left = 0.419
+anchor_top = 0.477
+anchor_right = 0.419
+anchor_bottom = 0.477
+offset_left = -103.32
+offset_top = -95.44
+offset_right = 24.68
+offset_bottom = 32.56
+pivot_offset = Vector2(103, 96)
+texture_normal = ExtResource("1_qk46o")
+texture_pressed = ExtResource("1_qk46o")
+texture_hover = ExtResource("1_qk46o")
+texture_disabled = ExtResource("1_qk46o")
+texture_focused = ExtResource("1_qk46o")
+stretch_mode = 4
+script = ExtResource("2_78l1i")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

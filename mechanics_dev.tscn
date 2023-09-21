@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://ny5dojbmly3x"]
+[gd_scene load_steps=50 format=3 uid="uid://ny5dojbmly3x"]
 
 [ext_resource type="PackedScene" uid="uid://d7u7dlgtyldf" path="res://player/player.tscn" id="1_00auf"]
 [ext_resource type="Texture2D" uid="uid://b0x8bvxxmv6id" path="res://bg.png" id="1_d513w"]
@@ -34,7 +34,6 @@
 [ext_resource type="PackedScene" uid="uid://djyu3hjv4mp6y" path="res://environment/toolkit/cabinet.tscn" id="30_emvi6"]
 [ext_resource type="Texture2D" uid="uid://bhkji6kww88qb" path="res://ui/inventories/drawer/drawer_interior_dusty.png" id="30_i783q"]
 [ext_resource type="Script" path="res://ui/collectibles/lootable.gd" id="31_52hgd"]
-[ext_resource type="PackedScene" uid="uid://esf02473srl8" path="res://environment/path_structures/streetlamp.tscn" id="35_3k2t7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8t6xo"]
 texture = ExtResource("5_g7f7l")
@@ -309,11 +308,11 @@ position = Vector2(-56, -61)
 DEBUG_DEACTIVATE = true
 
 [node name="player" parent="." instance=ExtResource("1_00auf")]
-position = Vector2(-44, 191)
-DEBUG_CAM_DISABLE = true
+position = Vector2(623, 384)
 
 [node name="world_overview_cam" type="Camera2D" parent="player"]
 position = Vector2(44, -191)
+enabled = false
 zoom = Vector2(0.5, 0.5)
 
 [node name="ui" type="CanvasLayer" parent="."]
@@ -856,9 +855,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="streetlamp" parent="." instance=ExtResource("35_3k2t7")]
-position = Vector2(35, 188)
 
 [connection signal="timeout" from="environment/worldgen_update" to="environment" method="_on_worldgen_update_timeout"]
 [connection signal="button_down" from="ui/control/inventory/pouch_1/pouch_button" to="ui/control/inventory/pouch_1" method="_on_pouch_button_button_down"]

@@ -7,7 +7,7 @@ extends CanvasLayer
 
 var using_watch: bool = false
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("notebook"):
 		toggle_notebook()
 		
@@ -63,7 +63,6 @@ func _on_journals_counter_pressed():
 		var journal_button_instance = journal_button.instantiate()
 		journal_button_instance.collectible = load(playerdata.journals_path + playerdata.journals[playerdata.collected_journals[i]])
 		container.add_child(journal_button_instance)
-
 
 func _on_notes_counter_pressed():
 	get_node("control/notebook/notes_container").visible = !get_node("control/notebook/notes_container").visible

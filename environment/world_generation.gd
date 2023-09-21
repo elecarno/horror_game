@@ -37,8 +37,8 @@ func _on_worldgen_update_timeout():
 #		cleanup_objects(player.position)
 #		generate_chunk(player.position)
 
-func generate_chunk(position):
-	var tile_pos = tilemap.local_to_map(position)
+func generate_chunk(pos):
+	var tile_pos = tilemap.local_to_map(pos)
 	
 	for x in range(chunk_size):
 		for y in range (chunk_size):
@@ -55,32 +55,33 @@ func generate_chunk(position):
 					spawn_object(pos_vector)
 				continue
 			
-			if biome2 < 0.2:
-				if biome * 10 < 0.5:
-					tilemap.set_cell(0, pos_vector, 0, Vector2(0,0))
-					tile_data[str(pos_vector)] = Vector2(0,0)
-					
-					### spawn structures
-					if randf_range(0.0, 1.0) < 0.002 and !object_data.has(str(pos_vector)):
-						var rand_structure = structures[randi() % structures.size()]
-						var structure_scene: PackedScene = load(structures_path + rand_structure)
-						object_data[str(pos_vector)] = structure_scene
-					
-				elif biome * 10 < 0.9:
-					tilemap.set_cell(0, pos_vector, 0, Vector2(1,0))
-					tile_data[str(pos_vector)] = Vector2(1,0)
-					
-					### spawn street lamps
-					if randf_range(0.0, 1.0) < 0.05 and !object_data.has(str(pos_vector)):
-						var streetlamp_instance = streetlamp.instantiate()
-						object_data[str(pos_vector)] = streetlamp
-				else:
-					tilemap.set_cell(0, pos_vector, 0, Vector2(0,0))
-					tile_data[str(pos_vector)] = Vector2(0,0)
-					
+			if biome * 10 < 0.5:
+				tilemap.set_cell(0, pos_vector, 0, Vector2(0,0))
+				tile_data[str(pos_vector)] = Vector2(0,0)
+				
+				### spawn structures
+				if randf_range(0.0, 1.0) < 0.002 and !object_data.has(str(pos_vector)):
+					var rand_structure = structures[randi() % structures.size()]
+					var structure_scene: PackedScene = load(structures_path + rand_structure)
+					object_data[str(pos_vector)] = structure_scene
+				
+			elif biome * 10 < 0.9:
+				tilemap.set_cell(0, pos_vector, 0, Vector2(1,0))
+				tile_data[str(pos_vector)] = Vector2(1,0)
+				
+				### spawn street lamps
+				if randf_range(0.0, 1.0) < 0.03 and !object_data.has(str(pos_vector)):
+					var streetlamp_instance = streetlamp.instantiate()
+					object_data[str(pos_vector)] = streetlamp
 			else:
+				tilemap.set_cell(0, pos_vector, 0, Vector2(0,0))
+				tile_data[str(pos_vector)] = Vector2(0,0)
+					
+			if biome2 > 0.2:
 				tilemap.set_cell(0, pos_vector, 0, Vector2(0,1))
 				tile_data[str(pos_vector)] = Vector2(0,1)
+				
+				object_data.erase(str(pos_vector))
 				
 				### spawn foliage
 				if randf_range(0.0, 1.0) < 0.01 and !object_data.has(str(pos_vector)):
@@ -100,9 +101,9 @@ func spawn_object(pos_vector: Vector2i):
 	objects.add_child(object_instance)
 	object_tiles.append(str(pos_vector))
 
-func cleanup_objects(position):
+func cleanup_objects(pos):
 	for i in range(0, objects.get_children().size()):
-		var distance = objects.get_child(i).global_position.distance_to(position)
+		var distance = objects.get_child(i).global_position.distance_to(pos)
 		if distance > 250:
 			for j in range(0, object_tiles.size()-1): 
 				if object_tiles[j] == str(objects.get_child(i).pos_vector):
